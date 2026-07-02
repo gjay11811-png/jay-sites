@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Glow Room — Skin & Beauty Studio, West Kirby</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Karla:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{--blush:#fdf6f2;--rose:#c98a7d;--deep:#3f3230;--sand:#efe2da}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Karla,sans-serif;background:var(--blush);color:var(--deep);line-height:1.7}
+::selection{background:var(--rose);color:#fff}
+.wrap{max-width:1000px;margin:0 auto;padding:0 24px}
+/* nav */
+nav{display:flex;justify-content:space-between;align-items:center;padding:24px;max-width:1000px;margin:0 auto}
+nav .logo{font-family:'Cormorant Garamond';font-size:24px;font-weight:600;letter-spacing:.08em}
+nav .logo span{color:var(--rose)}
+nav a.bk{background:var(--rose);color:#fff;padding:11px 26px;border-radius:40px;text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.06em;transition:.3s}
+nav a.bk:hover{background:var(--deep)}
+/* hero */
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;max-width:1000px;margin:30px auto 0;padding:0 24px}
+.hero h1{font-family:'Cormorant Garamond';font-weight:500;font-size:clamp(40px,5.5vw,64px);line-height:1.08}
+.hero h1 em{font-style:italic;color:var(--rose)}
+.hero p{margin:18px 0 28px;color:#7d6e69;font-weight:300;max-width:400px}
+.pill{display:inline-block;background:var(--sand);border-radius:40px;padding:8px 18px;font-size:12px;letter-spacing:.15em;text-transform:uppercase;font-weight:600;color:var(--rose);margin-bottom:20px}
+.cta{display:inline-block;background:var(--rose);color:#fff;padding:16px 36px;border-radius:40px;text-decoration:none;font-weight:600;letter-spacing:.04em;box-shadow:0 16px 34px -14px var(--rose);transition:.3s}
+.cta:hover{transform:translateY(-3px);background:var(--deep)}
+.hero-img{position:relative}
+.hero-img img{width:100%;height:520px;object-fit:cover;border-radius:200px 200px 24px 24px}
+.hero-img .float{position:absolute;bottom:26px;left:-24px;background:#fff;border-radius:18px;padding:16px 22px;box-shadow:0 20px 44px -18px #c98a7d66;display:flex;gap:12px;align-items:center;animation:bob 4s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px)}}
+.float .st{color:#e8b04b;letter-spacing:2px}
+.float b{display:block;font-size:14px}
+.float span{font-size:12px;color:#9c8d88}
+@media(max-width:800px){.hero{grid-template-columns:1fr}.hero-img img{height:380px}}
+/* treatments */
+section{padding:100px 0 20px}
+.kick{color:var(--rose);letter-spacing:.3em;text-transform:uppercase;font-size:11px;font-weight:600;text-align:center}
+h2{font-family:'Cormorant Garamond';font-weight:500;font-size:clamp(30px,4.4vw,46px);text-align:center;margin:10px 0 50px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.card{background:#fff;border-radius:24px;padding:34px 28px;text-align:center;transition:.35s;box-shadow:0 10px 30px -20px #c98a7d40}
+.card:hover{transform:translateY(-10px);box-shadow:0 30px 54px -22px #c98a7d66}
+.card .ic{width:60px;height:60px;border-radius:50%;background:var(--sand);display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 18px}
+.card h3{font-family:'Cormorant Garamond';font-size:23px;font-weight:600;margin-bottom:8px}
+.card p{color:#9c8d88;font-size:14px;font-weight:300;margin-bottom:14px}
+.card .pr{color:var(--rose);font-weight:600;letter-spacing:.06em}
+/* banner */
+.banner{background:linear-gradient(120deg,var(--rose),#b0685c);color:#fff;border-radius:30px;padding:60px 40px;text-align:center;margin:100px auto 0;max-width:1000px}
+.banner h2{color:#fff;margin-bottom:8px}
+.banner p{opacity:.85;font-weight:300;margin-bottom:28px}
+.banner .cta{background:#fff;color:var(--rose);box-shadow:none}
+.banner .cta:hover{background:var(--deep);color:#fff}
+/* footer */
+footer{text-align:center;color:#a3948f;font-size:13px;padding:60px 24px 40px}
+footer b{font-family:'Cormorant Garamond';font-size:18px;color:var(--deep);display:block;margin-bottom:6px}
+.rv{opacity:0;transform:translateY(26px);transition:.9s cubic-bezier(.2,.8,.2,1)}
+.rv.on{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">The Glow <span>Room</span></div>
+  <a class="bk" href="tel:01516320000">Book now</a>
+</nav>
+
+<div class="hero">
+  <div>
+    <div class="pill">Skin · Lashes · Brows</div>
+    <h1>Leave <em>glowing</em>, every single time.</h1>
+    <p>A calm little studio in West Kirby for facials, lashes and brows — where the kettle's always on and nobody rushes you out the door.</p>
+    <a class="cta" href="tel:01516320000">Book your treatment</a>
+  </div>
+  <div class="hero-img">
+    <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=900&q=70" alt="" onerror="this.style.display='none'">
+    <div class="float">
+      <div class="st">★★★★★</div>
+      <div><b>Loved by locals</b><span>sample rating — yours here</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <section class="rv">
+    <div class="kick">Treatments</div>
+    <h2>What we do best</h2>
+    <div class="cards">
+      <div class="card"><div class="ic">✨</div><h3>Signature Facial</h3><p>Deep cleanse, exfoliation, massage and mask — tailored to your skin.</p><div class="pr">from £38</div></div>
+      <div class="card"><div class="ic">👁</div><h3>Lash Extensions</h3><p>Classic, hybrid or volume — natural-looking and feather-light.</p><div class="pr">from £45</div></div>
+      <div class="card"><div class="ic">🌿</div><h3>Brow Sculpt</h3><p>Shape, tint and lamination for brows that behave themselves.</p><div class="pr">from £28</div></div>
+      <div class="card"><div class="ic">💆‍♀️</div><h3>Dermaplaning</h3><p>Instant smoothness and glow — makeup sits like a dream after.</p><div class="pr">from £35</div></div>
+    </div>
+  </section>
+</div>
+
+<div class="banner rv">
+  <h2>New client offer</h2>
+  <p>15% off your first treatment — just mention this website when you book.</p>
+  <a class="cta" href="tel:01516320000">Claim your offer</a>
+</div>
+
+<footer>
+  <b>The Glow Room</b>
+  Banks Road, West Kirby · 0151 632 0000<br>
+  Tue–Sat, 9am – 6pm
+</footer>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.14});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REPS — Strength Gym, Birkenhead</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--blk:#0a0c0a;--panel:#12160f;--acid:#c8f542;--txt:#f2f5ee;--dim:#8d9683}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter Tight',sans-serif;background:var(--blk);color:var(--txt);line-height:1.55;overflow-x:hidden}
+::selection{background:var(--acid);color:#000}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+/* nav */
+nav{display:flex;justify-content:space-between;align-items:center;padding:22px 24px;max-width:1080px;margin:0 auto}
+nav .logo{font-family:Anton;font-size:26px;letter-spacing:.06em;color:var(--acid)}
+nav a.join{background:var(--acid);color:#000;font-family:Anton;letter-spacing:.08em;padding:12px 28px;text-decoration:none;font-size:15px;border-radius:6px}
+/* hero */
+.hero{position:relative;padding:40px 0 80px;overflow:hidden}
+.hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.28;filter:saturate(.6)}
+.hero .in{position:relative;z-index:2;max-width:1080px;margin:0 auto;padding:0 24px}
+.hero h1{font-family:Anton;font-size:clamp(66px,13vw,190px);line-height:.88;text-transform:uppercase;letter-spacing:.01em}
+.hero h1 .a{color:var(--acid)}
+.hero h1 .o{color:transparent;-webkit-text-stroke:2px var(--txt)}
+.hero .row{display:flex;justify-content:space-between;align-items:flex-end;gap:26px;flex-wrap:wrap;margin-top:26px}
+.hero p{color:var(--dim);font-size:18px;max-width:400px}
+.btn{display:inline-block;background:var(--acid);color:#000;font-family:Anton;letter-spacing:.08em;font-size:17px;padding:17px 38px;text-decoration:none;border-radius:6px;transition:.2s;text-transform:uppercase}
+.btn:hover{transform:translateY(-3px);box-shadow:0 16px 34px -12px var(--acid)}
+/* big numbers */
+.nums{display:grid;grid-template-columns:repeat(3,1fr);border-block:1px solid #20261c}
+.num{padding:34px 20px;text-align:center;border-right:1px solid #20261c}
+.num:last-child{border-right:0}
+.num b{font-family:Anton;font-size:clamp(34px,5vw,54px);color:var(--acid);display:block}
+.num span{color:var(--dim);font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+/* programs */
+section{padding:90px 0 20px}
+.kick{color:var(--acid);font-family:Anton;letter-spacing:.3em;font-size:13px;text-transform:uppercase}
+h2{font-family:Anton;text-transform:uppercase;font-size:clamp(34px,5.5vw,60px);letter-spacing:.01em;margin:8px 0 40px}
+.progs{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.prog{position:relative;height:300px;overflow:hidden;border-radius:12px;display:flex;align-items:flex-end;padding:24px;text-decoration:none;color:var(--txt)}
+.prog img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:.5s;filter:brightness(.55)}
+.prog:hover img{transform:scale(1.07);filter:brightness(.75)}
+.prog h3{font-family:Anton;font-size:26px;text-transform:uppercase;position:relative;z-index:2}
+.prog span{position:relative;z-index:2;color:var(--acid);font-size:13px;font-weight:700;letter-spacing:.1em}
+/* membership */
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.plan{background:var(--panel);border:1px solid #232b1e;border-radius:14px;padding:34px 30px;transition:.3s}
+.plan:hover{transform:translateY(-8px);border-color:var(--acid)}
+.plan.hot{border-color:var(--acid);background:linear-gradient(160deg,#1a2410,var(--panel))}
+.plan .nm{font-family:Anton;text-transform:uppercase;font-size:18px;letter-spacing:.06em}
+.plan .pr{font-family:Anton;font-size:52px;color:var(--acid);margin:12px 0 2px}
+.plan .pr small{font-size:18px;color:var(--dim)}
+.plan ul{list-style:none;margin-top:18px;font-size:14px}
+.plan li{padding:6px 0;color:var(--dim)}
+.plan li::before{content:"+ ";color:var(--acid);font-weight:700}
+.hotag{display:inline-block;background:var(--acid);color:#000;font-family:Anton;font-size:11px;letter-spacing:.14em;padding:4px 12px;border-radius:20px;margin-bottom:12px;text-transform:uppercase}
+/* final */
+.final{text-align:center;padding:110px 24px}
+.final h2{margin-bottom:10px}
+.final p{color:var(--dim);margin-bottom:32px}
+footer{border-top:1px solid #20261c;text-align:center;padding:30px;color:#5b6452;font-size:13px}
+.rv{opacity:0;transform:translateY(34px);transition:.8s cubic-bezier(.2,.8,.2,1)}
+.rv.on{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">REPS.</div>
+  <a class="join" href="tel:01513550000">Join now</a>
+</nav>
+
+<div class="hero">
+  <img class="bg" src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=1600&q=60" alt="" onerror="this.style.display='none'">
+  <div class="in">
+    <h1>TRAIN<br><span class="o">LIKE&nbsp;YOU</span><br><span class="a">MEAN&nbsp;IT.</span></h1>
+    <div class="row">
+      <p>Proper kit, proper coaches, zero posing. Birkenhead's strength gym for people who actually want results.</p>
+      <a class="btn" href="tel:01513550000">Start today — first week free</a>
+    </div>
+  </div>
+</div>
+
+<div class="nums rv">
+  <div class="num"><b>24/7</b><span>Member access</span></div>
+  <div class="num"><b>15+</b><span>Classes a week</span></div>
+  <div class="num"><b>£0</b><span>Joining fee</span></div>
+</div>
+
+<div class="wrap">
+  <section class="rv">
+    <div class="kick">Pick your lane</div>
+    <h2>Programs</h2>
+    <div class="progs">
+      <a class="prog" href="tel:01513550000">
+        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=800&q=60" alt="" onerror="this.style.display='none'">
+        <div><h3>Strength</h3><span>BARBELL CLUB →</span></div>
+      </a>
+      <a class="prog" href="tel:01513550000">
+        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=60" alt="" onerror="this.style.display='none'">
+        <div><h3>Conditioning</h3><span>SWEAT SESSIONS →</span></div>
+      </a>
+      <a class="prog" href="tel:01513550000">
+        <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=800&q=60" alt="" onerror="this.style.display='none'">
+        <div><h3>1-to-1 PT</h3><span>COACHED RESULTS →</span></div>
+      </a>
+    </div>
+  </section>
+
+  <section class="rv">
+    <div class="kick">No contracts</div>
+    <h2>Membership</h2>
+    <div class="plans">
+      <div class="plan">
+        <div class="nm">Off-Peak</div>
+        <div class="pr">£19<small>/mo</small></div>
+        <ul><li>9am – 4pm access</li><li>All kit included</li><li>Cancel anytime</li></ul>
+      </div>
+      <div class="plan hot">
+        <span class="hotag">Most picked</span>
+        <div class="nm">Full Access</div>
+        <div class="pr">£29<small>/mo</small></div>
+        <ul><li>24/7 access</li><li>All classes included</li><li>Free program reviews</li><li>Cancel anytime</li></ul>
+      </div>
+      <div class="plan">
+        <div class="nm">PT Bundle</div>
+        <div class="pr">£99<small>/mo</small></div>
+        <ul><li>Everything in Full</li><li>4 × 1-to-1 sessions</li><li>Nutrition plan</li></ul>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="final rv">
+  <h2>First week's on us.</h2>
+  <p>No contract. No joining fee. No excuses left.</p>
+  <a class="btn" href="tel:01513550000">Claim free week — 0151 355 0000</a>
+</div>
+
+<footer>© REPS Gym · Argyle Street, Birkenhead · 0151 355 0000</footer>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.14});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

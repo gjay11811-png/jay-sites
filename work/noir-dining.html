@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOIR — Modern European Dining, Liverpool</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#f7f3ec;--ink:#1c1a17;--wine:#7d2332;--soft:#8a8378}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Jost,sans-serif;background:var(--cream);color:var(--ink);line-height:1.7}
+::selection{background:var(--wine);color:#fff}
+/* nav */
+nav{display:flex;justify-content:space-between;align-items:center;padding:26px 6vw;position:absolute;top:0;left:0;right:0;z-index:10}
+nav .logo{font-family:'Playfair Display';font-size:24px;font-weight:700;letter-spacing:.14em;color:var(--cream)}
+nav a.res{border:1px solid #f7f3ec88;color:var(--cream);padding:10px 24px;text-decoration:none;font-size:13px;letter-spacing:.18em;text-transform:uppercase;transition:.3s}
+nav a.res:hover{background:var(--cream);color:var(--ink)}
+/* hero */
+.hero{position:relative;height:92vh;display:flex;align-items:flex-end;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:slowzoom 20s ease-out forwards}
+@keyframes slowzoom{from{transform:scale(1.08)}to{transform:scale(1)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,#1c1a17e6,#1c1a1740 45%,#1c1a1720)}
+.hero .in{position:relative;z-index:2;padding:0 6vw 9vh;color:var(--cream);max-width:800px}
+.hero .kick{letter-spacing:.4em;text-transform:uppercase;font-size:12px;font-weight:500;opacity:.85}
+.hero h1{font-family:'Playfair Display';font-weight:500;font-size:clamp(44px,7vw,88px);line-height:1.05;margin:16px 0 12px}
+.hero h1 em{font-style:italic}
+.hero p{font-weight:300;font-size:17px;max-width:440px;opacity:.9}
+/* intro */
+.intro{max-width:640px;margin:0 auto;text-align:center;padding:110px 24px 90px}
+.intro .orn{font-family:'Playfair Display';color:var(--wine);font-size:26px;letter-spacing:.4em}
+.intro h2{font-family:'Playfair Display';font-weight:500;font-size:clamp(28px,4vw,42px);margin:18px 0}
+.intro p{color:var(--soft);font-weight:300}
+/* menu */
+.menu{max-width:760px;margin:0 auto;padding:0 24px 110px}
+.menu h3{font-family:'Playfair Display';text-align:center;font-size:15px;letter-spacing:.35em;text-transform:uppercase;color:var(--wine);margin:54px 0 30px}
+.dish{display:flex;align-items:baseline;gap:14px;padding:14px 0}
+.dish .nm{font-family:'Playfair Display';font-size:19px;white-space:nowrap}
+.dish .dots{flex:1;border-bottom:1px dotted #c9c2b4;transform:translateY(-5px)}
+.dish .pr{font-family:'Playfair Display';font-size:18px;color:var(--wine)}
+.dish-d{color:var(--soft);font-weight:300;font-size:14px;margin:-8px 0 6px}
+/* duo image band */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+.duo img{width:100%;height:52vh;object-fit:cover}
+@media(max-width:680px){.duo{grid-template-columns:1fr}.duo img{height:36vh}}
+/* review */
+.quote{max-width:700px;margin:0 auto;text-align:center;padding:110px 24px}
+.quote .stars{color:var(--wine);letter-spacing:8px;font-size:18px;margin-bottom:22px}
+.quote q{font-family:'Playfair Display';font-style:italic;font-size:clamp(22px,3.4vw,32px);line-height:1.45;quotes:"“" "”"}
+.quote .who{margin-top:22px;color:var(--soft);letter-spacing:.25em;text-transform:uppercase;font-size:11px}
+/* reserve */
+.reserve{background:var(--ink);color:var(--cream);text-align:center;padding:110px 24px}
+.reserve h2{font-family:'Playfair Display';font-weight:500;font-size:clamp(32px,5vw,52px);margin-bottom:14px}
+.reserve p{font-weight:300;opacity:.75;margin-bottom:38px}
+.reserve a{display:inline-block;background:var(--wine);color:#fff;padding:18px 44px;text-decoration:none;letter-spacing:.22em;text-transform:uppercase;font-size:13px;transition:.3s}
+.reserve a:hover{background:var(--cream);color:var(--ink)}
+footer{background:var(--ink);color:#7a756b;text-align:center;font-size:13px;padding:0 24px 40px;letter-spacing:.06em}
+.rv{opacity:0;transform:translateY(26px);transition:1s cubic-bezier(.2,.8,.2,1)}
+.rv.on{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">NOIR</div>
+  <a class="res" href="tel:01517070000">Reserve</a>
+</nav>
+
+<div class="hero">
+  <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1600&q=70" alt="" onerror="this.style.display='none'">
+  <div class="in">
+    <div class="kick">Modern European · Royal Albert Dock</div>
+    <h1>Dinner, done <em>properly</em>.</h1>
+    <p>Seasonal plates, a serious wine list, and a room that makes an evening of it.</p>
+  </div>
+</div>
+
+<div class="intro rv">
+  <div class="orn">✦ ✦ ✦</div>
+  <h2>A small menu, cooked with obsession</h2>
+  <p>We change the menu with the seasons and never stretch it thin. Everything is made in-house, from the sourdough to the last spoon of dessert.</p>
+</div>
+
+<div class="menu rv">
+  <h3>To start</h3>
+  <div class="dish"><span class="nm">Cured sea trout</span><span class="dots"></span><span class="pr">12</span></div>
+  <div class="dish-d">pickled fennel, buttermilk, dill oil</div>
+  <div class="dish"><span class="nm">Burrata</span><span class="dots"></span><span class="pr">11</span></div>
+  <div class="dish-d">heritage tomato, basil, aged balsamic</div>
+
+  <h3>Mains</h3>
+  <div class="dish"><span class="nm">Dry-aged ribeye</span><span class="dots"></span><span class="pr">34</span></div>
+  <div class="dish-d">bone-marrow butter, triple-cooked chips</div>
+  <div class="dish"><span class="nm">Market fish</span><span class="dots"></span><span class="pr">26</span></div>
+  <div class="dish-d">brown shrimp, samphire, beurre blanc</div>
+  <div class="dish"><span class="nm">Wild mushroom risotto</span><span class="dots"></span><span class="pr">19</span></div>
+  <div class="dish-d">aged parmesan, truffle, chive</div>
+
+  <h3>To finish</h3>
+  <div class="dish"><span class="nm">Dark chocolate delice</span><span class="dots"></span><span class="pr">9</span></div>
+  <div class="dish-d">salted caramel, crème fraîche</div>
+</div>
+
+<div class="duo rv">
+  <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=1000&q=70" alt="" onerror="this.style.display='none'">
+  <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1000&q=70" alt="" onerror="this.style.display='none'">
+</div>
+
+<div class="quote rv">
+  <div class="stars">★★★★★</div>
+  <q>The best meal we've had in Liverpool — and we didn't want to leave the room. Booked again before we'd paid the bill.</q>
+  <div class="who">Sample review · your real reviews here</div>
+</div>
+
+<div class="reserve rv">
+  <h2>Your table's waiting.</h2>
+  <p>Tuesday – Sunday · Royal Albert Dock, Liverpool</p>
+  <a href="tel:01517070000">Reserve — 0151 707 0000</a>
+</div>
+<footer>© NOIR · Royal Albert Dock, Liverpool</footer>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.14});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
