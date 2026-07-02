@@ -1,0 +1,115 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>River Coffee Lounge — Specialty coffee</title>
+<meta property="og:title" content="River Coffee Lounge — Specialty coffee">
+<meta property="og:description" content="Specialty beans, real milk art, and cake that never survives till noon.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1600&q=70">
+<meta property="og:url" content="https://gjay11811-png.github.io/jay-sites/p/river-coffee-lounge.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='80'>◆</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+img{max-width:100%}
+body{padding-bottom:42px}
+.grain{position:fixed;inset:0;z-index:98;pointer-events:none;opacity:.05;
+ background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence baseFrequency='0.8' numOctaves='2'/></filter><rect width='120' height='120' filter='url(%23n)'/></svg>")}
+.prog{position:fixed;top:0;left:0;height:3px;width:0;z-index:99;transition:width .1s linear}
+.ribbon{position:fixed;bottom:0;left:0;right:0;z-index:97;text-align:center;font-size:11.5px;
+ padding:8px;letter-spacing:.06em;backdrop-filter:blur(8px)}
+.mark{position:fixed;bottom:48px;left:12px;z-index:97;font-size:10.5px;padding:6px 12px;border-radius:20px;letter-spacing:.04em}
+.mcall{display:none}
+@media(max-width:760px){
+ .mcall{display:flex;position:fixed;left:12px;right:12px;bottom:52px;z-index:96;justify-content:center;
+  padding:15px;border-radius:14px;font-weight:800;text-decoration:none;font-size:16px;
+  box-shadow:0 14px 32px -8px #000a;animation:mpop .5s .7s cubic-bezier(.2,1.4,.4,1) backwards}
+ .mark{bottom:118px}
+ body{padding-bottom:120px}}
+@keyframes mpop{from{transform:translateY(90px)}}
+.rv{opacity:0;transform:translateY(34px);transition:opacity .9s ease,transform .9s cubic-bezier(.16,.8,.26,1)}
+.rv.on{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+
+:root{--a:#a4551e;--paper:#faf5ec;--ink:#2b2118}
+body{font-family:Inter,sans-serif;background:var(--paper);color:var(--ink);line-height:1.7}
+nav{position:sticky;top:0;z-index:50;background:#faf5ecd9;backdrop-filter:blur(10px);display:flex;justify-content:space-between;align-items:center;padding:18px 5vw}
+nav b{font-family:Fraunces;font-size:22px}
+nav a{background:var(--ink);color:var(--paper);padding:11px 24px;border-radius:40px;text-decoration:none;font-size:13px;font-weight:600}
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:46px;align-items:center;max-width:1080px;margin:26px auto 0;padding:0 5vw}
+.hero h1{font-family:Fraunces;font-weight:700;font-size:clamp(42px,6vw,72px);line-height:1.02}
+.hero h1 em{font-style:italic;color:var(--a)}
+.hero p{margin:20px 0 30px;color:#6f6152;max-width:400px}
+.cta{display:inline-block;background:var(--a);color:#fff;padding:16px 34px;border-radius:40px;text-decoration:none;font-weight:600;box-shadow:0 16px 34px -14px var(--a);transition:.3s}
+.cta:hover{transform:translateY(-3px)}
+.cta.alt{background:transparent;color:var(--ink);border:1.5px solid #d8cbb8;box-shadow:none;margin-left:8px}
+.hero .ph{position:relative}
+.hero .ph img{width:100%;height:560px;object-fit:cover;border-radius:26px}
+.hero .badge{position:absolute;top:-18px;left:-18px;background:var(--ink);color:var(--paper);font-family:Fraunces;border-radius:50%;width:110px;height:110px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:13px;line-height:1.3;transform:rotate(-8deg);animation:sway 5s ease-in-out infinite}
+@keyframes sway{50%{transform:rotate(6deg)}}
+@media(max-width:820px){.hero{grid-template-columns:1fr}.hero .ph img{height:360px}}
+.chips{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;max-width:1080px;margin:80px auto 0;padding:0 5vw}
+.chip{background:#fff;border:1px solid #eadfce;border-radius:20px;padding:26px;font-family:Fraunces;font-size:19px;transition:.3s}
+.chip:hover{transform:translateY(-6px);border-color:var(--a)}
+.chip b{display:block;color:var(--a);font-size:14px;letter-spacing:.2em;margin-bottom:10px}
+.band{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1080px;margin:100px auto;padding:0 5vw}
+.band img{width:100%;height:440px;object-fit:cover;border-radius:26px}
+.band h2{font-family:Fraunces;font-size:clamp(28px,4vw,42px);margin-bottom:14px}
+.band p{color:#6f6152}
+.hrs{margin-top:22px;border-top:1px solid #eadfce}
+.hrs div{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid #eadfce;font-size:14.5px}
+.hrs b{color:var(--a)}
+@media(max-width:820px){.band{grid-template-columns:1fr}.band img{height:300px}}
+.rvw{background:var(--ink);color:var(--paper);border-radius:30px;max-width:1000px;margin:0 auto 90px;padding:64px 40px;text-align:center}
+.rvw .st{color:#e8b04b;letter-spacing:6px;font-size:18px}
+.rvw q{display:block;font-family:Fraunces;font-style:italic;font-size:clamp(20px,3vw,28px);margin:18px auto 14px;max-width:640px;line-height:1.5}
+.rvw .who{color:#a99c86;font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+footer{text-align:center;color:#a3947e;font-size:13px;padding:10px 24px 80px}
+footer b{display:block;font-family:Fraunces;font-size:20px;color:var(--ink);margin-bottom:6px}
+</style></head><body>
+
+<div class="grain"></div>
+<div class="prog" style="background:#a4551e"></div>
+<div class="mark" style="background:#ffffffd9;color:#111">free preview · Jay 07956 756 675</div>
+<a class="mcall" href="tel:+447999788605" style="background:#a4551e;color:#fff">📞 Tap to call</a>
+<nav><b>River Coffee Lounge</b><a href="tel:+447999788605">Find us</a></nav>
+<div class="hero">
+  <div>
+    <h1>Proper coffee.<br><em>No shortcuts.</em></h1>
+    <p>Specialty beans, real milk art, and cake that never survives till noon.</p>
+    <a class="cta" href="tel:+447999788605">📞 +44 7999 788605</a><a class="cta alt" href="#about">Our story ↓</a>
+  </div>
+  <div class="ph rv">
+    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1600&q=70" alt="" onerror="this.style.display='none'">
+    <div class="badge">independent<br>&amp; proud</div>
+  </div>
+</div>
+<div class="chips"><div class="chip rv" style="transition-delay:0ms"><b>01</b>Specialty coffee</div><div class="chip rv" style="transition-delay:120ms"><b>02</b>Brunch till 3</div><div class="chip rv" style="transition-delay:240ms"><b>03</b>Cakes & bakes</div></div>
+<div class="band" id="about">
+  <img class="rv" src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=900&q=70" alt="" onerror="this.style.display='none'">
+  <div class="rv">
+    <h2>Made here. Every day.</h2>
+    <p>No franchises, no freezer-to-fryer. Just a small team who care embarrassingly much about what ends up on your plate and in your cup.</p>
+    <div class="hrs">
+      <div><span>Mon – Fri</span><b>8:00 – 16:00</b></div>
+      <div><span>Sat – Sun</span><b>9:00 – 17:00</b></div>
+    </div>
+  </div>
+</div>
+<div class="rvw rv">
+  <div class="st">★★★★★</div>
+  <q>Found this place by accident and now it's a weekly ritual. Best specialty coffee for miles.</q>
+  <div class="who">Sample review · your real reviews here</div>
+</div>
+<footer><b>River Coffee Lounge</b>Seabank Road Wallasey · +44 7999 788605</footer>
+<div class="ribbon" style="background:#a4551ee6;color:#000;font-weight:700">✦ Free preview built for River Coffee Lounge — imagine it with your real photos · Jay 07956 756 675 ✦</div><script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+const co=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;co.unobserve(e.target);
+ const el=e.target,n=+el.dataset.n,suf=el.dataset.s||'',t0=performance.now();
+ (function t(x){const p=Math.min(1,(x-t0)/1400),v=n*(1-Math.pow(1-p,3));
+  el.textContent=Math.round(v).toLocaleString()+suf;if(p<1)requestAnimationFrame(t)})(t0);}),{threshold:.6});
+document.querySelectorAll('.cnt').forEach(el=>co.observe(el));
+const pr=document.querySelector('.prog');
+addEventListener('scroll',()=>{const h=document.documentElement;
+ pr.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'},{passive:true});
+</script></body></html>
