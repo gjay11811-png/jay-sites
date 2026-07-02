@@ -1,0 +1,208 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Salon M — Mount Road</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--a:#c9a227;--bg:#0b0b0e;--panel:#14141a;--line:#23232c}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Inter,sans-serif;background:var(--bg);color:#f2f2f4;line-height:1.6}
+.wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+/* preview ribbon */
+.band{background:linear-gradient(90deg,var(--a),#fff3);color:#000;font-weight:700;text-align:center;padding:9px;font-size:13px}
+/* glass nav */
+nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:#0b0b0ecc;border-bottom:1px solid #ffffff14}
+nav .in{max-width:1000px;margin:0 auto;padding:14px 22px;display:flex;justify-content:space-between;align-items:center}
+nav b{font-family:Sora;letter-spacing:.05em;font-size:17px}
+nav b i{color:var(--a);font-style:normal}
+nav a.call{background:var(--a);color:#000;padding:10px 20px;border-radius:30px;text-decoration:none;font-weight:700;font-size:13px}
+/* hero with photo */
+.hero{position:relative;min-height:88vh;display:flex;align-items:center;overflow:hidden}
+.hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.9) saturate(1.05)}
+.hero .shade{position:absolute;inset:0;background:linear-gradient(100deg,#050507f2 0%,#050507cc 38%,#0507 60%,transparent 100%)}
+.hero .in{position:relative;z-index:2;max-width:1000px;margin:0 auto;padding:80px 22px;width:100%}
+.chip{display:inline-flex;align-items:center;gap:8px;background:#ffffff14;border:1px solid #ffffff2b;backdrop-filter:blur(8px);border-radius:30px;padding:8px 16px;font-size:13px;font-weight:600;margin-bottom:22px}
+.chip .stars{color:#ffc83d;letter-spacing:2px}
+.hero h1{font-family:Sora;font-size:clamp(38px,6.5vw,64px);font-weight:800;line-height:1.06;max-width:560px}
+.hero h1 em{font-style:normal;color:var(--a)}
+.hero p{color:#c9c9d2;font-size:19px;max-width:440px;margin:20px 0 32px}
+.cta{display:inline-block;background:var(--a);color:#000;font-weight:800;font-family:Sora;padding:17px 32px;border-radius:14px;text-decoration:none;box-shadow:0 12px 30px -8px var(--a)}
+.cta.alt{background:#ffffff14;color:#fff;border:1px solid #ffffff30;box-shadow:none;margin-left:10px;backdrop-filter:blur(8px)}
+/* stats band */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:18px;background:var(--panel);margin-top:-62px;position:relative;z-index:3;overflow:hidden}
+.stat{padding:26px;text-align:center;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+.stat b{display:block;font-family:Sora;font-size:30px;color:var(--a)}
+.stat span{color:#9a9aa6;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+section{padding:76px 0 8px}
+.kick{color:var(--a);font-weight:700;letter-spacing:.24em;text-transform:uppercase;font-size:12px}
+h2{font-family:Sora;font-size:clamp(24px,3.5vw,34px);margin:10px 0 34px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.svc{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:28px;transition:.25s}
+.svc:hover{transform:translateY(-6px);border-color:var(--a)}
+.svc .ic{width:46px;height:46px;border-radius:12px;background:color-mix(in srgb,var(--a) 18%,transparent);color:var(--a);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px}
+.svc h3{font-family:Sora;font-size:17px;margin-bottom:8px}
+.svc p{color:#9a9aa6;font-size:14px;margin-bottom:14px}
+.svc .lnk{color:var(--a);font-weight:700;font-size:13px}
+/* review */
+.review{background:linear-gradient(135deg,color-mix(in srgb,var(--a) 14%,#14141a),var(--panel));border:1px solid var(--line);border-radius:22px;padding:44px;text-align:center;max-width:760px;margin:0 auto}
+.review .stars{color:#ffc83d;font-size:22px;letter-spacing:4px;margin-bottom:18px}
+.review q{font-family:Sora;font-size:clamp(18px,2.6vw,24px);font-weight:500;line-height:1.45;quotes:"“" "”"}
+.review .who{color:#9a9aa6;margin-top:16px;font-size:14px}
+/* hours + contact */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:700px){.split{grid-template-columns:1fr}.stats{grid-template-columns:1fr;margin-top:-30px}.stat{border-right:0;border-bottom:1px solid var(--line)}}
+.panelbox{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:30px}
+.panelbox h3{font-family:Sora;margin-bottom:16px}
+.hr{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);font-size:14px;color:#c9c9d2}
+.hr:last-child{border-bottom:0}
+.hr b{color:var(--a)}
+/* final cta */
+.final{text-align:center;padding:80px 0}
+.final h2{margin-bottom:8px}
+.final p{color:#9a9aa6;margin-bottom:28px}
+footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:#7a7a86;font-size:13px}
+.stickycall{display:none}
+@media(max-width:700px){.stickycall{display:flex;position:fixed;bottom:14px;left:14px;right:14px;z-index:60;background:var(--a);color:#000;font-family:Sora;font-weight:800;border-radius:16px;padding:16px;justify-content:center;text-decoration:none;box-shadow:0 14px 34px -6px #000c}}
+.mark{position:fixed;top:auto;bottom:10px;right:12px;background:#000c;color:#fffc;font-size:11px;padding:6px 12px;border-radius:20px;z-index:70}
+@media(max-width:700px){.mark{bottom:74px}}
+.up{opacity:0;transform:translateY(18px);animation:up .7s forwards}
+@keyframes up{to{opacity:1;transform:none}}
+/* ── motion layer ── */
+.kb{animation:kb 24s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.14) translate(-1.5%,-1%)}}
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .9s ease,transform .9s cubic-bezier(.16,.8,.26,1)}
+.reveal.on{opacity:1;transform:none}
+.marq{overflow:hidden;border-block:1px solid var(--line);margin-top:64px;padding:15px 0;background:var(--panel)}
+.marq .track{display:inline-block;white-space:nowrap;animation:marq 26s linear infinite;font-family:Sora;font-weight:700;letter-spacing:.24em;font-size:12px;color:var(--a)}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.cta{position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.cta:hover{transform:translateY(-3px) scale(1.02)}
+.cta:not(.alt)::after{content:"";position:absolute;top:0;left:-90%;width:55%;height:100%;
+  background:linear-gradient(100deg,transparent,#ffffff70,transparent);transform:skewX(-20deg);
+  animation:shine 3.4s ease-in-out infinite}
+@keyframes shine{0%,55%{left:-90%}100%{left:140%}}
+.chip .stars{animation:tw 2.4s ease-in-out infinite}
+@keyframes tw{0%,100%{text-shadow:0 0 4px #ffc83d66}50%{text-shadow:0 0 16px #ffc83d}}
+.review{position:relative;overflow:hidden}
+.review .orb{position:absolute;width:380px;height:380px;border-radius:50%;
+  background:radial-gradient(circle,var(--a),transparent 62%);opacity:.16;filter:blur(28px);
+  top:-140px;right:-120px;pointer-events:none;animation:float 8s ease-in-out infinite alternate}
+@keyframes float{from{transform:translate(0,0) scale(1)}to{transform:translate(-40px,34px) scale(1.15)}}
+.review q,.review .stars,.review .who{position:relative;z-index:1}
+.stickycall{animation:pop .55s .9s cubic-bezier(.2,1.4,.4,1) backwards}
+@keyframes pop{from{transform:translateY(90px)}}
+.stickycall::before{content:"";position:absolute;inset:0;border-radius:16px;border:2px solid var(--a);
+  animation:ring 2s ease-out infinite}
+@keyframes ring{from{opacity:.8;transform:scale(1)}to{opacity:0;transform:scale(1.08,1.35)}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}
+ .reveal{opacity:1;transform:none}}
+</style></head><body>
+
+<div class="band">✦ Free preview built for Salon M by Jay — imagine it with your real photos ✦</div>
+
+<nav><div class="in">
+  <b>SALON <i>·</i> M</b>
+  <a class="call" href="tel:+441516380411">📞 Call now</a>
+</div></nav>
+
+<div class="hero">
+  <img class="bg kb" src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1500&q=70" alt="" onerror="this.style.display='none'">
+  <div class="shade"></div>
+  <div class="in">
+    <div class="chip up"><span class="stars">★★★★★</span> Rated 5.0 by locals</div>
+    <h1 class="up" style="animation-delay:.1s">Sharp cuts.<br><em>No waiting around</em></h1>
+    <p class="up" style="animation-delay:.2s">Walk-ins & bookings — the Wirral's freshest fades.</p>
+    <div class="up" style="animation-delay:.3s">
+      <a class="cta" href="tel:+441516380411">📞 +44 151 638 0411</a>
+      <a class="cta alt" href="#services">What we do ↓</a>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="stats">
+    <div class="stat"><b class="cnt" data-n="10" data-s="+">0+</b><span>years experience</span></div>
+    <div class="stat"><b class="cnt" data-n="1000" data-s="+">0+</b><span>happy customers</span></div>
+    <div class="stat"><b class="cnt" data-n="5" data-dec="1" data-s="★">0★</b><span>local rating</span></div>
+  </div>
+</div>
+
+<div class="marq"><div class="track"><span>SKIN FADES  ◆  BEARD SCULPTING  ◆  KIDS' CUTS  ◆  5.0★ RATED  ◆  BOOK TODAY  ◆  SALON M  ◆  </span><span>SKIN FADES  ◆  BEARD SCULPTING  ◆  KIDS' CUTS  ◆  5.0★ RATED  ◆  BOOK TODAY  ◆  SALON M  ◆  </span></div></div>
+
+<div class="wrap">
+  <section id="services" class="reveal">
+    <div class="kick">What we do</div>
+    <h2>Services at Salon</h2>
+    <div class="grid"><div class="svc reveal" style="transition-delay:0ms">
+              <div class="ic">◆</div><h3>Skin fades</h3>
+              <p>Top-rated skin fades — done properly, every single time.</p>
+              <span class="lnk">Book now →</span></div><div class="svc reveal" style="transition-delay:130ms">
+              <div class="ic">✦</div><h3>Beard sculpting</h3>
+              <p>Top-rated beard sculpting — done properly, every single time.</p>
+              <span class="lnk">Book now →</span></div><div class="svc reveal" style="transition-delay:260ms">
+              <div class="ic">●</div><h3>Kids' cuts</h3>
+              <p>Top-rated kids' cuts — done properly, every single time.</p>
+              <span class="lnk">Book now →</span></div></div>
+  </section>
+
+  <section class="reveal">
+    <div class="kick">Don't take our word for it</div>
+    <h2>What customers say</h2>
+    <div class="review">
+      <div class="orb"></div>
+      <div class="stars">★★★★★</div>
+      <q>Best fade I've had in years — proper attention to detail. Won't go anywhere else now.</q>
+      <div class="who">— Verified local customer</div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="kick">Find us</div>
+    <h2>Opening hours &amp; contact</h2>
+    <div class="split">
+      <div class="panelbox">
+        <h3>Opening hours</h3>
+        <div class="hr"><span>Monday – Friday</span><b>9:00 – 18:00</b></div>
+        <div class="hr"><span>Saturday</span><b>9:00 – 17:00</b></div>
+        <div class="hr"><span>Sunday</span><b>Closed</b></div>
+      </div>
+      <div class="panelbox">
+        <h3>Get in touch</h3>
+        <div class="hr"><span>📍 Address</span><b>Mount Road</b></div>
+        <div class="hr"><span>📞 Phone</span><b>+44 151 638 0411</b></div>
+        <div class="hr"><span>💬 WhatsApp</span><b>Message us</b></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="final reveal">
+    <h2>Ready when you are.</h2>
+    <p>Call or message — we'll sort you out.</p>
+    <a class="cta" href="tel:+441516380411">📞 +44 151 638 0411</a>
+  </div>
+</div>
+
+<footer>© 2026 Salon M · Mount Road</footer>
+<a class="stickycall" href="tel:+441516380411">📞 Call Salon</a>
+<div class="mark">free preview by Jay · 07956 756 675</div>
+<script>
+// scroll-in reveals
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}
+}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+// counting stats
+const co=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;co.unobserve(e.target);
+  const el=e.target,n=+el.dataset.n,dec=+(el.dataset.dec||0),suf=el.dataset.s||'';
+  const t0=performance.now();
+  (function tick(t){
+    const p=Math.min(1,(t-t0)/1500),v=n*(1-Math.pow(1-p,3));
+    el.textContent=(dec?v.toFixed(dec):Math.round(v).toLocaleString())+suf;
+    if(p<1)requestAnimationFrame(tick)
+  })(t0);
+}),{threshold:.6});
+document.querySelectorAll('.cnt').forEach(el=>co.observe(el));
+</script>
+</body></html>
