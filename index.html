@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JG Studio — Websites That Win Customers | Live in 48 Hours</title>
-<meta name="description" content="Premium websites for Wirral & Liverpool businesses — designed, built and live in 48 hours. From £350. See live examples of our work.">
+<meta name="description" content="Premium websites for Wirral & Liverpool businesses — designed, built and live in 48 hours. From £150 (founding-client pricing). See live examples of our work.">
 <meta property="og:title" content="JG Studio — websites that look expensive, live in 48 hours">
-<meta property="og:description" content="Premium sites for Wirral & Liverpool businesses from £350. Free preview before you pay a penny. See six live examples.">
+<meta property="og:description" content="Premium sites for Wirral & Liverpool businesses from £150 (founding-client pricing). Free preview before you pay a penny.">
 <meta property="og:image" content="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=70">
 <meta property="og:url" content="https://gjay11811-png.github.io/jay-sites/">
 <meta name="twitter:card" content="summary_large_image">
@@ -18,6 +18,13 @@
 html{scroll-behavior:smooth}
 body{font-family:Inter,sans-serif;background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden}
 .wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+/* scroll progress */
+.scrollbar{position:fixed;top:0;left:0;right:0;height:3px;z-index:100;background:transparent}
+.scrollbar i{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--a2),var(--a));box-shadow:0 0 10px var(--a);transition:width .1s linear}
+/* grain texture */
+.grain{position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.035;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+@media (prefers-reduced-motion: reduce){.grain{display:none}}
 /* nav */
 nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:#0b0b0ecc;border-bottom:1px solid #ffffff12}
 nav .in{max-width:1040px;margin:0 auto;padding:15px 22px;display:flex;justify-content:space-between;align-items:center}
@@ -25,16 +32,27 @@ nav b{font-family:Sora;font-size:18px;letter-spacing:.04em}
 nav b i{color:var(--a);font-style:normal}
 nav a.call{background:var(--a);color:#000;padding:10px 20px;border-radius:30px;text-decoration:none;font-weight:700;font-size:13px}
 /* hero */
-.hero{position:relative;padding:110px 0 90px;text-align:center}
+.hero{position:relative;padding:110px 0 90px;text-align:center;overflow:hidden}
 .hero .glow{position:absolute;top:-220px;left:50%;transform:translateX(-50%);width:900px;height:600px;
-  background:radial-gradient(ellipse,#d4af3722,transparent 65%);pointer-events:none;animation:breathe 7s ease-in-out infinite alternate}
+  background:radial-gradient(ellipse,#d4af3722,transparent 65%);pointer-events:none;animation:breathe 7s ease-in-out infinite alternate;will-change:transform,opacity}
 @keyframes breathe{from{opacity:.6}to{opacity:1}}
-.chip{display:inline-flex;gap:8px;align-items:center;background:#ffffff10;border:1px solid #ffffff22;border-radius:30px;padding:8px 18px;font-size:13px;font-weight:600;margin-bottom:26px}
+.spot{position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:radial-gradient(500px circle at var(--mx,50%) var(--my,20%),#d4af3714,transparent 60%)}
+.chip{display:inline-flex;gap:8px;align-items:center;background:#ffffff10;border:1px solid #ffffff22;border-radius:30px;padding:8px 18px;font-size:13px;font-weight:600;margin-bottom:26px;position:relative;z-index:2}
 .chip .dot{width:8px;height:8px;border-radius:50%;background:var(--wa);animation:blink 1.6s infinite}
 @keyframes blink{50%{opacity:.3}}
-h1{font-family:Sora;font-size:clamp(36px,6.6vw,66px);font-weight:800;line-height:1.07}
-h1 em{font-style:normal;background:linear-gradient(100deg,var(--a2),var(--a));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.hero p{color:var(--dim);font-size:19px;max-width:540px;margin:22px auto 34px}
+h1{font-family:Sora;font-size:clamp(36px,6.6vw,66px);font-weight:800;line-height:1.07;position:relative;z-index:2}
+h1 em{font-style:normal;background:linear-gradient(100deg,var(--a2),var(--a),var(--a2));background-size:200% auto;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 3.5s ease-in-out infinite}
+@keyframes shimmer{0%,100%{background-position:0% center}50%{background-position:100% center}}
+.hero p{color:var(--dim);font-size:19px;max-width:540px;margin:22px auto 34px;position:relative;z-index:2}
+.hero .cta,.hero .trust{position:relative;z-index:2}
+/* stat strip */
+.statstrip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:820px;margin:0 auto;position:relative;z-index:2}
+.statstrip .sbox{background:#ffffff08;border:1px solid #ffffff18;border-radius:14px;padding:16px 10px;backdrop-filter:blur(6px)}
+.statstrip .sbox b{display:block;font-family:Sora;font-size:24px;color:var(--a)}
+.statstrip .sbox span{color:var(--dim);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase}
+@media(max-width:640px){.statstrip{grid-template-columns:repeat(2,1fr)}}
 .cta{position:relative;overflow:hidden;display:inline-block;background:var(--a);color:#000;font-weight:800;font-family:Sora;padding:17px 34px;border-radius:14px;text-decoration:none;box-shadow:0 14px 34px -10px var(--a);transition:.25s}
 .cta:hover{transform:translateY(-3px) scale(1.02)}
 .cta::after{content:"";position:absolute;top:0;left:-90%;width:55%;height:100%;background:linear-gradient(100deg,transparent,#ffffff70,transparent);transform:skewX(-20deg);animation:shine 3.4s ease-in-out infinite}
@@ -51,19 +69,32 @@ section{padding:84px 0 10px}
 h2{font-family:Sora;font-size:clamp(26px,3.6vw,38px);margin:10px 0 14px}
 .lead{color:var(--dim);max-width:560px;margin-bottom:38px}
 /* work gallery */
-.works{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
-.work{position:relative;display:block;background:var(--panel);border:1px solid var(--line);border-radius:20px;overflow:hidden;text-decoration:none;color:var(--txt);transition:.3s}
-.work:hover{transform:translateY(-8px);border-color:var(--a)}
-.work .thumb{height:190px;position:relative;overflow:hidden}
+.works{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;perspective:1200px}
+.work{position:relative;display:block;background:var(--panel);border:1px solid var(--line);border-radius:20px;overflow:hidden;text-decoration:none;color:var(--txt);
+  transition:transform .12s ease-out,border-color .3s,box-shadow .3s;transform-style:preserve-3d;will-change:transform}
+.work:hover{border-color:var(--a);box-shadow:0 24px 50px -20px #000a}
+.work .thumb{height:190px;position:relative;overflow:hidden;background:#000}
 .work .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
 .work:hover .thumb img{transform:scale(1.08)}
-.work .thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,#14141a,transparent 60%)}
-.work .tag{position:absolute;top:12px;left:12px;z-index:2;background:#000c;border:1px solid #ffffff2a;backdrop-filter:blur(6px);color:#fff;font-size:11px;font-weight:600;padding:5px 12px;border-radius:20px}
+.work .thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,#14141a,transparent 60%);pointer-events:none}
+.work .tag{position:absolute;top:12px;left:12px;z-index:3;background:#000c;border:1px solid #ffffff2a;backdrop-filter:blur(6px);color:#fff;font-size:11px;font-weight:600;padding:5px 12px;border-radius:20px}
+.work .live-badge{position:absolute;top:12px;right:12px;z-index:3;background:#0f3d24e0;border:1px solid #2a6b4a;color:#8ee6b5;font-size:10px;font-weight:700;padding:4px 10px;border-radius:20px;display:flex;align-items:center;gap:5px}
+.work .live-badge i{width:6px;height:6px;border-radius:50%;background:#4ee08a;animation:blink 1.6s infinite}
 .work .body{padding:18px 20px 20px}
 .work h3{font-family:Sora;font-size:17px}
 .work p{color:var(--dim);font-size:13px;margin-top:4px}
 .work .view{color:var(--a);font-weight:700;font-size:13px;margin-top:12px;display:inline-block}
 .work .meta2{color:#6e6e7a;font-size:11.5px;margin-top:8px;letter-spacing:.03em}
+/* live browser-mockup preview */
+.browser{height:190px;position:relative;overflow:hidden;background:#1c1c22}
+.browser .bar{display:flex;align-items:center;gap:6px;padding:8px 10px;background:#1a1a20;position:relative;z-index:2}
+.browser .bar i{width:8px;height:8px;border-radius:50%;display:block}
+.browser .bar i:nth-child(1){background:#ff5f57}
+.browser .bar i:nth-child(2){background:#febc2e}
+.browser .bar i:nth-child(3){background:#28c840}
+.browser .bar .url{margin-left:6px;background:#000;border-radius:6px;padding:3px 10px;font-size:9.5px;color:#8a8a94;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:Inter}
+.browser .fw{height:calc(100% - 32px);overflow:hidden;position:relative}
+.browser .fw iframe{width:400%;height:400%;border:0;transform:scale(.25);transform-origin:0 0;pointer-events:none;background:#fff}
 /* includes grid */
 .inc{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
 .incitem{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px 22px;font-size:15px}
@@ -78,6 +109,7 @@ h2{font-family:Sora;font-size:clamp(26px,3.6vw,38px);margin:10px 0 14px}
 .plan.hot{border-color:var(--a);background:linear-gradient(160deg,#1c1913,var(--panel))}
 .plan .name{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
 .plan .price{font-family:Sora;font-size:36px;font-weight:800;color:var(--a);margin:8px 0 2px}
+.plan .price .was{font-family:Inter;font-size:16px;font-weight:500;color:#6e6e7a;text-decoration:line-through;margin-left:4px}
 .plan .per{font-size:13px;color:var(--dim);margin-bottom:16px}
 .plan ul{list-style:none;font-size:14px}
 .plan li{padding:5px 0;color:var(--dim)}
@@ -113,25 +145,36 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:#
 </head>
 <body>
 
+<div class="scrollbar"><i id="scrollFill"></i></div>
+<div class="grain"></div>
+
 <nav><div class="in">
   <b>JG <i>·</i> STUDIO</b>
   <a class="call" href="https://wa.me/447956756675?text=Alright%20Jay%20—%20interested%20in%20a%20website">💬 WhatsApp</a>
 </div></nav>
 
-<div class="hero">
+<div class="hero" id="heroSpot">
   <div class="glow"></div>
+  <div class="spot"></div>
   <div class="wrap">
-    <div class="chip"><span class="dot"></span> Booking July projects — limited slots</div>
+    <div class="chip"><span class="dot"></span> Founding-client pricing — first 5 projects only</div>
     <h1>Websites that look <em>expensive</em>.<br>Delivered in 48 hours.</h1>
-    <p>Premium sites for Wirral &amp; Liverpool businesses — designed, built and live before an agency would've replied to your email. From £350.</p>
+    <p>Premium sites for Wirral &amp; Liverpool businesses — designed, built and live before an agency would've replied to your email. From £150.</p>
     <a class="cta" href="#work">See live work ↓</a>
     <a class="cta wa" href="https://wa.me/447956756675?text=Alright%20Jay%20—%20interested%20in%20a%20website">WhatsApp Jay</a>
     <div class="trust">Free homepage preview · half up front, half when you're happy · you own everything</div>
+
+    <div class="statstrip" style="margin-top:46px">
+      <div class="sbox"><b class="cnt" data-n="10">0</b><span>Live builds</span></div>
+      <div class="sbox"><b class="cnt" data-n="12">0</b><span>Industries</span></div>
+      <div class="sbox"><b class="cnt" data-n="48" data-s="h">0h</b><span>Avg. turnaround</span></div>
+      <div class="sbox"><b class="cnt" data-n="100" data-s="%">0%</b><span>Client ownership</span></div>
+    </div>
   </div>
 </div>
 
 <div class="marq"><div class="track">
-  <span>BARBERS ◆ GARAGES ◆ RESTAURANTS ◆ GYMS ◆ TRADES ◆ SALONS ◆ E-COMMERCE ◆ LIVE IN 48 HOURS ◆ FROM £350 ◆ </span><span>BARBERS ◆ GARAGES ◆ RESTAURANTS ◆ GYMS ◆ TRADES ◆ SALONS ◆ E-COMMERCE ◆ LIVE IN 48 HOURS ◆ FROM £350 ◆ </span>
+  <span>BARBERS ◆ GARAGES ◆ RESTAURANTS ◆ GYMS ◆ TRADES ◆ SALONS ◆ E-COMMERCE ◆ LIVE IN 48 HOURS ◆ FROM £150 ◆ </span><span>BARBERS ◆ GARAGES ◆ RESTAURANTS ◆ GYMS ◆ TRADES ◆ SALONS ◆ E-COMMERCE ◆ LIVE IN 48 HOURS ◆ FROM £150 ◆ </span>
 </div></div>
 
 <div class="wrap">
@@ -142,43 +185,52 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:#
     <p class="lead">Every one of these is a real, live build. Open them. Scroll them. This is the standard every client gets — barbers to e-commerce.</p>
     <div class="works">
       <a class="work" href="work/truedge-barber-co.html" target="_blank">
-        <div class="thumb"><span class="tag">Barbershop</span><img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=800&q=60" alt="" loading="lazy"></div>
-        <div class="body"><h3>TruEdge Barber Co.</h3><p>Bookings-focused barbershop build.</p><div class="meta2">⏱ 41h build · 📱 one-tap calling · SEO</div><span class="view">View live site →</span></div>
+        <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">jgstudio.co.uk/truedge</div></div>
+          <div class="fw"><iframe src="work/truedge-barber-co.html" loading="lazy" tabindex="-1"></iframe></div></div>
+        <div class="body"><h3>TruEdge Barber Co. <span class="tag" style="position:static;display:inline-block;margin-left:4px">Barbershop</span></h3><p>Bookings-focused barbershop build.</p><div class="meta2">⏱ 41h build · 📱 one-tap calling · SEO</div><span class="view">View live site →</span></div>
       </a>
       <a class="work" href="work/mersey-motors.html" target="_blank">
-        <div class="thumb"><span class="tag">Garage</span><img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=800&q=60" alt="" loading="lazy"></div>
-        <div class="body"><h3>Mersey Motors</h3><p>Trust-first garage site — MOT, servicing, diagnostics.</p><div class="meta2">⏱ 44h build · 📞 call tracking · Maps</div><span class="view">View live site →</span></div>
+        <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">jgstudio.co.uk/mersey-motors</div></div>
+          <div class="fw"><iframe src="work/mersey-motors.html" loading="lazy" tabindex="-1"></iframe></div></div>
+        <div class="body"><h3>Mersey Motors <span class="tag" style="position:static;display:inline-block;margin-left:4px">Garage</span></h3><p>Trust-first garage site — MOT, servicing, diagnostics.</p><div class="meta2">⏱ 44h build · 📞 call tracking · Maps</div><span class="view">View live site →</span></div>
       </a>
       <a class="work" href="work/ink-iron-tattoo.html" target="_blank">
-        <div class="thumb"><span class="tag">Tattoo studio</span><img src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?auto=format&fit=crop&w=800&q=60" alt="" loading="lazy"></div>
-        <div class="body"><h3>Ink &amp; Iron Tattoo</h3><p>Dark, editorial studio site with booking flow.</p><div class="meta2">⏱ 39h build · gallery-first · Insta feed</div><span class="view">View live site →</span></div>
+        <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">jgstudio.co.uk/ink-iron</div></div>
+          <div class="fw"><iframe src="work/ink-iron-tattoo.html" loading="lazy" tabindex="-1"></iframe></div></div>
+        <div class="body"><h3>Ink &amp; Iron Tattoo <span class="tag" style="position:static;display:inline-block;margin-left:4px">Tattoo studio</span></h3><p>Dark, editorial studio site with booking flow.</p><div class="meta2">⏱ 39h build · gallery-first · Insta feed</div><span class="view">View live site →</span></div>
       </a>
       <a class="work" href="work/the-dockside-kitchen.html" target="_blank">
-        <div class="thumb"><span class="tag">Restaurant</span><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=60" alt="" loading="lazy"></div>
-        <div class="body"><h3>The Dockside Kitchen</h3><p>Appetite-driven restaurant site with menu &amp; ordering CTAs.</p><div class="meta2">⏱ 46h build · menu system · delivery CTAs</div><span class="view">View live site →</span></div>
+        <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">jgstudio.co.uk/dockside</div></div>
+          <div class="fw"><iframe src="work/the-dockside-kitchen.html" loading="lazy" tabindex="-1"></iframe></div></div>
+        <div class="body"><h3>The Dockside Kitchen <span class="tag" style="position:static;display:inline-block;margin-left:4px">Restaurant</span></h3><p>Appetite-driven restaurant site with menu &amp; ordering CTAs.</p><div class="meta2">⏱ 46h build · menu system · delivery CTAs</div><span class="view">View live site →</span></div>
       </a>
       <a class="work" href="work/brew-co.html" target="_blank">
-        <div class="thumb"><span class="tag">Café</span><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=60" alt="" loading="lazy"></div>
-        <div class="body"><h3>Brew &amp; Co.</h3><p>Independent café site with warmth and footfall focus.</p><div class="meta2">⏱ 38h build · Maps-first · loyalty CTA</div><span class="view">View live site →</span></div>
+        <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">jgstudio.co.uk/brew-co</div></div>
+          <div class="fw"><iframe src="work/brew-co.html" loading="lazy" tabindex="-1"></iframe></div></div>
+        <div class="body"><h3>Brew &amp; Co. <span class="tag" style="position:static;display:inline-block;margin-left:4px">Café</span></h3><p>Independent café site with warmth and footfall focus.</p><div class="meta2">⏱ 38h build · Maps-first · loyalty CTA</div><span class="view">View live site →</span></div>
       </a>
       <a class="work" href="work/ironworks-fitness.html" target="_blank">
-        <div class="thumb"><span class="tag">Gym / PT</span><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=60" alt="" loading="lazy"></div>
-        <div class="body"><h3>Ironworks Fitness</h3><p>High-energy PT site built to convert followers into members.</p><div class="meta2">⏱ 42h build · lead form · class timetable</div><span class="view">View live site →</span></div>
+        <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">jgstudio.co.uk/ironworks</div></div>
+          <div class="fw"><iframe src="work/ironworks-fitness.html" loading="lazy" tabindex="-1"></iframe></div></div>
+        <div class="body"><h3>Ironworks Fitness <span class="tag" style="position:static;display:inline-block;margin-left:4px">Gym / PT</span></h3><p>High-energy PT site built to convert followers into members.</p><div class="meta2">⏱ 42h build · lead form · class timetable</div><span class="view">View live site →</span></div>
       </a>
       <a class="work" href="work/aquashine-valeting.html" target="_blank">
-        <div class="thumb"><span class="tag">Valeting</span><img src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=800&q=60" alt="" loading="lazy"></div>
-        <div class="body"><h3>AquaShine Valeting</h3><p>Showroom-finish valeting site with package pricing.</p><div class="meta2">⏱ 40h build · price menu · WhatsApp quotes</div><span class="view">View live site →</span></div>
+        <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">jgstudio.co.uk/aquashine</div></div>
+          <div class="fw"><iframe src="work/aquashine-valeting.html" loading="lazy" tabindex="-1"></iframe></div></div>
+        <div class="body"><h3>AquaShine Valeting <span class="tag" style="position:static;display:inline-block;margin-left:4px">Valeting</span></h3><p>Showroom-finish valeting site with package pricing.</p><div class="meta2">⏱ 40h build · price menu · WhatsApp quotes</div><span class="view">View live site →</span></div>
       </a>
       <a class="work" href="work/volt-electrical.html" target="_blank">
-        <div class="thumb"><span class="tag">Trades</span><img src="https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=800&q=60" alt="" loading="lazy"></div>
-        <div class="body"><h3>Volt Electrical</h3><p>No-nonsense electrician site built for emergency call-outs.</p><div class="meta2">⏱ 36h build · 24/7 call bar · quote form</div><span class="view">View live site →</span></div>
+        <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">jgstudio.co.uk/volt</div></div>
+          <div class="fw"><iframe src="work/volt-electrical.html" loading="lazy" tabindex="-1"></iframe></div></div>
+        <div class="body"><h3>Volt Electrical <span class="tag" style="position:static;display:inline-block;margin-left:4px">Trades</span></h3><p>No-nonsense electrician site built for emergency call-outs.</p><div class="meta2">⏱ 36h build · 24/7 call bar · quote form</div><span class="view">View live site →</span></div>
       </a>
       <a class="work" href="work/pawfect-grooming.html" target="_blank">
-        <div class="thumb"><span class="tag">Pet care</span><img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=800&q=60" alt="" loading="lazy"></div>
-        <div class="body"><h3>Pawfect Grooming</h3><p>Warm, friendly groomer site that books appointments.</p><div class="meta2">⏱ 37h build · booking CTA · gallery</div><span class="view">View live site →</span></div>
+        <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">jgstudio.co.uk/pawfect</div></div>
+          <div class="fw"><iframe src="work/pawfect-grooming.html" loading="lazy" tabindex="-1"></iframe></div></div>
+        <div class="body"><h3>Pawfect Grooming <span class="tag" style="position:static;display:inline-block;margin-left:4px">Pet care</span></h3><p>Warm, friendly groomer site that books appointments.</p><div class="meta2">⏱ 37h build · booking CTA · gallery</div><span class="view">View live site →</span></div>
       </a>
       <a class="work" href="https://first-class-fits-production.up.railway.app" target="_blank">
-        <div class="thumb"><span class="tag">E-commerce</span><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=60" alt="" loading="lazy"></div>
+        <div class="thumb"><span class="tag">E-commerce</span><span class="live-badge"><i></i>LIVE STORE</span><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=60" alt="" loading="lazy"></div>
         <div class="body"><h3>First Class Fits</h3><p>Full online store — products, colours, Stripe payments, the lot.</p><div class="meta2">⏱ 1-week build · Stripe checkout · full CMS</div><span class="view">View live store →</span></div>
       </a>
     </div>
@@ -203,22 +255,27 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:#
   <section class="reveal">
     <div class="kick">Who builds it</div>
     <h2>One builder. No middlemen.</h2>
-    <p class="lead" style="margin-bottom:16px">JG Studio is Jay Green — the designer behind every site above, including the First Class Fits store. No account managers, no outsourcing, no waiting a week for an email back. You deal directly with the person building your site — that's exactly how it stays £350 and 48 hours instead of £2,000 and six weeks.</p>
+    <p class="lead" style="margin-bottom:16px">JG Studio is Jay Green — the designer behind every site above, including the First Class Fits store. No account managers, no outsourcing, no waiting a week for an email back. You deal directly with the person building your site — that's exactly how it stays £150 and 48 hours instead of £2,000 and six weeks.</p>
     <p class="lead" style="margin-bottom:0">Replies within the hour, seven days a week. Wallasey born, Wirral &amp; Liverpool focused, available everywhere.</p>
   </section>
 
   <section class="reveal">
-    <div class="kick">Simple pricing</div>
+    <div class="kick">Founding-client pricing</div>
     <h2>Fixed prices. No surprises.</h2>
-    <p class="lead">You own everything — the site, the domain, the content. No lock-ins, no hostage-taking.</p>
+    <p class="lead">You own everything — the site, the domain, the content. No lock-ins, no hostage-taking.
+      <br><span style="color:#d4af37;font-weight:600">These prices are for my first 5 clients only — then it goes back to full rate.</span></p>
     <div class="plans">
-      <div class="plan"><div class="name">Starter Site</div><div class="price">£350</div><div class="per">one-off · live in 48h</div>
+      <div class="plan"><div class="name">Starter Site</div>
+        <div class="price">£150 <span class="was">£350</span></div><div class="per">one-off · live in 48h</div>
         <ul><li>1-page professional site</li><li>Perfect on phones</li><li>WhatsApp &amp; call buttons</li><li>Google-ready</li></ul></div>
-      <div class="plan hot"><span class="hotlbl">Most popular</span><div class="name" style="margin-top:12px">Business Site</div><div class="price">£600</div><div class="per">one-off · 3–4 days</div>
+      <div class="plan hot"><span class="hotlbl">Most popular</span><div class="name" style="margin-top:12px">Business Site</div>
+        <div class="price">£250 <span class="was">£600</span></div><div class="per">one-off · 3–4 days</div>
         <ul><li>Up to 5 pages</li><li>Booking / enquiry forms</li><li>Google Maps &amp; reviews</li><li>Photo galleries</li></ul></div>
-      <div class="plan"><div class="name">Online Store</div><div class="price">£950</div><div class="per">one-off · ~1 week</div>
+      <div class="plan"><div class="name">Online Store</div>
+        <div class="price">£400 <span class="was">£950</span></div><div class="per">one-off · ~1 week</div>
         <ul><li>Full shop, card payments</li><li>Products loaded for you</li><li>Order notifications</li><li>Delivery options</li></ul></div>
-      <div class="plan"><div class="name">Care Plan</div><div class="price">£40<span style="font-size:16px">/mo</span></div><div class="per">optional · cancel anytime</div>
+      <div class="plan"><div class="name">Care Plan</div>
+        <div class="price">£25<span style="font-size:16px">/mo</span> <span class="was">£40</span></div><div class="per">optional · cancel anytime</div>
         <ul><li>Hosting sorted</li><li>Any change within 48h</li><li>Kept secure &amp; online</li><li>Priority support</li></ul></div>
     </div>
   </section>
@@ -243,7 +300,7 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:#
   <section class="reveal">
     <div class="kick">Questions</div>
     <h2>Asked all the time</h2>
-    <details><summary>Why so much cheaper than agencies?</summary><p>No office, no account managers, no 6-week timelines. I design and build directly using modern tools — you get agency-quality work without paying for agency overheads.</p></details>
+    <details><summary>Why so much cheaper than agencies?</summary><p>No office, no account managers, no 6-week timelines. I design and build directly using modern tools — you get agency-quality work without paying for agency overheads. Right now I'm also offering founding-client pricing for my first 5 projects, in exchange for a review and permission to feature your site.</p></details>
     <details><summary>What do you need from me?</summary><p>Your business name, phone number, a few photos and roughly what you offer. That's it — I write the words and handle everything technical.</p></details>
     <details><summary>Do I really own it?</summary><p>Yes — the site, domain and content are 100% yours. No lock-ins. If you ever want to leave, you take everything with you.</p></details>
     <details><summary>What about hosting and the domain?</summary><p>I set both up for you. Hosting is included free on the Care Plan, or I'll show you the simple way to run it yourself (about £10/year for a domain).</p></details>
@@ -266,8 +323,54 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:#
 <a class="stickywa" href="https://wa.me/447956756675?text=Alright%20Jay%20—%20interested%20in%20a%20website">💬 WhatsApp Jay</a>
 
 <script>
+// scroll reveals
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// scroll progress bar
+const fill=document.getElementById('scrollFill');
+function onScroll(){
+  const h=document.documentElement;
+  const pct=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+  if(fill)fill.style.width=pct+'%';
+}
+document.addEventListener('scroll',onScroll,{passive:true});
+onScroll();
+
+// hero cursor spotlight (desktop only)
+const hero=document.getElementById('heroSpot');
+if(hero && matchMedia('(hover:hover) and (pointer:fine)').matches){
+  hero.addEventListener('mousemove',e=>{
+    const r=hero.getBoundingClientRect();
+    hero.style.setProperty('--mx',(e.clientX-r.left)+'px');
+    hero.style.setProperty('--my',(e.clientY-r.top)+'px');
+  });
+}
+
+// counting stats
+const co=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;co.unobserve(e.target);
+  const el=e.target,n=+el.dataset.n,suf=el.dataset.s||'';
+  const t0=performance.now();
+  (function tick(t){
+    const p=Math.min(1,(t-t0)/1400),v=n*(1-Math.pow(1-p,3));
+    el.textContent=Math.round(v).toLocaleString()+suf;
+    if(p<1)requestAnimationFrame(tick)
+  })(t0);
+}),{threshold:.5});
+document.querySelectorAll('.cnt').forEach(el=>co.observe(el));
+
+// 3D tilt on work cards (desktop only)
+if(matchMedia('(hover:hover) and (pointer:fine)').matches){
+  document.querySelectorAll('.work').forEach(card=>{
+    card.addEventListener('mousemove',e=>{
+      const r=card.getBoundingClientRect();
+      const px=(e.clientX-r.left)/r.width-.5, py=(e.clientY-r.top)/r.height-.5;
+      card.style.transform=`translateY(-8px) rotateX(${(-py*7).toFixed(2)}deg) rotateY(${(px*7).toFixed(2)}deg)`;
+    });
+    card.addEventListener('mouseleave',()=>{card.style.transform='';});
+  });
+}
 </script>
 </body>
 </html>
