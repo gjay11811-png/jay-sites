@@ -63,6 +63,14 @@ h2{font-family:Sora;font-size:clamp(26px,3.6vw,38px);margin:10px 0 14px}
 .work h3{font-family:Sora;font-size:17px}
 .work p{color:var(--dim);font-size:13px;margin-top:4px}
 .work .view{color:var(--a);font-weight:700;font-size:13px;margin-top:12px;display:inline-block}
+.work .meta2{color:#6e6e7a;font-size:11.5px;margin-top:8px;letter-spacing:.03em}
+/* includes grid */
+.inc{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.incitem{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px 22px;font-size:15px}
+.incitem b{display:block;margin:2px 0 4px;font-family:Sora;font-size:15px}
+.incitem span{color:var(--dim);font-size:13px}
+.inds{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.inds span{background:#ffffff0a;border:1px solid var(--line);border-radius:30px;padding:7px 16px;font-size:12.5px;color:#b9b9c4}
 /* pricing */
 .plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
 .plan{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:28px;transition:.3s}
@@ -113,7 +121,7 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:#
 <div class="hero">
   <div class="glow"></div>
   <div class="wrap">
-    <div class="chip"><span class="dot"></span> Taking new projects this week</div>
+    <div class="chip"><span class="dot"></span> Booking July projects — limited slots</div>
     <h1>Websites that look <em>expensive</em>.<br>Delivered in 48 hours.</h1>
     <p>Premium sites for Wirral &amp; Liverpool businesses — designed, built and live before an agency would've replied to your email. From £350.</p>
     <a class="cta" href="#work">See live work ↓</a>
@@ -129,35 +137,74 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:#
 <div class="wrap">
 
   <section id="work" class="reveal">
-    <div class="kick">Live work — click any site</div>
-    <h2>Built by JG Studio</h2>
-    <p class="lead">Every one of these is a real, live site. Open them. Scroll them. This is the standard your business gets.</p>
+    <div class="kick">Selected work — click any site</div>
+    <h2>The portfolio</h2>
+    <p class="lead">Every one of these is a real, live build. Open them. Scroll them. This is the standard every client gets — barbers to e-commerce.</p>
     <div class="works">
       <a class="work" href="work/truedge-barber-co.html" target="_blank">
         <div class="thumb"><span class="tag">Barbershop</span><img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=800&q=60" alt="" loading="lazy"></div>
-        <div class="body"><h3>TruEdge Barber Co.</h3><p>Bookings-focused barbershop site with one-tap calling.</p><span class="view">View live site →</span></div>
+        <div class="body"><h3>TruEdge Barber Co.</h3><p>Bookings-focused barbershop build.</p><div class="meta2">⏱ 41h build · 📱 one-tap calling · SEO</div><span class="view">View live site →</span></div>
       </a>
       <a class="work" href="work/mersey-motors.html" target="_blank">
         <div class="thumb"><span class="tag">Garage</span><img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=800&q=60" alt="" loading="lazy"></div>
-        <div class="body"><h3>Mersey Motors</h3><p>Trust-first garage site — MOT, servicing, diagnostics.</p><span class="view">View live site →</span></div>
+        <div class="body"><h3>Mersey Motors</h3><p>Trust-first garage site — MOT, servicing, diagnostics.</p><div class="meta2">⏱ 44h build · 📞 call tracking · Maps</div><span class="view">View live site →</span></div>
+      </a>
+      <a class="work" href="work/ink-iron-tattoo.html" target="_blank">
+        <div class="thumb"><span class="tag">Tattoo studio</span><img src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?auto=format&fit=crop&w=800&q=60" alt="" loading="lazy"></div>
+        <div class="body"><h3>Ink &amp; Iron Tattoo</h3><p>Dark, editorial studio site with booking flow.</p><div class="meta2">⏱ 39h build · gallery-first · Insta feed</div><span class="view">View live site →</span></div>
       </a>
       <a class="work" href="work/the-dockside-kitchen.html" target="_blank">
         <div class="thumb"><span class="tag">Restaurant</span><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=60" alt="" loading="lazy"></div>
-        <div class="body"><h3>The Dockside Kitchen</h3><p>Appetite-driven restaurant site with menu &amp; ordering CTAs.</p><span class="view">View live site →</span></div>
+        <div class="body"><h3>The Dockside Kitchen</h3><p>Appetite-driven restaurant site with menu &amp; ordering CTAs.</p><div class="meta2">⏱ 46h build · menu system · delivery CTAs</div><span class="view">View live site →</span></div>
+      </a>
+      <a class="work" href="work/brew-co.html" target="_blank">
+        <div class="thumb"><span class="tag">Café</span><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=60" alt="" loading="lazy"></div>
+        <div class="body"><h3>Brew &amp; Co.</h3><p>Independent café site with warmth and footfall focus.</p><div class="meta2">⏱ 38h build · Maps-first · loyalty CTA</div><span class="view">View live site →</span></div>
       </a>
       <a class="work" href="work/ironworks-fitness.html" target="_blank">
         <div class="thumb"><span class="tag">Gym / PT</span><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=60" alt="" loading="lazy"></div>
-        <div class="body"><h3>Ironworks Fitness</h3><p>High-energy PT site built to convert followers into members.</p><span class="view">View live site →</span></div>
+        <div class="body"><h3>Ironworks Fitness</h3><p>High-energy PT site built to convert followers into members.</p><div class="meta2">⏱ 42h build · lead form · class timetable</div><span class="view">View live site →</span></div>
+      </a>
+      <a class="work" href="work/aquashine-valeting.html" target="_blank">
+        <div class="thumb"><span class="tag">Valeting</span><img src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=800&q=60" alt="" loading="lazy"></div>
+        <div class="body"><h3>AquaShine Valeting</h3><p>Showroom-finish valeting site with package pricing.</p><div class="meta2">⏱ 40h build · price menu · WhatsApp quotes</div><span class="view">View live site →</span></div>
+      </a>
+      <a class="work" href="work/volt-electrical.html" target="_blank">
+        <div class="thumb"><span class="tag">Trades</span><img src="https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=800&q=60" alt="" loading="lazy"></div>
+        <div class="body"><h3>Volt Electrical</h3><p>No-nonsense electrician site built for emergency call-outs.</p><div class="meta2">⏱ 36h build · 24/7 call bar · quote form</div><span class="view">View live site →</span></div>
       </a>
       <a class="work" href="work/pawfect-grooming.html" target="_blank">
         <div class="thumb"><span class="tag">Pet care</span><img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=800&q=60" alt="" loading="lazy"></div>
-        <div class="body"><h3>Pawfect Grooming</h3><p>Warm, friendly groomer site that books appointments.</p><span class="view">View live site →</span></div>
+        <div class="body"><h3>Pawfect Grooming</h3><p>Warm, friendly groomer site that books appointments.</p><div class="meta2">⏱ 37h build · booking CTA · gallery</div><span class="view">View live site →</span></div>
       </a>
       <a class="work" href="https://first-class-fits-production.up.railway.app" target="_blank">
         <div class="thumb"><span class="tag">E-commerce</span><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=60" alt="" loading="lazy"></div>
-        <div class="body"><h3>First Class Fits</h3><p>Full online store — products, colours, Stripe payments, the lot.</p><span class="view">View live store →</span></div>
+        <div class="body"><h3>First Class Fits</h3><p>Full online store — products, colours, Stripe payments, the lot.</p><div class="meta2">⏱ 1-week build · Stripe checkout · full CMS</div><span class="view">View live store →</span></div>
       </a>
     </div>
+  </section>
+
+  <section class="reveal">
+    <div class="kick">The standard</div>
+    <h2>Every build includes</h2>
+    <div class="inc">
+      <div class="incitem">📱 <b>Mobile-first design</b><span>80% of your customers are on phones — we design there first</span></div>
+      <div class="incitem">📞 <b>One-tap call &amp; WhatsApp</b><span>customers reach you in a single tap, every page</span></div>
+      <div class="incitem">🔍 <b>Google-ready SEO</b><span>titles, descriptions and structure done properly from day one</span></div>
+      <div class="incitem">⚡ <b>Fast hosting, sorted</b><span>set up for you — loads in under a second</span></div>
+      <div class="incitem">🛠 <b>30 days of free tweaks</b><span>anything you want changed in the first month, free</span></div>
+      <div class="incitem">🔑 <b>100% ownership</b><span>your domain, your site, your content — no lock-ins, ever</span></div>
+    </div>
+    <div class="inds">
+      <span>Barbers</span><span>Salons</span><span>Garages</span><span>Valeters</span><span>Tattoo studios</span><span>Cafés</span><span>Takeaways</span><span>Restaurants</span><span>Gyms &amp; PTs</span><span>Trades</span><span>Groomers</span><span>Online stores</span>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="kick">Who builds it</div>
+    <h2>One builder. No middlemen.</h2>
+    <p class="lead" style="margin-bottom:16px">JG Studio is Jay Green — the designer behind every site above, including the First Class Fits store. No account managers, no outsourcing, no waiting a week for an email back. You deal directly with the person building your site — that's exactly how it stays £350 and 48 hours instead of £2,000 and six weeks.</p>
+    <p class="lead" style="margin-bottom:0">Replies within the hour, seven days a week. Wallasey born, Wirral &amp; Liverpool focused, available everywhere.</p>
   </section>
 
   <section class="reveal">
@@ -210,7 +257,12 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:#
   </div>
 </div>
 
-<footer>JG Studio · Jay Green · Web design &amp; AI automation · Wallasey, Wirral · 07956 756 675</footer>
+<footer>
+  JG Studio · Jay Green · Web design &amp; AI automation · Wallasey, Wirral · 07956 756 675<br>
+  <span style="font-size:12px">Replies within the hour, 7 days a week &nbsp;·&nbsp;
+  <a href="terms.html" style="color:#9a9aa6">Terms</a> &nbsp;·&nbsp;
+  <a href="privacy.html" style="color:#9a9aa6">Privacy</a></span>
+</footer>
 <a class="stickywa" href="https://wa.me/447956756675?text=Alright%20Jay%20—%20interested%20in%20a%20website">💬 WhatsApp Jay</a>
 
 <script>
