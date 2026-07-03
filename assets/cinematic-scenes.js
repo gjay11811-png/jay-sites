@@ -198,8 +198,8 @@
     gsap.matchMedia().add('(min-width: 981px)', function () {
       var q = function (s) { return hm.querySelector(s); };
       var browser = q('.hm-browser'), glow = q('.hm-glow');
-      var title = q('.hm-hero b'), lines = hm.querySelectorAll('.hm-hero .l');
-      var nav = q('.hm-nav'), btn = q('.hm-btn');
+      var nav = q('.hm-nav'), kick = q('.hm-hero small');
+      var title = q('.hm-hero b'), sub = q('.hm-hero p'), btn = q('.hm-btn');
       var cards = hm.querySelectorAll('.hm-card'), rev = q('.hm-rev');
       var chipR = q('.gchip.g2'), chipL = q('.gchip.g3'), chipB = q('.gchip.g4');
 
@@ -210,14 +210,15 @@
       gsap.set(browser, { autoAlpha: 0.3, y: 28, scale: 0.92 });
       gsap.set(glow, { autoAlpha: 0.25, scale: 0.6, transformOrigin: '50% 50%' });
       gsap.set(nav, { autoAlpha: 0, y: -10 });
+      gsap.set(kick, { autoAlpha: 0, y: 8 });
       gsap.set(title, { autoAlpha: 0, x: -22 });
-      gsap.set(lines, { scaleX: 0, transformOrigin: '0 50%' });
-      gsap.set(btn, { autoAlpha: 0, scale: 0.55, transformOrigin: '0 50%' });
-      gsap.set(cards, { autoAlpha: 0, y: 24 });
-      gsap.set(rev, { autoAlpha: 0, y: 22 });
-      gsap.set(chipR, { autoAlpha: 0, y: -26, x: 14 });
-      gsap.set(chipL, { autoAlpha: 0, x: -30 });
-      gsap.set(chipB, { autoAlpha: 0, y: 26, x: 10 });
+      gsap.set(sub, { autoAlpha: 0, y: 10 });
+      gsap.set(btn, { autoAlpha: 0, scale: 0.6, transformOrigin: '0 50%' });
+      gsap.set(cards, { autoAlpha: 0, y: 22 });
+      gsap.set(rev, { autoAlpha: 0, y: 20 });
+      gsap.set(chipR, { autoAlpha: 0, y: -24, x: 12 });
+      gsap.set(chipL, { autoAlpha: 0, x: -26 });
+      gsap.set(chipB, { autoAlpha: 0, y: 24, x: 8 });
 
       var tl = gsap.timeline({
         defaults: { ease: 'power2.out' },
@@ -226,15 +227,16 @@
           scrub: 1, pin: true, anticipatePin: 1, invalidateOnRefresh: true
         }
       });
-      /* 1 frame arrives   2 glow expands      3 nav drops in
-         4 name slides in  5 bars draw across  6 CTA grows
-         7 cards one-by-one 8 review slides up 9 chips one-by-one
+      /* 1 frame arrives    2 glow expands     3 nav slides in
+         4 headline arrives 5 subline follows  6 CTA grows
+         7 cards one-by-one 8 review slides up 9 glass tags one-by-one
          10 a beat of stillness so the composition settles */
       tl.to(browser, { autoAlpha: 1, y: 0, scale: 1, duration: 1.0, ease: 'power2.inOut' }, 0)
         .to(glow, { autoAlpha: 1, scale: 1, duration: 1.2 }, 0.1)
         .to(nav, { autoAlpha: 1, y: 0, duration: 0.45 }, 0.8)
-        .to(title, { autoAlpha: 1, x: 0, duration: 0.55 }, 1.0)
-        .to(lines, { scaleX: 1, duration: 0.5, stagger: 0.18 }, 1.25)
+        .to(kick, { autoAlpha: 1, y: 0, duration: 0.35 }, 1.0)
+        .to(title, { autoAlpha: 1, x: 0, duration: 0.55 }, 1.1)
+        .to(sub, { autoAlpha: 1, y: 0, duration: 0.45 }, 1.4)
         .to(btn, { autoAlpha: 1, scale: 1, duration: 0.55, ease: 'back.out(1.15)' }, 1.7)
         .to(cards, { autoAlpha: 1, y: 0, duration: 0.55, stagger: 0.22 }, 2.05)
         .to(rev, { autoAlpha: 1, y: 0, duration: 0.6 }, 2.75)
@@ -243,6 +245,36 @@
         .to(chipB, { autoAlpha: 1, y: 0, x: 0, duration: 0.5 }, 3.85)
         .to({}, { duration: 0.55 });
       return function () { /* matchMedia cleanup handled by GSAP */ };
+    });
+  })();
+
+  /* =================================================
+     workStack — the six featured builds rise in one by
+     one inside a pinned "Selected work" stage.
+     Desktop + tall viewports only; on mobile or short
+     screens the grid renders statically (calm, no pin).
+     ================================================= */
+  (function workStack() {
+    var sec = document.getElementById('work');
+    if (!sec) return;
+    gsap.matchMedia().add('(min-width: 981px) and (min-height: 700px)', function () {
+      var cards = sec.querySelectorAll('.works-feat .work');
+      var more = sec.querySelector('.work-more');
+      if (!cards.length) return;
+      gsap.set(cards, { autoAlpha: 0, y: 84, scale: 0.97 });
+      if (more) gsap.set(more, { autoAlpha: 0 });
+
+      var tl = gsap.timeline({
+        defaults: { ease: 'power2.out' },
+        scrollTrigger: {
+          trigger: sec, start: 'top top', end: '+=230%',
+          scrub: 1, pin: true, anticipatePin: 1, invalidateOnRefresh: true
+        }
+      });
+      tl.to(cards, { autoAlpha: 1, y: 0, scale: 1, duration: 0.7, stagger: 0.55 }, 0.2);
+      if (more) tl.to(more, { autoAlpha: 1, duration: 0.4 }, '>-0.2');
+      tl.to({}, { duration: 0.5 });
+      return function () { /* cleanup handled by GSAP matchMedia */ };
     });
   })();
 
