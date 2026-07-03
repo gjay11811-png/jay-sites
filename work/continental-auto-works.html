@@ -122,4 +122,8 @@ document.querySelectorAll('.cnt').forEach(el=>co.observe(el));
 const pr=document.querySelector('.prog');
 addEventListener('scroll',()=>{const h=document.documentElement;
  pr.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'},{passive:true});
-</script></body></html>
+</script><script src="https://unpkg.com/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://unpkg.com/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="../assets/scroll.js"></script>
+</body></html>
