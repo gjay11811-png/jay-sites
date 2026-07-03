@@ -12,6 +12,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='80'>◆</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/cinematic-scenes.css">
 <style>
 :root{--bg:#0b0b0e;--panel:#14141a;--line:#23232c;--a:#d4af37;--a2:#f4e4a6;--txt:#f2f2f4;--dim:#9a9aa6;--wa:#25d366}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -160,8 +161,8 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:#
     <div class="chip"><span class="dot"></span> Founding-client pricing — first 5 projects only</div>
     <h1>Websites that look <em>expensive</em>.<br>Delivered in 48 hours.</h1>
     <p>Premium sites for Wirral &amp; Liverpool businesses — designed, built and live before an agency would've replied to your email. From £150.</p>
-    <a class="cta" href="#work">See live work ↓</a>
-    <a class="cta wa" href="https://wa.me/447956756675?text=Alright%20Jay%20—%20interested%20in%20a%20website">WhatsApp Jay</a>
+    <a class="cta" data-magnetic href="#work">See live work ↓</a>
+    <a class="cta wa" data-magnetic href="https://wa.me/447956756675?text=Alright%20Jay%20—%20interested%20in%20a%20website">WhatsApp Jay</a>
     <div class="trust">Free homepage preview · half up front, half when you're happy · you own everything</div>
 
     <div class="statstrip" style="margin-top:46px">
@@ -176,6 +177,37 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:#
 <div class="marq"><div class="track">
   <span>BARBERS ◆ GARAGES ◆ RESTAURANTS ◆ GYMS ◆ TRADES ◆ SALONS ◆ E-COMMERCE ◆ LIVE IN 48 HOURS ◆ FROM £150 ◆ </span><span>BARBERS ◆ GARAGES ◆ RESTAURANTS ◆ GYMS ◆ TRADES ◆ SALONS ◆ E-COMMERCE ◆ LIVE IN 48 HOURS ◆ FROM £150 ◆ </span>
 </div></div>
+
+<!-- ============ CINEMATIC SCENE 01 — CAR REVEAL ============
+     Reusable product-reveal preset. To reuse for a trainer/watch/
+     phone: duplicate this section, change data-cine + the three
+     img src values to your new transparent PNG (~2000px wide),
+     then CINE.register('trainer', CINE.builders.productReveal({...}))
+     in assets/cinematic-scenes.js. -->
+<section class="cine cine-car" data-cine="car" aria-label="Cinematic car reveal">
+  <div class="cine-grid"></div>
+  <div class="cine-floor"></div>
+  <div class="cine-head">
+    <div class="kick">Cinematic scene — scroll</div>
+    <h2>Your product, presented like Apple would.</h2>
+    <p>Pinned, scroll-driven camera work — this is the level your website can operate at.</p>
+  </div>
+  <div class="cine-stage">
+    <div class="car-rig">
+      <div class="car-glow"></div>
+      <img class="car-img" src="assets/car.png" alt="Luxury car hologram reveal">
+      <div class="car-slice car-slice-top"><img src="assets/car.png" alt="" aria-hidden="true"></div>
+      <div class="car-slice car-slice-bot"><img src="assets/car.png" alt="" aria-hidden="true"></div>
+      <div class="car-scan"></div>
+    </div>
+    <div class="cine-callout co-1"><i></i><b>Editorial lighting</b><span>studio-grade product presentation</span></div>
+    <div class="cine-callout co-2 flip" style="text-align:right"><i></i><b>Hologram callouts</b><span>Tony-Stark-style spec labels</span></div>
+    <div class="cine-callout co-3"><i></i><b>Signature stance</b><span>your hero shot, treated like a launch</span></div>
+    <div class="cine-glass gp-1">Reverse-perfect<span>scroll back up — it rebuilds exactly</span></div>
+    <div class="cine-glass gp-2">Scroll-driven camera<span>pinned scene · scrubbed timeline</span></div>
+  </div>
+  <div class="cine-vign"></div>
+</section>
 
 <div class="wrap">
 
@@ -291,6 +323,121 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:#
     </div>
   </section>
 
+</div>
+
+<!-- ============ CINEMATIC SHOWCASE BAND ============
+     Three more pinned scenes proving the range of the engine.
+     Each is reusable: burger → any food brand, house → any
+     property/venue walkthrough, web → any website pitch. -->
+<div class="cine-intro reveal">
+  <div class="kick">Premium motion — included on request</div>
+  <h2>Scroll-driven scenes that sell.</h2>
+  <p>Pinned cinematic sections like these can be built into any client site — food, property, retail, fitness. Scroll through three more.</p>
+</div>
+
+<!-- SCENE 02 — burger layer reveal (swap CSS layers for cut-out
+     PNGs per layer on a real client build) -->
+<section class="cine cine-burger" data-cine="burger" aria-label="Burger layer reveal">
+  <div class="cine-grid"></div>
+  <div class="cine-head">
+    <div class="kick" style="color:#ffce4d">Scene 02 — food brands</div>
+    <h2>Every layer, worth showing off.</h2>
+  </div>
+  <div class="cine-stage">
+    <div class="bg-rig">
+      <div class="bg-layer bg-bun-top"></div>
+      <div class="bg-layer bg-lettuce"></div>
+      <div class="bg-layer bg-cheese"></div>
+      <div class="bg-layer bg-patty"></div>
+      <div class="bg-layer bg-bun-bot"></div>
+      <div class="bg-layer bg-shadow"></div>
+    </div>
+    <div class="cine-callout co-1"><i></i><b>Brioche, toasted</b><span>ingredient storytelling</span></div>
+    <div class="cine-callout co-2 flip" style="text-align:right"><i></i><b>Aged cheddar</b><span>labels appear as it opens</span></div>
+    <div class="cine-callout co-3"><i></i><b>Smashed patty</b><span>rebuilds as you scroll back</span></div>
+  </div>
+  <div class="cine-vign"></div>
+</section>
+
+<!-- SCENE 03 — house walkthrough (swap the CSS-art frames for
+     client photos: assets/house-hallway.jpg etc.) -->
+<section class="cine cine-house" data-cine="house" aria-label="House walkthrough">
+  <div class="cine-grid"></div>
+  <div class="cine-head">
+    <div class="kick">Scene 03 — property</div>
+    <h2>Walk buyers through the front door.</h2>
+  </div>
+  <div class="hw-world">
+    <div class="hw-room hw-outside"><span class="hw-tag">01 · Arrival</span><div class="hw-frame"></div><span class="hw-name">The approach</span></div>
+    <div class="hw-room hw-door"><span class="hw-tag">02 · Front door</span><div class="hw-frame"></div><span class="hw-name">Step inside</span></div>
+    <div class="hw-room hw-hall"><span class="hw-tag">03 · Hallway</span><div class="hw-frame"></div><span class="hw-name">Through the hall</span></div>
+    <div class="hw-room hw-living"><span class="hw-tag">04 · Living room</span><div class="hw-frame"></div><span class="hw-name">Living space</span></div>
+    <div class="hw-room hw-kitchen"><span class="hw-tag">05 · Kitchen</span><div class="hw-frame"></div><span class="hw-name">The kitchen</span></div>
+    <div class="hw-room hw-bed"><span class="hw-tag">06 · Bedroom</span><div class="hw-frame"></div><span class="hw-name">Master bedroom</span></div>
+    <div class="hw-room hw-cta"><span class="hw-tag">07 · Book a viewing</span>
+      <div class="hw-frame"><b>Imagine this with your listings.</b>
+        <a class="cta" data-magnetic href="https://wa.me/447956756675?text=Alright%20Jay%20—%20interested%20in%20a%20website" style="font-size:14px;padding:13px 26px">Get a walkthrough site →</a>
+      </div>
+    </div>
+  </div>
+  <div class="cine-vign"></div>
+</section>
+
+<!-- SCENE 04 — website camera zoom-through -->
+<section class="cine cine-web" data-cine="web" aria-label="Website zoom-through">
+  <div class="cine-grid"></div>
+  <div class="cine-head">
+    <div class="kick">Scene 04 — your website</div>
+    <h2>Fly through the site before it exists.</h2>
+  </div>
+  <div class="cine-stage">
+    <div class="wz-viewport">
+      <div class="wz-browser">
+        <div class="wz-bar"><i></i><i></i><i></i><div class="wz-url">yourbusiness.co.uk</div></div>
+        <div class="wz-site">
+          <div class="wz-sec wz-hero" data-wz-stop data-wz-zoom="1.9"><span class="wz-label">Hero</span><b>Your Business Name</b><i></i><div class="wz-btn"></div></div>
+          <div class="wz-cards" data-wz-stop data-wz-zoom="2.1">
+            <div class="wz-card"><b></b><i></i><i></i></div>
+            <div class="wz-card"><b></b><i></i><i></i></div>
+            <div class="wz-card"><b></b><i></i><i></i></div>
+          </div>
+          <div class="wz-folio" data-wz-stop data-wz-zoom="2.0">
+            <div class="wz-shot"></div><div class="wz-shot"></div><div class="wz-shot"></div><div class="wz-shot"></div>
+          </div>
+          <div class="wz-sec wz-form" data-wz-stop data-wz-zoom="2.1"><span class="wz-label">Contact</span><i></i><i></i><div class="wz-btn"></div></div>
+          <div class="wz-sec wz-cta" data-wz-stop data-wz-zoom="2.3"><b>💬 One tap to WhatsApp you</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cine-vign"></div>
+</section>
+
+<div class="wrap">
+
+  <section class="reveal">
+    <div class="kick">Before / after</div>
+    <h2>What an upgrade actually looks like</h2>
+    <p class="lead">Drag the handle. Left is the average local-business site. Right is the JG Studio standard.</p>
+    <div class="ba-wrap">
+      <div class="ba-pane ba-before">
+        <b>Smith &amp; Sons Ltd</b>
+        <span>Welcome to our website!! We are a family business established 1987. Please call us on the phone number for prices.</span>
+        <button class="ba-oldbtn" type="button" tabindex="-1">Click Here</button>
+      </div>
+      <div class="ba-pane ba-after">
+        <b>Smith &amp; <em>Sons</em></b>
+        <span>Wirral's most trusted family firm — fixed quotes in 24 hours.</span>
+        <span class="ba-newbtn">Get a free quote →</span>
+      </div>
+      <span class="ba-tags ba-tag-before">Before</span>
+      <span class="ba-tags ba-tag-after">After</span>
+      <div class="ba-handle" role="slider" aria-label="Compare before and after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0"></div>
+    </div>
+  </section>
+
+  <div class="cine-divider"></div>
+
   <section class="reveal">
     <div class="kick">The standard</div>
     <h2>Every build includes</h2>
@@ -365,7 +512,7 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:#
   <div class="final reveal">
     <h2>Your business deserves better than "no website".</h2>
     <p>Free preview. 48-hour build. You own everything.</p>
-    <a class="cta wa" style="margin-left:0" href="https://wa.me/447956756675?text=Alright%20Jay%20—%20interested%20in%20a%20website">💬 WhatsApp Jay — 07956 756 675</a>
+    <a class="cta wa" data-magnetic style="margin-left:0" href="https://wa.me/447956756675?text=Alright%20Jay%20—%20interested%20in%20a%20website">💬 WhatsApp Jay — 07956 756 675</a>
   </div>
 </div>
 
@@ -431,5 +578,6 @@ if(matchMedia('(hover:hover) and (pointer:fine)').matches){
 <script src="https://unpkg.com/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
 <script src="assets/scroll.js"></script>
+<script src="assets/cinematic-scenes.js"></script>
 </body>
 </html>
