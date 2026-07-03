@@ -3,144 +3,205 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JG Studio — Websites That Win Customers | Live in 48 Hours</title>
-<meta name="description" content="Premium websites for Wirral & Liverpool businesses — designed, built and live in 48 hours. From £150 (founding-client pricing). See live examples of our work.">
-<meta property="og:title" content="JG Studio — websites that look expensive, live in 48 hours">
-<meta property="og:description" content="Premium sites for Wirral & Liverpool businesses from £150 (founding-client pricing). Free preview before you pay a penny.">
+<title>JG Studio — Premium Animated Websites for Local Businesses | Wirral & Liverpool</title>
+<meta name="description" content="Premium animated websites for Wirral & Liverpool businesses — clean, modern, scroll-animated sites built fast. Free homepage preview, from £150, 48-hour builds available.">
+<meta property="og:title" content="JG Studio — premium animated websites for local businesses">
+<meta property="og:description" content="Clean, modern, animated websites for local businesses from £150. Free homepage preview before you pay a penny. Wirral & Liverpool.">
 <meta property="og:image" content="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=70">
 <meta property="og:url" content="https://gjay11811-png.github.io/jay-sites/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='80'>◆</text></svg>">
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/cinematic-scenes.css">
 <style>
-:root{--bg:#0b0b0e;--panel:#14141a;--line:#23232c;--a:#d4af37;--a2:#f4e4a6;--txt:#f2f2f4;--dim:#9a9aa6;--wa:#25d366}
+:root{--bg:#09090c;--panel:#121218;--panel2:#16161d;--line:#22222b;--a:#d4af37;--a2:#f0dfa0;--txt:#f5f4f0;--dim:#8f8f9c;--wa:#25d366}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:Inter,sans-serif;background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden}
-.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+body{font-family:Inter,sans-serif;background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased}
+.wrap{max-width:1160px;margin:0 auto;padding:0 26px}
+::selection{background:#d4af3733}
 /* scroll progress */
-.scrollbar{position:fixed;top:0;left:0;right:0;height:3px;z-index:100;background:transparent}
-.scrollbar i{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--a2),var(--a));box-shadow:0 0 10px var(--a);transition:width .1s linear}
-/* grain texture */
-.grain{position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.035;mix-blend-mode:overlay;
+.scrollbar{position:fixed;top:0;left:0;right:0;height:2px;z-index:100;background:transparent}
+.scrollbar i{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--a2),var(--a))}
+/* grain */
+.grain{position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.03;mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 @media (prefers-reduced-motion: reduce){.grain{display:none}}
 /* nav */
-nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:#0b0b0ecc;border-bottom:1px solid #ffffff12}
-nav .in{max-width:1040px;margin:0 auto;padding:15px 22px;display:flex;justify-content:space-between;align-items:center}
-nav b{font-family:Sora;font-size:18px;letter-spacing:.04em}
+nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(16px);background:#09090cd9;border-bottom:1px solid #ffffff0d}
+nav .in{max-width:1160px;margin:0 auto;padding:18px 26px;display:flex;justify-content:space-between;align-items:center}
+nav b{font-family:Sora;font-size:17px;letter-spacing:.06em;font-weight:700}
 nav b i{color:var(--a);font-style:normal}
-nav a.call{background:var(--a);color:#000;padding:10px 20px;border-radius:30px;text-decoration:none;font-weight:700;font-size:13px}
-/* hero */
-.hero{position:relative;padding:110px 0 90px;text-align:center;overflow:hidden}
-.hero .glow{position:absolute;top:-220px;left:50%;transform:translateX(-50%);width:900px;height:600px;
-  background:radial-gradient(ellipse,#d4af3722,transparent 65%);pointer-events:none;animation:breathe 7s ease-in-out infinite alternate;will-change:transform,opacity}
-@keyframes breathe{from{opacity:.6}to{opacity:1}}
-.spot{position:absolute;inset:0;pointer-events:none;z-index:1;
-  background:radial-gradient(500px circle at var(--mx,50%) var(--my,20%),#d4af3714,transparent 60%)}
-.chip{display:inline-flex;gap:8px;align-items:center;background:#ffffff10;border:1px solid #ffffff22;border-radius:30px;padding:8px 18px;font-size:13px;font-weight:600;margin-bottom:26px;position:relative;z-index:2}
-.chip .dot{width:8px;height:8px;border-radius:50%;background:var(--wa);animation:blink 1.6s infinite}
-@keyframes blink{50%{opacity:.3}}
-h1{font-family:Sora;font-size:clamp(36px,6.6vw,66px);font-weight:800;line-height:1.07;position:relative;z-index:2}
-h1 em{font-style:normal;background:linear-gradient(100deg,var(--a2),var(--a),var(--a2));background-size:200% auto;
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 3.5s ease-in-out infinite}
-@keyframes shimmer{0%,100%{background-position:0% center}50%{background-position:100% center}}
-.hero p{color:var(--dim);font-size:19px;max-width:540px;margin:22px auto 34px;position:relative;z-index:2}
-.hero .cta,.hero .trust{position:relative;z-index:2}
-/* stat strip */
-.statstrip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:820px;margin:0 auto;position:relative;z-index:2}
-.statstrip .sbox{background:#ffffff08;border:1px solid #ffffff18;border-radius:14px;padding:16px 10px;backdrop-filter:blur(6px)}
-.statstrip .sbox b{display:block;font-family:Sora;font-size:24px;color:var(--a)}
-.statstrip .sbox span{color:var(--dim);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase}
-@media(max-width:640px){.statstrip{grid-template-columns:repeat(2,1fr)}}
-.cta{position:relative;overflow:hidden;display:inline-block;background:var(--a);color:#000;font-weight:800;font-family:Sora;padding:17px 34px;border-radius:14px;text-decoration:none;box-shadow:0 14px 34px -10px var(--a);transition:.25s}
-.cta:hover{transform:translateY(-3px) scale(1.02)}
-.cta::after{content:"";position:absolute;top:0;left:-90%;width:55%;height:100%;background:linear-gradient(100deg,transparent,#ffffff70,transparent);transform:skewX(-20deg);animation:shine 3.4s ease-in-out infinite}
-@keyframes shine{0%,55%{left:-90%}100%{left:140%}}
-.cta.wa{background:var(--wa);color:#fff;box-shadow:0 14px 34px -10px #25d36688;margin-left:10px}
-.trust{margin-top:24px;color:var(--dim);font-size:13px;letter-spacing:.05em}
-/* marquee */
-.marq{overflow:hidden;border-block:1px solid var(--line);padding:14px 0;background:var(--panel)}
-.marq .track{display:inline-block;white-space:nowrap;animation:marq 24s linear infinite;font-family:Sora;font-weight:700;letter-spacing:.24em;font-size:12px;color:var(--a)}
+nav .nlinks{display:flex;gap:30px;align-items:center;font-size:13.5px}
+nav .nlinks a{color:var(--dim);text-decoration:none;transition:color .25s}
+nav .nlinks a:hover{color:var(--txt)}
+nav a.call{background:var(--txt);color:#000;padding:10px 22px;border-radius:10px;text-decoration:none;font-weight:700;font-size:13px;font-family:Sora;transition:.25s}
+nav a.call:hover{background:var(--a)}
+@media(max-width:760px){nav .nlinks a:not(.call){display:none}}
+/* ---------- hero ---------- */
+.hero{position:relative;padding:96px 0 110px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.55;
+  background:
+    radial-gradient(ellipse 60% 45% at 75% 30%, #d4af370e, transparent 65%),
+    radial-gradient(ellipse 50% 40% at 15% 75%, #3a5bff08, transparent 65%),
+    linear-gradient(#ffffff05 1px,transparent 1px),linear-gradient(90deg,#ffffff05 1px,transparent 1px);
+  background-size:100% 100%,100% 100%,72px 72px,72px 72px;
+  -webkit-mask-image:radial-gradient(ellipse 90% 80% at 50% 40%,#000 40%,transparent 100%);
+  mask-image:radial-gradient(ellipse 90% 80% at 50% 40%,#000 40%,transparent 100%)}
+.hero .in{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center;max-width:1160px;margin:0 auto;padding:0 26px}
+@media(max-width:980px){.hero .in{grid-template-columns:1fr;gap:70px}.hero{padding:70px 0 90px}}
+.hero .chip{display:inline-flex;gap:9px;align-items:center;background:#ffffff08;border:1px solid #ffffff16;border-radius:30px;padding:7px 16px;font-size:12.5px;font-weight:500;color:#cfcfd6;margin-bottom:28px}
+.hero .chip .dot{width:7px;height:7px;border-radius:50%;background:var(--wa);animation:blink 2s infinite}
+@keyframes blink{50%{opacity:.35}}
+h1{font-family:Sora;font-size:clamp(38px,5vw,62px);font-weight:800;line-height:1.06;letter-spacing:-.015em}
+h1 em{font-style:normal;background:linear-gradient(100deg,var(--a2),var(--a));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero .sub{color:var(--dim);font-size:17.5px;max-width:480px;margin:24px 0 36px;line-height:1.7}
+.hero .sub b{color:#d7d7de;font-weight:600}
+.cta{position:relative;display:inline-block;background:var(--txt);color:#000;font-weight:700;font-family:Sora;font-size:14.5px;padding:16px 30px;border-radius:12px;text-decoration:none;transition:background .3s,transform .3s;will-change:transform}
+.cta:hover{background:var(--a)}
+.cta.wa{background:var(--wa);color:#fff;margin-left:12px}
+.cta.wa:hover{background:#2ee674}
+.cta.ghost{background:transparent;color:var(--txt);border:1px solid #ffffff26;margin-left:12px}
+.cta.ghost:hover{border-color:#ffffff55;background:#ffffff08}
+.trust{margin-top:26px;color:#6f6f7c;font-size:13px;display:flex;gap:18px;flex-wrap:wrap}
+.trust span::before{content:"✓";color:var(--a);margin-right:7px;font-weight:700}
+/* hero mockup */
+.hm{position:relative;z-index:2}
+.hm .hm-browser{border-radius:16px;overflow:hidden;border:1px solid #ffffff1a;background:#0e0e14;
+  box-shadow:0 60px 120px -40px #000e, 0 0 0 1px #ffffff08, 0 0 80px -30px #d4af3722}
+.hm .hm-bar{display:flex;gap:6px;align-items:center;padding:11px 14px;background:#13131a;border-bottom:1px solid #ffffff0d}
+.hm .hm-bar i{width:9px;height:9px;border-radius:50%;display:block}
+.hm .hm-bar i:nth-child(1){background:#ff5f57}.hm .hm-bar i:nth-child(2){background:#febc2e}.hm .hm-bar i:nth-child(3){background:#28c840}
+.hm .hm-url{margin-left:8px;flex:1;background:#000;border-radius:6px;padding:4px 12px;font-size:10.5px;color:#7c7c88}
+.hm .hm-site{padding:26px 26px 24px;display:flex;flex-direction:column;gap:16px}
+.hm .hm-hero{padding:22px;border-radius:12px;background:radial-gradient(ellipse at 20% 0%,#d4af3712,transparent 60%),#14141b;border:1px solid #ffffff0f}
+.hm .hm-hero b{font-family:Sora;font-size:17px;display:block}
+.hm .hm-hero .l{height:8px;border-radius:4px;background:#ffffff14;margin-top:10px;width:74%;overflow:hidden;position:relative}
+.hm .hm-hero .l.s{width:52%}
+.hm .l::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,#ffffff14,transparent);transform:translateX(-100%);animation:sheen 3.2s ease-in-out infinite}
+@keyframes sheen{60%,100%{transform:translateX(100%)}}
+.hm .hm-btn{display:inline-block;margin-top:14px;background:var(--a);border-radius:8px;width:118px;height:30px}
+.hm .hm-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.hm .hm-card{border:1px solid #ffffff0f;border-radius:10px;background:#13131a;padding:13px;min-height:70px}
+.hm .hm-card b{display:block;width:64%;height:8px;border-radius:4px;background:#ffffffa8}
+.hm .hm-card i{display:block;width:88%;height:6px;border-radius:3px;background:#ffffff1c;margin-top:8px}
+.hm .hm-rev{display:flex;gap:10px;align-items:center;border:1px solid #ffffff0f;border-radius:10px;background:#13131a;padding:12px 14px;font-size:12px;color:#cfcfd6}
+.hm .hm-rev .stars{color:var(--a);letter-spacing:2px;font-size:11px}
+/* floating glass chips */
+.gchip{position:absolute;z-index:3;background:#15151cd9;border:1px solid #ffffff1e;border-radius:13px;
+  padding:11px 16px;font-family:Sora;font-size:12.5px;font-weight:600;color:#f0f0f4;backdrop-filter:blur(10px);
+  box-shadow:0 20px 50px -18px #000d, inset 0 1px 0 #ffffff12;white-space:nowrap;animation:float 7s ease-in-out infinite}
+.gchip small{display:block;font-family:Inter;font-weight:400;color:var(--dim);font-size:11px;margin-top:2px}
+.gchip.g1{top:-22px;left:-26px;animation-delay:0s}
+.gchip.g2{top:26%;right:-30px;animation-delay:-2.2s}
+.gchip.g3{bottom:20%;left:-38px;animation-delay:-4s}
+.gchip.g4{bottom:-20px;right:8%;animation-delay:-5.4s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@media(max-width:980px){.gchip.g1{left:-6px}.gchip.g2{right:-8px}.gchip.g3{left:-8px}}
+@media (prefers-reduced-motion: reduce){.gchip,.hm .l::after{animation:none}}
+/* quiet industries strip */
+.strip{border-block:1px solid #ffffff0c;padding:20px 0;overflow:hidden}
+.strip .track{display:inline-block;white-space:nowrap;animation:marq 40s linear infinite;
+  font-family:Sora;font-weight:600;letter-spacing:.3em;font-size:11px;color:#5b5b68}
 @keyframes marq{to{transform:translateX(-50%)}}
-/* sections */
-section{padding:84px 0 10px}
-.kick{color:var(--a);font-weight:700;letter-spacing:.24em;text-transform:uppercase;font-size:12px}
-h2{font-family:Sora;font-size:clamp(26px,3.6vw,38px);margin:10px 0 14px}
-.lead{color:var(--dim);max-width:560px;margin-bottom:38px}
-/* work gallery */
-.works{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;perspective:1200px}
-.work{position:relative;display:block;background:var(--panel);border:1px solid var(--line);border-radius:20px;overflow:hidden;text-decoration:none;color:var(--txt);
-  transition:transform .12s ease-out,border-color .3s,box-shadow .3s;transform-style:preserve-3d;will-change:transform}
-.work:hover{border-color:var(--a);box-shadow:0 24px 50px -20px #000a}
-.work .thumb{height:190px;position:relative;overflow:hidden;background:#000}
-.work .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
-.work:hover .thumb img{transform:scale(1.08)}
-.work .thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,#14141a,transparent 60%);pointer-events:none}
-.work .tag{position:absolute;top:12px;left:12px;z-index:3;background:#000c;border:1px solid #ffffff2a;backdrop-filter:blur(6px);color:#fff;font-size:11px;font-weight:600;padding:5px 12px;border-radius:20px}
-.work .live-badge{position:absolute;top:12px;right:12px;z-index:3;background:#0f3d24e0;border:1px solid #2a6b4a;color:#8ee6b5;font-size:10px;font-weight:700;padding:4px 10px;border-radius:20px;display:flex;align-items:center;gap:5px}
-.work .live-badge i{width:6px;height:6px;border-radius:50%;background:#4ee08a;animation:blink 1.6s infinite}
-.work .body{padding:18px 20px 20px}
-.work h3{font-family:Sora;font-size:17px}
-.work p{color:var(--dim);font-size:13px;margin-top:4px}
-.work .view{color:var(--a);font-weight:700;font-size:13px;margin-top:12px;display:inline-block}
-.work .meta2{color:#6e6e7a;font-size:11.5px;margin-top:8px;letter-spacing:.03em}
-/* live browser-mockup preview */
-.browser{height:190px;position:relative;overflow:hidden;background:#1c1c22}
-.browser .bar{display:flex;align-items:center;gap:6px;padding:8px 10px;background:#1a1a20;position:relative;z-index:2}
+@media (prefers-reduced-motion: reduce){.strip .track{animation:none}}
+/* ---------- sections ---------- */
+section{padding:120px 0 20px}
+.kick{color:var(--a);font-weight:700;letter-spacing:.26em;text-transform:uppercase;font-size:11.5px}
+h2{font-family:Sora;font-size:clamp(28px,3.6vw,44px);margin:14px 0 16px;letter-spacing:-.01em;line-height:1.12}
+.lead{color:var(--dim);max-width:560px;margin-bottom:48px;font-size:16px;line-height:1.7}
+/* ---------- portfolio ---------- */
+.works{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;perspective:1400px}
+.work{position:relative;display:block;background:linear-gradient(180deg,#14141b,#101017);border:1px solid var(--line);border-radius:18px;overflow:hidden;text-decoration:none;color:var(--txt);
+  transition:transform .15s ease-out,border-color .35s,box-shadow .35s;transform-style:preserve-3d;will-change:transform}
+.work::after{content:"";position:absolute;inset:0;border-radius:18px;pointer-events:none;opacity:0;transition:opacity .35s;
+  box-shadow:inset 0 0 0 1px #d4af3740, 0 30px 70px -30px #000e, 0 0 60px -24px #d4af3726}
+.work:hover::after{opacity:1}
+.work .body{padding:20px 22px 22px}
+.work h3{font-family:Sora;font-size:16.5px;font-weight:700}
+.work p{color:var(--dim);font-size:13.5px;margin-top:5px;line-height:1.6}
+.work .view{color:var(--a);font-weight:700;font-size:13px;margin-top:14px;display:inline-flex;align-items:center;gap:6px}
+.work .view::after{content:"→";transition:transform .3s}
+.work:hover .view::after{transform:translateX(4px)}
+.work .meta2{color:#63636f;font-size:11.5px;margin-top:9px;letter-spacing:.03em}
+.work .tag{background:#ffffff0c;border:1px solid #ffffff1a;color:#c9c9d2;font-size:10.5px;font-weight:600;padding:4px 11px;border-radius:20px;display:inline-block;margin-left:6px;vertical-align:2px}
+.work .thumb{height:200px;position:relative;overflow:hidden;background:#000}
+.work .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.work:hover .thumb img{transform:scale(1.06)}
+.work .thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,#101017,transparent 55%);pointer-events:none}
+.work .live-badge{position:absolute;top:14px;right:14px;z-index:3;background:#0f3d24e0;border:1px solid #2a6b4a;color:#8ee6b5;font-size:10px;font-weight:700;padding:4px 11px;border-radius:20px;display:flex;align-items:center;gap:5px}
+.work .live-badge i{width:6px;height:6px;border-radius:50%;background:#4ee08a;animation:blink 2s infinite}
+.work .tag-f{position:absolute;top:14px;left:14px;z-index:3;background:#000c;border:1px solid #ffffff26;backdrop-filter:blur(6px);color:#fff;font-size:10.5px;font-weight:600;padding:5px 12px;border-radius:20px}
+/* browser preview */
+.browser{height:200px;position:relative;overflow:hidden;background:#1a1a21}
+.browser .bar{display:flex;align-items:center;gap:6px;padding:9px 11px;background:#15151b;position:relative;z-index:2;border-bottom:1px solid #ffffff0a}
 .browser .bar i{width:8px;height:8px;border-radius:50%;display:block}
-.browser .bar i:nth-child(1){background:#ff5f57}
-.browser .bar i:nth-child(2){background:#febc2e}
-.browser .bar i:nth-child(3){background:#28c840}
-.browser .bar .url{margin-left:6px;background:#000;border-radius:6px;padding:3px 10px;font-size:9.5px;color:#8a8a94;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:Inter}
-.browser .fw{height:calc(100% - 32px);overflow:hidden;position:relative}
+.browser .bar i:nth-child(1){background:#ff5f57}.browser .bar i:nth-child(2){background:#febc2e}.browser .bar i:nth-child(3){background:#28c840}
+.browser .bar .url{margin-left:6px;background:#000;border-radius:6px;padding:3px 10px;font-size:9.5px;color:#7e7e8a;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.browser .fw{height:calc(100% - 33px);overflow:hidden;position:relative}
 .browser .fw iframe{width:400%;height:400%;border:0;transform:scale(.25);transform-origin:0 0;pointer-events:none;background:#fff}
-/* includes grid */
-.inc{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
-.incitem{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px 22px;font-size:15px}
-.incitem b{display:block;margin:2px 0 4px;font-family:Sora;font-size:15px}
-.incitem span{color:var(--dim);font-size:13px}
-.inds{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
-.inds span{background:#ffffff0a;border:1px solid var(--line);border-radius:30px;padding:7px 16px;font-size:12.5px;color:#b9b9c4}
-/* pricing */
-.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
-.plan{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:28px;transition:.3s}
-.plan:hover{transform:translateY(-6px)}
-.plan.hot{border-color:var(--a);background:linear-gradient(160deg,#1c1913,var(--panel))}
-.plan .name{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
-.plan .price{font-family:Sora;font-size:36px;font-weight:800;color:var(--a);margin:8px 0 2px}
-.plan .price .was{font-family:Inter;font-size:16px;font-weight:500;color:#6e6e7a;text-decoration:line-through;margin-left:4px}
-.plan .per{font-size:13px;color:var(--dim);margin-bottom:16px}
+/* ---------- process ---------- */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px;counter-reset:step}
+.step{background:linear-gradient(180deg,#13131a,#101016);border:1px solid var(--line);border-radius:18px;padding:30px 30px 28px;position:relative;transition:border-color .35s,transform .35s}
+.step:hover{border-color:#d4af3745;transform:translateY(-4px)}
+.step b{display:block;font-family:Sora;color:var(--a);font-size:13px;letter-spacing:.22em;margin-bottom:14px}
+.step h3{font-family:Sora;font-size:17px;margin-bottom:8px;font-weight:700}
+.step p{color:var(--dim);font-size:14px;line-height:1.65}
+/* ---------- includes / trust ---------- */
+.inc{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.incitem{background:linear-gradient(180deg,#13131a,#101016);border:1px solid var(--line);border-radius:16px;padding:24px 26px;font-size:15px;transition:border-color .35s}
+.incitem:hover{border-color:#ffffff28}
+.incitem b{display:block;margin:0 0 5px;font-family:Sora;font-size:15px}
+.incitem span{color:var(--dim);font-size:13.5px;line-height:1.6}
+.inds{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}
+.inds span{background:#ffffff07;border:1px solid var(--line);border-radius:30px;padding:8px 18px;font-size:12.5px;color:#a8a8b4}
+/* ---------- pricing ---------- */
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.plan{background:linear-gradient(180deg,#13131a,#101016);border:1px solid var(--line);border-radius:20px;padding:32px 30px;transition:transform .35s,border-color .35s}
+.plan:hover{transform:translateY(-6px);border-color:#ffffff2e}
+.plan.hot{border-color:#d4af3760;background:linear-gradient(170deg,#1a1712,#101016);position:relative}
+.plan .name{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);font-weight:600}
+.plan .price{font-family:Sora;font-size:38px;font-weight:800;margin:10px 0 2px}
+.plan.hot .price{color:var(--a)}
+.plan .price .was{font-family:Inter;font-size:15px;font-weight:500;color:#5d5d68;text-decoration:line-through;margin-left:6px}
+.plan .per{font-size:13px;color:var(--dim);margin-bottom:20px}
 .plan ul{list-style:none;font-size:14px}
-.plan li{padding:5px 0;color:var(--dim)}
+.plan li{padding:6px 0;color:var(--dim)}
 .plan li::before{content:"✓ ";color:var(--a);font-weight:700}
-.hotlbl{background:var(--a);color:#000;font-size:10px;font-weight:800;letter-spacing:.12em;padding:4px 12px;border-radius:20px;text-transform:uppercase}
-/* process */
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
-.step{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px;position:relative}
-.step b{display:block;font-family:Sora;color:var(--a);font-size:30px;margin-bottom:10px}
-.step h3{font-family:Sora;font-size:16px;margin-bottom:6px}
-.step p{color:var(--dim);font-size:14px}
+.hotlbl{position:absolute;top:-12px;left:28px;background:var(--a);color:#000;font-size:10px;font-weight:800;letter-spacing:.14em;padding:5px 14px;border-radius:20px;text-transform:uppercase;font-family:Sora}
 /* guarantee */
-.guar{background:linear-gradient(135deg,#1c1913,var(--panel));border:1px solid var(--a);border-radius:22px;padding:40px;text-align:center;max-width:720px;margin:0 auto}
-.guar h3{font-family:Sora;font-size:22px;margin-bottom:8px}
+.guar{background:linear-gradient(150deg,#191510,#101016);border:1px solid #d4af3738;border-radius:22px;padding:52px 44px;text-align:center;max-width:760px;margin:0 auto}
+.guar h3{font-family:Sora;font-size:24px;margin-bottom:10px}
 .guar h3 span{color:var(--a)}
-.guar p{color:var(--dim)}
+.guar p{color:var(--dim);max-width:560px;margin:0 auto}
 /* faq */
-details{border:1px solid var(--line);border-radius:14px;margin-bottom:10px;background:var(--panel)}
-summary{padding:16px 20px;cursor:pointer;font-weight:600;font-family:Sora;font-size:15px}
-details p{padding:0 20px 16px;color:var(--dim);font-size:14px}
-/* footer */
-.final{text-align:center;padding:90px 0}
-.final h2{margin-bottom:10px}
-.final p{color:var(--dim);margin-bottom:30px}
-footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:#7a7a86;font-size:13px}
-/* reveal */
+details{border:1px solid var(--line);border-radius:14px;margin-bottom:10px;background:#111117;transition:border-color .3s}
+details[open]{border-color:#ffffff28}
+summary{padding:18px 22px;cursor:pointer;font-weight:600;font-family:Sora;font-size:15px;list-style:none;position:relative}
+summary::after{content:"+";position:absolute;right:22px;color:var(--a);font-size:18px;transition:transform .3s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 22px 18px;color:var(--dim);font-size:14px;line-height:1.7}
+/* ---------- final cta ---------- */
+.final{padding:130px 0 120px}
+.fcard{max-width:760px;margin:0 auto;text-align:center;background:#12121ad9;border:1px solid #ffffff16;border-radius:26px;
+  padding:64px 40px;backdrop-filter:blur(10px);position:relative;overflow:hidden;
+  box-shadow:0 50px 110px -40px #000e, inset 0 1px 0 #ffffff10}
+.fcard::before{content:"";position:absolute;inset:-1px;pointer-events:none;
+  background:radial-gradient(ellipse 70% 60% at 50% -10%,#d4af3716,transparent 65%)}
+.fcard h2{margin-bottom:12px}
+.fcard>p{color:var(--dim);margin-bottom:36px;max-width:480px;margin-inline:auto}
+.fcard .how{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.fcard .how span{background:#ffffff08;border:1px solid #ffffff14;border-radius:30px;padding:8px 18px;font-size:12.5px;color:#b9b9c4}
+.fclose{margin-top:34px;color:#6f6f7c;font-size:13.5px}
+footer{border-top:1px solid #ffffff0c;padding:36px 0;text-align:center;color:#6d6d79;font-size:13px}
+footer a{color:#8f8f9c}
+/* reveal (upgraded by scroll.js) */
 .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s ease,transform .9s cubic-bezier(.16,.8,.26,1)}
 .reveal.on{opacity:1;transform:none}
 .stickywa{display:none}
-@media(max-width:700px){.stickywa{display:flex;position:fixed;bottom:14px;left:14px;right:14px;z-index:60;background:var(--wa);color:#fff;font-family:Sora;font-weight:800;border-radius:16px;padding:16px;justify-content:center;text-decoration:none;box-shadow:0 14px 34px -6px #000c}}
+@media(max-width:700px){.stickywa{display:flex;position:fixed;bottom:14px;left:14px;right:14px;z-index:60;background:var(--wa);color:#fff;font-family:Sora;font-weight:800;border-radius:14px;padding:16px;justify-content:center;text-decoration:none;box-shadow:0 14px 34px -6px #000c}}
+@media(max-width:700px){.cta{display:block;text-align:center;margin:0 0 12px}.cta.wa,.cta.ghost{margin-left:0}}
 @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
@@ -151,184 +212,226 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:#
 
 <nav><div class="in">
   <b>JG <i>·</i> STUDIO</b>
-  <a class="call" href="https://wa.me/447956756675?text=Alright%20Jay%20—%20interested%20in%20a%20website">💬 WhatsApp</a>
+  <div class="nlinks">
+    <a href="#work">Work</a>
+    <a href="#process">Process</a>
+    <a href="#pricing">Pricing</a>
+    <a class="call" href="https://wa.me/447956756675?text=Alright%20Jay%20—%20interested%20in%20a%20website">WhatsApp Jay</a>
+  </div>
 </div></nav>
 
-<div class="hero" id="heroSpot">
-  <div class="glow"></div>
-  <div class="spot"></div>
-  <div class="wrap">
-    <div class="chip"><span class="dot"></span> Founding-client pricing — first 5 projects only</div>
-    <h1>Websites that look <em>expensive</em>.<br>Delivered in 48 hours.</h1>
-    <p>Premium sites for Wirral &amp; Liverpool businesses — designed, built and live before an agency would've replied to your email. From £150.</p>
-    <a class="cta" data-magnetic href="#work">See live work ↓</a>
-    <a class="cta wa" data-magnetic href="https://wa.me/447956756675?text=Alright%20Jay%20—%20interested%20in%20a%20website">WhatsApp Jay</a>
-    <div class="trust">Free homepage preview · half up front, half when you're happy · you own everything</div>
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="in">
+    <div class="hero-copy">
+      <div class="chip"><span class="dot"></span> Taking on 5 founding clients — free homepage previews</div>
+      <h1>Premium <em>animated websites</em> for local businesses.</h1>
+      <p class="sub">Clean, modern, scroll-animated sites for Wirral &amp; Liverpool businesses — designed and built fast, with a <b>free homepage preview before you pay a penny</b>. From £150, 48-hour builds available.</p>
+      <div class="hero-ctas">
+        <a class="cta wa" data-magnetic style="margin-left:0" href="https://wa.me/447956756675?text=Alright%20Jay%20—%20interested%20in%20a%20website">WhatsApp Jay</a>
+        <a class="cta ghost" data-magnetic href="#work">See the work</a>
+      </div>
+      <div class="trust"><span>Free preview first</span><span>You own everything</span><span>Replies within the hour</span></div>
+    </div>
 
-    <div class="statstrip" style="margin-top:46px">
-      <div class="sbox"><b class="cnt" data-n="21">0</b><span>Live builds</span></div>
-      <div class="sbox"><b class="cnt" data-n="18">0</b><span>Industries</span></div>
-      <div class="sbox"><b class="cnt" data-n="48" data-s="h">0h</b><span>Avg. turnaround</span></div>
-      <div class="sbox"><b class="cnt" data-n="100" data-s="%">0%</b><span>Client ownership</span></div>
+    <!-- animated premium mockup + floating glass cards -->
+    <div class="hm" data-parallax="-0.06">
+      <div class="hm-browser">
+        <div class="hm-bar"><i></i><i></i><i></i><div class="hm-url">yourbusiness.co.uk</div></div>
+        <div class="hm-site">
+          <div class="hm-hero"><b>Your Business Name</b><span class="l"></span><span class="l s"></span><span class="hm-btn"></span></div>
+          <div class="hm-row">
+            <div class="hm-card"><b></b><i></i></div>
+            <div class="hm-card"><b></b><i></i></div>
+            <div class="hm-card"><b></b><i></i></div>
+          </div>
+          <div class="hm-rev"><span class="stars">★★★★★</span> “Best decision we made this year.” — Google review</div>
+        </div>
+      </div>
+      <div class="gchip g1">48-hour build<small>available on request</small></div>
+      <div class="gchip g2">Free preview<small>before you pay anything</small></div>
+      <div class="gchip g3">From £150<small>founding-client pricing</small></div>
+      <div class="gchip g4">Mobile-first<small>perfect on every phone</small></div>
     </div>
   </div>
-</div>
+</header>
 
-<div class="marq"><div class="track">
-  <span>BARBERS ◆ GARAGES ◆ RESTAURANTS ◆ GYMS ◆ TRADES ◆ SALONS ◆ E-COMMERCE ◆ LIVE IN 48 HOURS ◆ FROM £150 ◆ </span><span>BARBERS ◆ GARAGES ◆ RESTAURANTS ◆ GYMS ◆ TRADES ◆ SALONS ◆ E-COMMERCE ◆ LIVE IN 48 HOURS ◆ FROM £150 ◆ </span>
+<div class="strip"><div class="track">
+  <span>BARBERS&nbsp;&nbsp;·&nbsp;&nbsp;GYMS&nbsp;&nbsp;·&nbsp;&nbsp;RESTAURANTS&nbsp;&nbsp;·&nbsp;&nbsp;SALONS&nbsp;&nbsp;·&nbsp;&nbsp;GARAGES&nbsp;&nbsp;·&nbsp;&nbsp;TRADES&nbsp;&nbsp;·&nbsp;&nbsp;CAFÉS&nbsp;&nbsp;·&nbsp;&nbsp;E-COMMERCE&nbsp;&nbsp;·&nbsp;&nbsp;</span><span>BARBERS&nbsp;&nbsp;·&nbsp;&nbsp;GYMS&nbsp;&nbsp;·&nbsp;&nbsp;RESTAURANTS&nbsp;&nbsp;·&nbsp;&nbsp;SALONS&nbsp;&nbsp;·&nbsp;&nbsp;GARAGES&nbsp;&nbsp;·&nbsp;&nbsp;TRADES&nbsp;&nbsp;·&nbsp;&nbsp;CAFÉS&nbsp;&nbsp;·&nbsp;&nbsp;E-COMMERCE&nbsp;&nbsp;·&nbsp;&nbsp;</span>
 </div></div>
 
 <div class="wrap">
 
+  <!-- ================= PORTFOLIO ================= -->
   <section id="work" class="reveal">
-    <div class="kick">Selected work — click any site</div>
-    <h2>The portfolio</h2>
-    <p class="lead">Every one of these is a real, live build. Open them. Scroll them. This is the standard every client gets — barbers to e-commerce.</p>
+    <div class="kick">Selected work</div>
+    <h2>Real builds. Open them, scroll them.</h2>
+    <p class="lead">Every card below is a live site — this is the standard every client gets, whether you're a barber or an online store.</p>
     <div class="works">
       <a class="work" href="work/fade-district.html" target="_blank">
         <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">jgstudio.co.uk/fade-district</div></div>
           <div class="fw"><iframe src="work/fade-district.html" loading="lazy" tabindex="-1"></iframe></div></div>
-        <div class="body"><h3>Fade District <span class="tag" style="position:static;display:inline-block;margin-left:4px">Barbershop</span></h3><p>Bold split-screen editorial — monochrome photography, price menu, walk-in energy.</p><div class="meta2">⏱ 43h build · price menu · gallery strip</div><span class="view">View live site →</span></div>
+        <div class="body"><h3>Fade District <span class="tag">Barber</span></h3><p>Bold split-screen editorial — monochrome photography, price menu, walk-in energy.</p><div class="meta2">⏱ 43h build · price menu · gallery strip</div><span class="view">View demo</span></div>
       </a>
       <a class="work" href="work/noir-dining.html" target="_blank">
         <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">jgstudio.co.uk/noir</div></div>
           <div class="fw"><iframe src="work/noir-dining.html" loading="lazy" tabindex="-1"></iframe></div></div>
-        <div class="body"><h3>NOIR <span class="tag" style="position:static;display:inline-block;margin-left:4px">Fine dining</span></h3><p>Elegant cream-and-serif dining site with a real menu system and reservation flow.</p><div class="meta2">⏱ 47h build · menu · reservations</div><span class="view">View live site →</span></div>
+        <div class="body"><h3>NOIR <span class="tag">Restaurant</span></h3><p>Elegant cream-and-serif dining site with a real menu system and reservation flow.</p><div class="meta2">⏱ 47h build · menu · reservations</div><span class="view">View demo</span></div>
       </a>
       <a class="work" href="work/the-glow-room.html" target="_blank">
         <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">jgstudio.co.uk/glow-room</div></div>
           <div class="fw"><iframe src="work/the-glow-room.html" loading="lazy" tabindex="-1"></iframe></div></div>
-        <div class="body"><h3>The Glow Room <span class="tag" style="position:static;display:inline-block;margin-left:4px">Beauty studio</span></h3><p>Soft, light and airy — arched imagery, floating review card, new-client offer.</p><div class="meta2">⏱ 40h build · treatment cards · offer banner</div><span class="view">View live site →</span></div>
+        <div class="body"><h3>The Glow Room <span class="tag">Salon</span></h3><p>Soft, light and airy — arched imagery, floating review card, new-client offer.</p><div class="meta2">⏱ 40h build · treatment cards · offer banner</div><span class="view">View demo</span></div>
       </a>
       <a class="work" href="work/summit-roofing.html" target="_blank">
         <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">jgstudio.co.uk/summit</div></div>
           <div class="fw"><iframe src="work/summit-roofing.html" loading="lazy" tabindex="-1"></iframe></div></div>
-        <div class="body"><h3>Summit Roofing <span class="tag" style="position:static;display:inline-block;margin-left:4px">Trades</span></h3><p>Industrial slate-and-orange with diagonal sections, 24/7 band and quote form.</p><div class="meta2">⏱ 44h build · quote form · emergency band</div><span class="view">View live site →</span></div>
+        <div class="body"><h3>Summit Roofing <span class="tag">Trade</span></h3><p>Industrial slate-and-orange with diagonal sections, 24/7 band and quote form.</p><div class="meta2">⏱ 44h build · quote form · emergency band</div><span class="view">View demo</span></div>
       </a>
       <a class="work" href="work/reps-gym.html" target="_blank">
         <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">jgstudio.co.uk/reps</div></div>
           <div class="fw"><iframe src="work/reps-gym.html" loading="lazy" tabindex="-1"></iframe></div></div>
-        <div class="body"><h3>REPS Gym <span class="tag" style="position:static;display:inline-block;margin-left:4px">Gym / PT</span></h3><p>Huge acid-green typography, program tiles and a no-contract membership table.</p><div class="meta2">⏱ 45h build · memberships · program tiles</div><span class="view">View live site →</span></div>
+        <div class="body"><h3>REPS Gym <span class="tag">Gym</span></h3><p>Huge acid-green typography, program tiles and a no-contract membership table.</p><div class="meta2">⏱ 45h build · memberships · program tiles</div><span class="view">View demo</span></div>
       </a>
       <a class="work" href="work/mersey-motors.html" target="_blank">
         <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">jgstudio.co.uk/mersey-motors</div></div>
           <div class="fw"><iframe src="work/mersey-motors.html" loading="lazy" tabindex="-1"></iframe></div></div>
-        <div class="body"><h3>Mersey Motors <span class="tag" style="position:static;display:inline-block;margin-left:4px">Garage</span></h3><p>Trust-first garage site — MOT, servicing, diagnostics.</p><div class="meta2">⏱ 44h build · 📞 call tracking · Maps</div><span class="view">View live site →</span></div>
+        <div class="body"><h3>Mersey Motors <span class="tag">Garage</span></h3><p>Trust-first garage site — MOT, servicing, diagnostics.</p><div class="meta2">⏱ 44h build · call tracking · Maps</div><span class="view">View demo</span></div>
       </a>
       <a class="work" href="work/ink-iron-tattoo.html" target="_blank">
         <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">jgstudio.co.uk/ink-iron</div></div>
           <div class="fw"><iframe src="work/ink-iron-tattoo.html" loading="lazy" tabindex="-1"></iframe></div></div>
-        <div class="body"><h3>Ink &amp; Iron Tattoo <span class="tag" style="position:static;display:inline-block;margin-left:4px">Tattoo studio</span></h3><p>Dark, editorial studio site with booking flow.</p><div class="meta2">⏱ 39h build · gallery-first · Insta feed</div><span class="view">View live site →</span></div>
+        <div class="body"><h3>Ink &amp; Iron Tattoo <span class="tag">Studio</span></h3><p>Dark, editorial studio site with booking flow.</p><div class="meta2">⏱ 39h build · gallery-first · Insta feed</div><span class="view">View demo</span></div>
       </a>
       <a class="work" href="work/brew-co.html" target="_blank">
         <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">jgstudio.co.uk/brew-co</div></div>
           <div class="fw"><iframe src="work/brew-co.html" loading="lazy" tabindex="-1"></iframe></div></div>
-        <div class="body"><h3>Brew &amp; Co. <span class="tag" style="position:static;display:inline-block;margin-left:4px">Café</span></h3><p>Independent café site with warmth and footfall focus.</p><div class="meta2">⏱ 38h build · Maps-first · loyalty CTA</div><span class="view">View live site →</span></div>
+        <div class="body"><h3>Brew &amp; Co. <span class="tag">Café</span></h3><p>Independent café site with warmth and footfall focus.</p><div class="meta2">⏱ 38h build · Maps-first · loyalty CTA</div><span class="view">View demo</span></div>
       </a>
       <a class="work" href="work/aquashine-valeting.html" target="_blank">
         <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">jgstudio.co.uk/aquashine</div></div>
           <div class="fw"><iframe src="work/aquashine-valeting.html" loading="lazy" tabindex="-1"></iframe></div></div>
-        <div class="body"><h3>AquaShine Valeting <span class="tag" style="position:static;display:inline-block;margin-left:4px">Valeting</span></h3><p>Showroom-finish valeting site with package pricing.</p><div class="meta2">⏱ 40h build · price menu · WhatsApp quotes</div><span class="view">View live site →</span></div>
+        <div class="body"><h3>AquaShine Valeting <span class="tag">Valeting</span></h3><p>Showroom-finish valeting site with package pricing.</p><div class="meta2">⏱ 40h build · price menu · WhatsApp quotes</div><span class="view">View demo</span></div>
       </a>
       <a class="work" href="work/pawfect-grooming.html" target="_blank">
         <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">jgstudio.co.uk/pawfect</div></div>
           <div class="fw"><iframe src="work/pawfect-grooming.html" loading="lazy" tabindex="-1"></iframe></div></div>
-        <div class="body"><h3>Pawfect Grooming <span class="tag" style="position:static;display:inline-block;margin-left:4px">Pet care</span></h3><p>Warm, friendly groomer site that books appointments.</p><div class="meta2">⏱ 37h build · booking CTA · gallery</div><span class="view">View live site →</span></div>
+        <div class="body"><h3>Pawfect Grooming <span class="tag">Pet care</span></h3><p>Warm, friendly groomer site that books appointments.</p><div class="meta2">⏱ 37h build · booking CTA · gallery</div><span class="view">View demo</span></div>
       </a>
       <a class="work" href="work/the-copper-table.html" target="_blank">
         <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">jgstudio.co.uk/copper-table</div></div>
           <div class="fw"><iframe src="work/the-copper-table.html" loading="lazy" tabindex="-1"></iframe></div></div>
-        <div class="body"><h3>The Copper Table <span class="tag" style="position:static;display:inline-block;margin-left:4px">Private chef</span></h3><p>Brass-and-ink editorial site for a private dining chef — menu, quote, booking flow.</p><div class="meta2">⏱ 45h build · tasting menu · enquiry flow</div><span class="view">View live site →</span></div>
+        <div class="body"><h3>The Copper Table <span class="tag">Private chef</span></h3><p>Brass-and-ink editorial site for a private dining chef — menu, quote, booking flow.</p><div class="meta2">⏱ 45h build · tasting menu · enquiry flow</div><span class="view">View demo</span></div>
       </a>
       <a class="work" href="work/big-mo-s-grill.html" target="_blank">
         <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">jgstudio.co.uk/big-mos</div></div>
           <div class="fw"><iframe src="work/big-mo-s-grill.html" loading="lazy" tabindex="-1"></iframe></div></div>
-        <div class="body"><h3>Big Mo's Grill <span class="tag" style="position:static;display:inline-block;margin-left:4px">Takeaway</span></h3><p>Loud, appetite-driven takeaway site with dashed-menu pricing and a ticker.</p><div class="meta2">⏱ 38h build · order-by-phone · menu grid</div><span class="view">View live site →</span></div>
+        <div class="body"><h3>Big Mo's Grill <span class="tag">Takeaway</span></h3><p>Loud, appetite-driven takeaway site with dashed-menu pricing and a ticker.</p><div class="meta2">⏱ 38h build · order-by-phone · menu grid</div><span class="view">View demo</span></div>
       </a>
       <a class="work" href="work/flourish-bakehouse.html" target="_blank">
         <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">jgstudio.co.uk/flourish</div></div>
           <div class="fw"><iframe src="work/flourish-bakehouse.html" loading="lazy" tabindex="-1"></iframe></div></div>
-        <div class="body"><h3>Flourish Bakehouse <span class="tag" style="position:static;display:inline-block;margin-left:4px">Bakery</span></h3><p>Warm artisan cream site with a swinging badge and opening-hours panel.</p><div class="meta2">⏱ 36h build · daily bakes · hours panel</div><span class="view">View live site →</span></div>
+        <div class="body"><h3>Flourish Bakehouse <span class="tag">Bakery</span></h3><p>Warm artisan cream site with a swinging badge and opening-hours panel.</p><div class="meta2">⏱ 36h build · daily bakes · hours panel</div><span class="view">View demo</span></div>
       </a>
       <a class="work" href="work/the-wallasey-clip.html" target="_blank">
         <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">jgstudio.co.uk/wallasey-clip</div></div>
           <div class="fw"><iframe src="work/the-wallasey-clip.html" loading="lazy" tabindex="-1"></iframe></div></div>
-        <div class="body"><h3>The Wallasey Clip <span class="tag" style="position:static;display:inline-block;margin-left:4px">Barbershop</span></h3><p>Brutalist mono-and-red barbershop build with a marquee ticker and price list.</p><div class="meta2">⏱ 40h build · price list · ticker band</div><span class="view">View live site →</span></div>
+        <div class="body"><h3>The Wallasey Clip <span class="tag">Barber</span></h3><p>Brutalist mono-and-red barbershop build with a marquee ticker and price list.</p><div class="meta2">⏱ 40h build · price list · ticker band</div><span class="view">View demo</span></div>
       </a>
       <a class="work" href="work/wren-coffee-house.html" target="_blank">
         <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">jgstudio.co.uk/wren-coffee</div></div>
           <div class="fw"><iframe src="work/wren-coffee-house.html" loading="lazy" tabindex="-1"></iframe></div></div>
-        <div class="body"><h3>Wren Coffee House <span class="tag" style="position:static;display:inline-block;margin-left:4px">Café</span></h3><p>Specialty coffee site with a rounded photo badge and opening hours block.</p><div class="meta2">⏱ 35h build · specialty menu · hours</div><span class="view">View live site →</span></div>
+        <div class="body"><h3>Wren Coffee House <span class="tag">Café</span></h3><p>Specialty coffee site with a rounded photo badge and opening hours block.</p><div class="meta2">⏱ 35h build · specialty menu · hours</div><span class="view">View demo</span></div>
       </a>
       <a class="work" href="work/the-reading-room-cafe.html" target="_blank">
         <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">jgstudio.co.uk/reading-room</div></div>
           <div class="fw"><iframe src="work/the-reading-room-cafe.html" loading="lazy" tabindex="-1"></iframe></div></div>
-        <div class="body"><h3>The Reading Room Cafe <span class="tag" style="position:static;display:inline-block;margin-left:4px">Café-bookshop</span></h3><p>Quiet, literary café-bookshop identity — soft sage tones, cosy corners.</p><div class="meta2">⏱ 37h build · story-led copy · badge</div><span class="view">View live site →</span></div>
+        <div class="body"><h3>The Reading Room Cafe <span class="tag">Café-bookshop</span></h3><p>Quiet, literary café-bookshop identity — soft sage tones, cosy corners.</p><div class="meta2">⏱ 37h build · story-led copy · badge</div><span class="view">View demo</span></div>
       </a>
       <a class="work" href="work/verde-kitchen.html" target="_blank">
         <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">jgstudio.co.uk/verde</div></div>
           <div class="fw"><iframe src="work/verde-kitchen.html" loading="lazy" tabindex="-1"></iframe></div></div>
-        <div class="body"><h3>Verde Kitchen <span class="tag" style="position:static;display:inline-block;margin-left:4px">Organic café</span></h3><p>Fresh organic-green identity for a scratch-made, seasonal café menu.</p><div class="meta2">⏱ 36h build · seasonal menu · fresh tone</div><span class="view">View live site →</span></div>
+        <div class="body"><h3>Verde Kitchen <span class="tag">Café</span></h3><p>Fresh organic-green identity for a scratch-made, seasonal café menu.</p><div class="meta2">⏱ 36h build · seasonal menu · fresh tone</div><span class="view">View demo</span></div>
       </a>
       <a class="work" href="work/continental-auto-works.html" target="_blank">
         <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">jgstudio.co.uk/continental</div></div>
           <div class="fw"><iframe src="work/continental-auto-works.html" loading="lazy" tabindex="-1"></iframe></div></div>
-        <div class="body"><h3>Continental Auto Works <span class="tag" style="position:static;display:inline-block;margin-left:4px">Specialist garage</span></h3><p>Precision dark-blue identity for a European-marque specialist garage.</p><div class="meta2">⏱ 46h build · specialist trust signals · stats</div><span class="view">View live site →</span></div>
+        <div class="body"><h3>Continental Auto Works <span class="tag">Garage</span></h3><p>Precision dark-blue identity for a European-marque specialist garage.</p><div class="meta2">⏱ 46h build · trust signals · stats</div><span class="view">View demo</span></div>
       </a>
       <a class="work" href="work/bare-aesthetics.html" target="_blank">
         <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">jgstudio.co.uk/bare</div></div>
           <div class="fw"><iframe src="work/bare-aesthetics.html" loading="lazy" tabindex="-1"></iframe></div></div>
-        <div class="body"><h3>Bare Aesthetics <span class="tag" style="position:static;display:inline-block;margin-left:4px">Skin clinic</span></h3><p>Soft blush-luxe aesthetics clinic site with treatment cards and offer banner.</p><div class="meta2">⏱ 41h build · treatment menu · offer banner</div><span class="view">View live site →</span></div>
+        <div class="body"><h3>Bare Aesthetics <span class="tag">Skin clinic</span></h3><p>Soft blush-luxe aesthetics clinic site with treatment cards and offer banner.</p><div class="meta2">⏱ 41h build · treatment menu · offer banner</div><span class="view">View demo</span></div>
       </a>
       <a class="work" href="work/muddy-paws-grooming.html" target="_blank">
         <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">jgstudio.co.uk/muddy-paws</div></div>
           <div class="fw"><iframe src="work/muddy-paws-grooming.html" loading="lazy" tabindex="-1"></iframe></div></div>
-        <div class="body"><h3>Muddy Paws Grooming <span class="tag" style="position:static;display:inline-block;margin-left:4px">Dog grooming</span></h3><p>Warm, rounded groomer identity with a wiggling paw badge and grooming menu.</p><div class="meta2">⏱ 34h build · grooming menu · nervous-dog copy</div><span class="view">View live site →</span></div>
+        <div class="body"><h3>Muddy Paws Grooming <span class="tag">Dog grooming</span></h3><p>Warm, rounded groomer identity with a wiggling paw badge and grooming menu.</p><div class="meta2">⏱ 34h build · grooming menu · nervous-dog copy</div><span class="view">View demo</span></div>
       </a>
       <a class="work" href="https://firstclassfits.co" target="_blank">
-        <div class="thumb"><span class="tag">E-commerce</span><span class="live-badge"><i></i>LIVE STORE</span><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=60" alt="" loading="lazy"></div>
-        <div class="body"><h3>First Class Fits</h3><p>Full online store — products, colours, Stripe payments, the lot.</p><div class="meta2">⏱ 1-week build · Stripe checkout · full CMS</div><span class="view">View live store →</span></div>
+        <div class="thumb"><span class="tag-f">E-commerce</span><span class="live-badge"><i></i>LIVE STORE</span><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=60" alt="" loading="lazy"></div>
+        <div class="body"><h3>First Class Fits</h3><p>Full online store — products, colours, Stripe payments, the lot.</p><div class="meta2">⏱ 1-week build · Stripe checkout · full CMS</div><span class="view">View live store</span></div>
       </a>
     </div>
   </section>
 
 </div>
 
-<!-- ============ CINEMATIC SHOWCASE — WEBSITE ZOOM-THROUGH ============
-     One pinned scene, straight after the portfolio: the camera flies
-     through a website mockup. Engine + presets live in
-     assets/cinematic-scenes.js — other scene types (product, food,
-     property) stay dormant there until a client build needs them. -->
-<div class="cine-intro reveal">
-  <div class="kick">Your website, in motion</div>
-  <h2>Fly through your site before it exists.</h2>
-  <p>Scroll down — the camera moves through a real website layout, section by section. This is the free preview experience every client gets.</p>
-</div>
-
-<section class="cine cine-web" data-cine="web" aria-label="Website zoom-through">
+<!-- ============ WEBSITE TRANSFORMATION — the main scroll scene ============
+     Pinned + scrubbed (GSAP ScrollTrigger). Scroll down: a dated local-business
+     site rebuilds itself into a premium one, piece by piece; scroll up reverses
+     it. Engine: assets/cinematic-scenes.js → CINE.register('transform', ...).
+     To retheme for a barber/gym/restaurant pitch, just edit the text inside
+     .tf-old and .tf-new below — the animation is content-agnostic. -->
+<section class="cine cine-tf" data-cine="transform" aria-label="Website transformation">
   <div class="cine-grid"></div>
   <div class="cine-head">
-    <div class="kick">Scroll to fly through</div>
-    <h2>Hero → services → work → contact.</h2>
+    <div class="kick">Scroll — watch the upgrade</div>
+    <h2>Your current site could look like this.</h2>
   </div>
   <div class="cine-stage">
-    <div class="wz-viewport">
-      <div class="wz-browser">
-        <div class="wz-bar"><i></i><i></i><i></i><div class="wz-url">yourbusiness.co.uk</div></div>
-        <div class="wz-site">
-          <div class="wz-sec wz-hero" data-wz-stop data-wz-zoom="1.9"><span class="wz-label">Hero</span><b>Your Business Name</b><i></i><div class="wz-btn"></div></div>
-          <div class="wz-cards" data-wz-stop data-wz-zoom="2.1">
-            <div class="wz-card"><b></b><i></i><i></i></div>
-            <div class="wz-card"><b></b><i></i><i></i></div>
-            <div class="wz-card"><b></b><i></i><i></i></div>
+    <div class="tf-rig">
+      <div class="tf-browser">
+        <div class="tf-bar"><i></i><i></i><i></i><div class="tf-url">smithandsons.co.uk</div></div>
+        <div class="tf-view">
+          <!-- BEFORE: the dated site -->
+          <div class="tf-old">
+            <b>SMITH &amp; SONS LTD</b>
+            <u>Home &nbsp;|&nbsp; About Us &nbsp;|&nbsp; Services &nbsp;|&nbsp; Contact</u>
+            <p>Welcome to our web site!! We are a family run business established in 1987. We offer a wide range of services at competitive prices.</p>
+            <p class="tf-old-note">Please telephone us for prices.</p>
+            <span class="tf-old-btn">Click Here</span>
           </div>
-          <div class="wz-folio" data-wz-stop data-wz-zoom="2.0">
-            <div class="wz-shot"></div><div class="wz-shot"></div><div class="wz-shot"></div><div class="wz-shot"></div>
+          <!-- AFTER: the premium rebuild -->
+          <div class="tf-new">
+            <div class="tf-hero">
+              <span class="tf-nkick">WIRRAL · TRUSTED SINCE 1987</span>
+              <b>Smith &amp; <em>Sons</em></b>
+              <span class="tf-line"></span>
+              <span class="tf-ncta">Get a free quote →</span>
+            </div>
+            <div class="tf-cards">
+              <div class="tf-card"><b></b><i></i></div>
+              <div class="tf-card"><b></b><i></i></div>
+              <div class="tf-card"><b></b><i></i></div>
+            </div>
+            <div class="tf-trust">
+              <span>★★★★★ 5.0 on Google</span><span>✓ Fully insured</span><span>✓ Replies in 1 hour</span>
+            </div>
           </div>
-          <div class="wz-sec wz-form" data-wz-stop data-wz-zoom="2.1"><span class="wz-label">Contact</span><i></i><i></i><div class="wz-btn"></div></div>
-          <div class="wz-sec wz-cta" data-wz-stop data-wz-zoom="2.3"><b>💬 One tap to WhatsApp you</b></div>
         </div>
       </div>
+      <!-- mobile preview slides in at the end -->
+      <div class="tf-phone">
+        <div class="tf-phead"></div>
+        <div class="tf-pbody">
+          <b>Smith &amp; <em>Sons</em></b>
+          <span class="tf-line"></span>
+          <span class="tf-ncta">Free quote →</span>
+        </div>
+      </div>
+      <div class="tf-label tf-label-old">Before — invisible online</div>
+      <div class="tf-label tf-label-new">After — premium &amp; trusted</div>
     </div>
   </div>
   <div class="cine-vign"></div>
@@ -336,10 +439,26 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:#
 
 <div class="wrap">
 
+  <!-- ================= PROCESS ================= -->
+  <section id="process" class="reveal">
+    <div class="kick">How it works</div>
+    <h2>Zero risk. Zero jargon.</h2>
+    <p class="lead">You see your website before you spend anything. That's the whole model.</p>
+    <div class="steps">
+      <div class="step reveal"><b>STEP 01</b><h3>I find your business</h3><p>Or you message me first — either way, all I need is your business name and what you do.</p></div>
+      <div class="step reveal"><b>STEP 02</b><h3>Free homepage preview</h3><p>I design and build a real preview of your homepage within 24 hours — free, no strings.</p></div>
+      <div class="step reveal"><b>STEP 03</b><h3>You check it</h3><p>Open it on your phone, show your staff, sleep on it. If it's not for you, no hard feelings.</p></div>
+      <div class="step reveal"><b>STEP 04</b><h3>I make your changes</h3><p>Colours, photos, wording, prices — tell me on WhatsApp and I'll turn changes around fast.</p></div>
+      <div class="step reveal"><b>STEP 05</b><h3>Your site goes live</h3><p>On your own domain, set up for you. Half up front, half only when you're happy.</p></div>
+      <div class="step reveal"><b>STEP 06</b><h3>You look the part</h3><p>More trust, more calls, more bookings — and a site you fully own, no lock-ins ever.</p></div>
+    </div>
+  </section>
+
+  <!-- ================= BEFORE / AFTER ================= -->
   <section class="reveal">
     <div class="kick">Before / after</div>
-    <h2>What an upgrade actually looks like</h2>
-    <p class="lead">Drag the handle. Left is the average local-business site. Right is the JG Studio standard.</p>
+    <h2>The difference is the business you win.</h2>
+    <p class="lead">Drag the handle. Left is the average local-business website. Right is the JG Studio standard.</p>
     <div class="ba-wrap">
       <div class="ba-pane ba-before">
         <b>Smith &amp; Sons Ltd</b>
@@ -357,41 +476,34 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:#
     </div>
   </section>
 
-  <div class="cine-divider"></div>
-
+  <!-- ================= INCLUDES / TRUST ================= -->
   <section class="reveal">
     <div class="kick">The standard</div>
     <h2>Every build includes</h2>
     <div class="inc">
-      <div class="incitem">📱 <b>Mobile-first design</b><span>80% of your customers are on phones — we design there first</span></div>
-      <div class="incitem">📞 <b>One-tap call &amp; WhatsApp</b><span>customers reach you in a single tap, every page</span></div>
-      <div class="incitem">🔍 <b>Google-ready SEO</b><span>titles, descriptions and structure done properly from day one</span></div>
-      <div class="incitem">⚡ <b>Fast hosting, sorted</b><span>set up for you — loads in under a second</span></div>
-      <div class="incitem">🛠 <b>30 days of free tweaks</b><span>anything you want changed in the first month, free</span></div>
-      <div class="incitem">🔑 <b>100% ownership</b><span>your domain, your site, your content — no lock-ins, ever</span></div>
+      <div class="incitem"><b>Mobile-first design</b><span>80% of your customers are on phones — every site is designed there first.</span></div>
+      <div class="incitem"><b>One-tap call &amp; WhatsApp</b><span>Customers reach you in a single tap, from every page.</span></div>
+      <div class="incitem"><b>Google-ready SEO</b><span>Titles, descriptions and structure done properly from day one.</span></div>
+      <div class="incitem"><b>Fast hosting, sorted</b><span>Set up for you — loads in under a second.</span></div>
+      <div class="incitem"><b>30 days of free tweaks</b><span>Anything you want changed in the first month, free.</span></div>
+      <div class="incitem"><b>100% ownership</b><span>Your domain, your site, your content — no lock-ins, ever.</span></div>
     </div>
     <div class="inds">
       <span>Barbers</span><span>Salons</span><span>Garages</span><span>Valeters</span><span>Tattoo studios</span><span>Cafés</span><span>Takeaways</span><span>Restaurants</span><span>Gyms &amp; PTs</span><span>Trades</span><span>Groomers</span><span>Online stores</span>
     </div>
   </section>
 
-  <section class="reveal">
-    <div class="kick">Who builds it</div>
-    <h2>One builder. No middlemen.</h2>
-    <p class="lead" style="margin-bottom:16px">JG Studio is Jay Green — the designer behind every site above, including the First Class Fits store. No account managers, no outsourcing, no waiting a week for an email back. You deal directly with the person building your site — that's exactly how it stays £150 and 48 hours instead of £2,000 and six weeks.</p>
-    <p class="lead" style="margin-bottom:0">Replies within the hour, seven days a week. Wallasey born, Wirral &amp; Liverpool focused, available everywhere.</p>
-  </section>
-
-  <section class="reveal">
+  <!-- ================= PRICING ================= -->
+  <section id="pricing" class="reveal">
     <div class="kick">Founding-client pricing</div>
     <h2>Fixed prices. No surprises.</h2>
     <p class="lead">You own everything — the site, the domain, the content. No lock-ins, no hostage-taking.
-      <br><span style="color:#d4af37;font-weight:600">These prices are for my first 5 clients only — then it goes back to full rate.</span></p>
+      <br><span style="color:var(--a);font-weight:600">Founding-client rates for my first 5 clients only.</span></p>
     <div class="plans">
       <div class="plan"><div class="name">Starter Site</div>
         <div class="price">£150 <span class="was">£350</span></div><div class="per">one-off · live in 48h</div>
         <ul><li>1-page professional site</li><li>Perfect on phones</li><li>WhatsApp &amp; call buttons</li><li>Google-ready</li></ul></div>
-      <div class="plan hot"><span class="hotlbl">Most popular</span><div class="name" style="margin-top:12px">Business Site</div>
+      <div class="plan hot"><span class="hotlbl">Most popular</span><div class="name" style="margin-top:6px">Business Site</div>
         <div class="price">£250 <span class="was">£600</span></div><div class="per">one-off · 3–4 days</div>
         <ul><li>Up to 5 pages</li><li>Booking / enquiry forms</li><li>Google Maps &amp; reviews</li><li>Photo galleries</li></ul></div>
       <div class="plan"><div class="name">Online Store</div>
@@ -404,22 +516,13 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:#
   </section>
 
   <section class="reveal">
-    <div class="kick">How it works</div>
-    <h2>Three steps. Zero hassle.</h2>
-    <div class="steps">
-      <div class="step"><b>01</b><h3>Free preview</h3><p>Message me your business name. I'll send a free homepage preview within 24 hours — before you pay a penny.</p></div>
-      <div class="step"><b>02</b><h3>48-hour build</h3><p>Like it? Pay half. I build the full site with your photos, prices and words — done in 48 hours.</p></div>
-      <div class="step"><b>03</b><h3>Go live</h3><p>You approve it, pay the rest, and it goes live on your own domain. You own 100% of it.</p></div>
-    </div>
-  </section>
-
-  <section class="reveal">
     <div class="guar">
       <h3>The <span>no-risk</span> guarantee</h3>
       <p>You see a free preview before paying anything, and you only pay the second half when you're happy with the finished site. If you don't love it, you don't pay it. Simple.</p>
     </div>
   </section>
 
+  <!-- ================= FAQ ================= -->
   <section class="reveal">
     <div class="kick">Questions</div>
     <h2>Asked all the time</h2>
@@ -430,23 +533,33 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:#
     <details><summary>Can you do online shops?</summary><p>Yes — full stores with card payments, product pages and order notifications. See First Class Fits in the work section for a live example.</p></details>
   </section>
 
+  <!-- ================= FINAL CTA ================= -->
   <div class="final reveal">
-    <h2>Your business deserves better than "no website".</h2>
-    <p>Free preview. 48-hour build. You own everything.</p>
-    <a class="cta wa" data-magnetic style="margin-left:0" href="https://wa.me/447956756675?text=Alright%20Jay%20—%20interested%20in%20a%20website">💬 WhatsApp Jay — 07956 756 675</a>
+    <div class="fcard">
+      <div class="kick">Free — no card, no catch</div>
+      <h2>Want a free homepage preview?</h2>
+      <p>Send your business name, Instagram or Facebook page — that's genuinely all I need. You'll have a real preview of your new website within 24 hours.</p>
+      <a class="cta wa" data-magnetic style="margin-left:0" href="https://wa.me/447956756675?text=Alright%20Jay%20—%20can%20I%20get%20a%20free%20homepage%20preview%3F%20My%20business%20is%3A%20">WhatsApp Jay — 07956 756 675</a>
+      <div class="how">
+        <span>1 · Send your business name</span>
+        <span>2 · Get your preview in 24h</span>
+        <span>3 · Only pay if you love it</span>
+      </div>
+      <p class="fclose">If it doesn't make your business look more professional, don't buy it.</p>
+    </div>
   </div>
 </div>
 
 <footer>
   JG Studio · Jay Green · Web design &amp; AI automation · Wallasey, Wirral · 07956 756 675<br>
   <span style="font-size:12px">Replies within the hour, 7 days a week &nbsp;·&nbsp;
-  <a href="terms.html" style="color:#9a9aa6">Terms</a> &nbsp;·&nbsp;
-  <a href="privacy.html" style="color:#9a9aa6">Privacy</a></span>
+  <a href="terms.html">Terms</a> &nbsp;·&nbsp;
+  <a href="privacy.html">Privacy</a></span>
 </footer>
 <a class="stickywa" href="https://wa.me/447956756675?text=Alright%20Jay%20—%20interested%20in%20a%20website">💬 WhatsApp Jay</a>
 
 <script>
-// scroll reveals
+// scroll reveals (upgraded to GSAP by assets/scroll.js when available)
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
@@ -460,36 +573,13 @@ function onScroll(){
 document.addEventListener('scroll',onScroll,{passive:true});
 onScroll();
 
-// hero cursor spotlight (desktop only)
-const hero=document.getElementById('heroSpot');
-if(hero && matchMedia('(hover:hover) and (pointer:fine)').matches){
-  hero.addEventListener('mousemove',e=>{
-    const r=hero.getBoundingClientRect();
-    hero.style.setProperty('--mx',(e.clientX-r.left)+'px');
-    hero.style.setProperty('--my',(e.clientY-r.top)+'px');
-  });
-}
-
-// counting stats
-const co=new IntersectionObserver(es=>es.forEach(e=>{
-  if(!e.isIntersecting)return;co.unobserve(e.target);
-  const el=e.target,n=+el.dataset.n,suf=el.dataset.s||'';
-  const t0=performance.now();
-  (function tick(t){
-    const p=Math.min(1,(t-t0)/1400),v=n*(1-Math.pow(1-p,3));
-    el.textContent=Math.round(v).toLocaleString()+suf;
-    if(p<1)requestAnimationFrame(tick)
-  })(t0);
-}),{threshold:.5});
-document.querySelectorAll('.cnt').forEach(el=>co.observe(el));
-
 // 3D tilt on work cards (desktop only)
 if(matchMedia('(hover:hover) and (pointer:fine)').matches){
   document.querySelectorAll('.work').forEach(card=>{
     card.addEventListener('mousemove',e=>{
       const r=card.getBoundingClientRect();
       const px=(e.clientX-r.left)/r.width-.5, py=(e.clientY-r.top)/r.height-.5;
-      card.style.transform=`translateY(-8px) rotateX(${(-py*7).toFixed(2)}deg) rotateY(${(px*7).toFixed(2)}deg)`;
+      card.style.transform=`translateY(-6px) rotateX(${(-py*5).toFixed(2)}deg) rotateY(${(px*5).toFixed(2)}deg)`;
     });
     card.addEventListener('mouseleave',()=>{card.style.transform='';});
   });

@@ -1,38 +1,38 @@
 /* ============================================================
-   JG STUDIO — CINEMATIC SCENES ENGINE
+   JG STUDIO — WEBSITE-FOCUSED SCROLL SCENE ENGINE
    ------------------------------------------------------------
    Loads AFTER gsap.min.js, ScrollTrigger.min.js, lenis.min.js
    and assets/scroll.js (which boots Lenis + syncs ScrollTrigger).
 
+   Every animation in this file exists to sell websites:
+     · 'transform' — dated site rebuilds into a premium site (homepage)
+     · 'web'       — camera zoom-through of a website mockup (reusable)
+     · magnetic CTA buttons
+     · before/after drag slider (works even without GSAP)
+
    HOW THE ENGINE WORKS
    - Any <section class="cine" data-cine="NAME"> gets picked up.
    - CINE.register('NAME', builderFn) supplies the animation.
-   - Builders create a pinned, scrubbed GSAP timeline, so
-     scrolling down plays the scene and scrolling up reverses it
-     perfectly — that's native ScrollTrigger scrub behaviour.
-   - CSS defines the FINAL composed state; builders set the
-     INITIAL states with gsap.set. If GSAP is missing or the
-     user prefers reduced motion, nothing is set/pinned and the
-     scene renders as a premium static section (html.cine-static).
+   - Builders create a pinned, scrubbed GSAP timeline, so scrolling
+     down plays the scene and scrolling up reverses it perfectly.
+   - CSS defines the FINAL composed state; builders set the INITIAL
+     states with gsap.set. If GSAP is missing or the user prefers
+     reduced motion, html.cine-static is added and scenes render as
+     clean static sections.
 
-   ADDING A NEW SCENE (trainer / watch / phone / outfit...)
-   ------------------------------------------------------------
-   1. Markup:
-        <section class="cine cine-car" data-cine="trainer">
-          ...copy the car scene markup, swap assets/car.png
-             for assets/trainer.png (transparent PNG, ~2000px wide)
-        </section>
-   2. Register (anywhere after this file loads, or add below):
-        CINE.register('trainer', CINE.builders.productReveal({
-          zoomFrom: 1.25,     // camera start scale
-          separate: 22,       // px the slices drift apart
-          scanColor: null     // uses CSS defaults
-        }));
-   The generic productReveal preset powers ANY transparent-PNG
-   product: cars, trainers, watches, phones, bottles...
+   RE-THEMING THE TRANSFORMATION FOR A BARBER / GYM / RESTAURANT
+   - No JS changes needed. Copy the .cine-tf section in index.html,
+     keep data-cine="transform", and edit only the text inside
+     .tf-old (their dated site) and .tf-new (the premium rebuild).
+     The timeline targets classes, not content.
 
-   TUNING PRESETS — change CINE.presets values below to retune
-   every scene at once (lengths are "scroll distance" percents).
+   ADDING A BRAND-NEW SCENE TYPE
+     CINE.register('myscene', function (el) {
+       gsap.set(el.querySelector('.thing'), { autoAlpha: 0, y: 40 });
+       var tl = pinTl(el, '+=250%');
+       tl.to(el.querySelector('.thing'), { autoAlpha: 1, y: 0 });
+     });
+   then add <section class="cine" data-cine="myscene">…</section>.
    ============================================================ */
 
 (function () {
@@ -40,9 +40,7 @@
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var hasGSAP = typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined';
 
-  /* ---------- non-GSAP features first (always run) ---------- */
-
-  // Before/After slider — pure pointer events, no GSAP needed.
+  /* ---------- before/after slider (no GSAP needed) ---------- */
   document.querySelectorAll('.ba-wrap').forEach(function (wrap) {
     function setPos(clientX) {
       var r = wrap.getBoundingClientRect();
@@ -57,7 +55,6 @@
   });
 
   if (!hasGSAP || reduce) {
-    // static premium fallback — scenes show final composed state
     document.documentElement.classList.add('cine-static');
     return;
   }
@@ -65,12 +62,12 @@
   var gsap = window.gsap, ST = window.ScrollTrigger;
   gsap.registerPlugin(ST);
 
-  /* ---------- shared presets ---------- */
+  /* ---------- shared presets (tune everything here) ---------- */
   var PRESETS = {
     ease: 'power2.inOut',
-    easeOut: 'power3.out',
-    scrub: 1,                 // 1s catch-up = cinematic weight
-    len: { car: '+=230%', burger: '+=200%', house: '+=340%', web: '+=300%' }
+    pop: 'back.out(1.6)',
+    scrub: 1,                        // 1s catch-up = weighty, premium
+    len: { transform: '+=280%', web: '+=300%' }
   };
 
   function pinTl(el, end) {
@@ -84,128 +81,64 @@
     });
   }
 
-  /* ---------- registry ---------- */
-  var CINE = { scenes: {}, builders: {}, presets: PRESETS,
+  var CINE = { scenes: {}, presets: PRESETS,
     register: function (name, fn) { this.scenes[name] = fn; } };
   window.CINE = CINE;
 
   /* =================================================
-     GENERIC PRESET — productReveal
-     Works for any scene using the .cine-car markup
-     pattern (rig + slices + scan + callouts + glass).
+     'transform' — THE sales scene.
+     A dated local-business site rebuilds itself into a
+     premium site, piece by piece, driven by scroll.
      ================================================= */
-  CINE.builders.productReveal = function (opts) {
-    opts = opts || {};
-    var zoomFrom = opts.zoomFrom || 1.22;
-    var separate = opts.separate || 16;
-    return function (el) {
-      var rig = el.querySelector('.car-rig');
-      var scan = el.querySelector('.car-scan');
-      var sliceT = el.querySelector('.car-slice-top');
-      var sliceB = el.querySelector('.car-slice-bot');
-      var callouts = el.querySelectorAll('.cine-callout');
-      var glass = el.querySelectorAll('.cine-glass');
-      var head = el.querySelector('.cine-head');
-
-      // initial states (CSS holds the final look)
-      gsap.set(rig, { scale: zoomFrom, y: 40, autoAlpha: 0 });
-      gsap.set(scan, { left: '0%', autoAlpha: 0 });
-      gsap.set(callouts, { autoAlpha: 0, x: function (i, t) { return t.classList.contains('flip') || /right/.test(getComputedStyle(t).textAlign) ? 24 : -24; } });
-      gsap.set(glass, { autoAlpha: 0, y: 26 });
-      gsap.set(head, { autoAlpha: 0, y: 20 });
-
-      var tl = pinTl(el, PRESETS.len.car);
-      // 1. camera settles on the product
-      tl.to(head, { autoAlpha: 1, y: 0, duration: 0.5 }, 0)
-        .to(rig, { autoAlpha: 1, duration: 0.5 }, 0)
-        .to(rig, { scale: 1, y: 0, duration: 1.6 }, 0)
-        // 2. hologram scan sweep
-        .to(scan, { autoAlpha: 1, duration: 0.15 }, 1.0)
-        .to(scan, { left: '100%', duration: 1.0, ease: 'none' }, 1.05)
-        .to(scan, { autoAlpha: 0, duration: 0.15 }, 2.0)
-        // 3. subtle magnetic part separation (no explosions)
-        .to(sliceT, { y: -separate, duration: 0.9 }, 1.4)
-        .to(sliceB, { y: separate * 0.7, duration: 0.9 }, 1.4)
-        // 4. callouts draw in, staggered
-        .to(callouts, { autoAlpha: 1, x: 0, duration: 0.6, stagger: 0.25 }, 1.7)
-        // 5. glass panels float up
-        .to(glass, { autoAlpha: 1, y: 0, duration: 0.6, stagger: 0.3 }, 2.2)
-        // 6. parts settle back together — ends clean, premium
-        .to([sliceT, sliceB], { y: 0, duration: 0.8 }, 3.1);
-      return tl;
-    };
-  };
-
-  /* productReveal stays as a dormant reusable preset — wire it up when a
-     product scene is needed on some page, e.g.
-     CINE.register('product', CINE.builders.productReveal({ zoomFrom: 1.2 })); */
-
-  /* =================================================
-     scene 02 — burger layer reveal
-     starts assembled → layers lift apart → labels →
-     scroll up reassembles it (scrub reverse).
-     ================================================= */
-  CINE.register('burger', function (el) {
+  CINE.register('transform', function (el) {
     var q = function (s) { return el.querySelector(s); };
-    var callouts = el.querySelectorAll('.cine-callout');
-    var head = el.querySelector('.cine-head');
-    gsap.set(callouts, { autoAlpha: 0, y: 14 });
-    gsap.set(head, { autoAlpha: 0, y: 20 });
+    var qa = function (s) { return el.querySelectorAll(s); };
+    var head = q('.cine-head'), rig = q('.tf-rig');
+    var old = q('.tf-old'), oldBits = old ? old.children : [];
+    var hero = q('.tf-hero'), line = q('.tf-hero .tf-line'), ncta = q('.tf-hero .tf-ncta');
+    var cards = qa('.tf-card'), trust = qa('.tf-trust span');
+    var phone = q('.tf-phone');
+    var lblOld = q('.tf-label-old'), lblNew = q('.tf-label-new');
 
-    var tl = pinTl(el, PRESETS.len.burger);
+    /* initial states — CSS holds the final (premium) look */
+    gsap.set(head, { autoAlpha: 0, y: 20 });
+    gsap.set(rig, { autoAlpha: 0, y: 46, scale: 0.96 });
+    gsap.set(old, { autoAlpha: 1 });                       // BEFORE shown first
+    gsap.set([hero, line, ncta], { autoAlpha: 0 });
+    gsap.set(hero, { y: 26 });
+    gsap.set(line, { scaleX: 0, transformOrigin: '0 50%' });
+    gsap.set(ncta, { scale: 0.6 });
+    gsap.set(cards, { autoAlpha: 0, y: 30 });
+    gsap.set(trust, { autoAlpha: 0, scale: 0.7 });
+    gsap.set(phone, { autoAlpha: 0, x: 90, y: 20 });
+    gsap.set(lblNew, { autoAlpha: 0 });
+
+    var tl = pinTl(el, PRESETS.len.transform);
+    /* 1. settle on the dated site */
     tl.to(head, { autoAlpha: 1, y: 0, duration: 0.5 }, 0)
-      // gentle settle-in
-      .from('.bg-rig', { scale: 1.12, y: 30, autoAlpha: 0, duration: 1.0 }, 0)
-      // layers separate — subtle, food-brand premium, not cartoon
-      .to(q('.bg-bun-top'), { y: -78, rotate: -2, duration: 1.2 }, 1.0)
-      .to(q('.bg-lettuce'), { y: -44, duration: 1.2 }, 1.05)
-      .to(q('.bg-cheese'), { y: -20, rotate: -4, duration: 1.2 }, 1.1)
-      .to(q('.bg-patty'), { y: 10, duration: 1.2 }, 1.15)
-      .to(q('.bg-bun-bot'), { y: 34, duration: 1.2 }, 1.2)
-      .to(q('.bg-shadow'), { scaleX: 1.15, opacity: 0.6, duration: 1.2 }, 1.2)
-      // labels
-      .to(callouts, { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.25 }, 1.6)
-      // hold, then rebuild before release
-      .to([q('.bg-bun-top'), q('.bg-lettuce'), q('.bg-cheese'), q('.bg-patty'), q('.bg-bun-bot')],
-          { y: 0, rotate: 0, duration: 1.0 }, 3.0)
-      .to(q('.bg-shadow'), { scaleX: 1, opacity: 1, duration: 1.0 }, 3.0);
+      .to(rig, { autoAlpha: 1, y: 0, scale: 1, duration: 0.9 }, 0.1)
+      /* 2. the old site falls away, piece by piece */
+      .to(oldBits, { autoAlpha: 0, y: -14, duration: 0.5, stagger: 0.14 }, 1.4)
+      .to(old, { autoAlpha: 0, duration: 0.5 }, 2.1)
+      .to(lblOld, { autoAlpha: 0.25, duration: 0.4 }, 2.1)
+      .to(lblNew, { autoAlpha: 1, duration: 0.4 }, 2.3)
+      /* 3. the premium site snaps into place */
+      .to(hero, { autoAlpha: 1, y: 0, duration: 0.7 }, 2.4)
+      .to(line, { autoAlpha: 1, scaleX: 1, duration: 0.5 }, 2.8)
+      .to(ncta, { autoAlpha: 1, scale: 1, duration: 0.5, ease: PRESETS.pop }, 3.0)
+      .to(cards, { autoAlpha: 1, y: 0, duration: 0.6, stagger: 0.18 }, 3.2)
+      .to(trust, { autoAlpha: 1, scale: 1, duration: 0.45, stagger: 0.15, ease: PRESETS.pop }, 3.8)
+      /* 4. mobile preview slides in — mobile-first, proven */
+      .to(phone, { autoAlpha: 1, x: 0, y: 0, duration: 0.8 }, 4.2);
     return tl;
   });
 
   /* =================================================
-     scene 03 — house walkthrough camera journey
-     camera "flies" from room to room: each frame scales
-     up past the lens while the next fades in from depth.
-     Swap the CSS-art frames for client photos and it
-     becomes a real property walkthrough.
-     ================================================= */
-  CINE.register('house', function (el) {
-    var rooms = el.querySelectorAll('.hw-room');
-    var head = el.querySelector('.cine-head');
-    if (!rooms.length) return;
-    gsap.set(rooms, { autoAlpha: 0, scale: 0.72, filter: 'blur(6px)' });
-    gsap.set(rooms[0], { autoAlpha: 1, scale: 1, filter: 'blur(0px)' });
-    gsap.set(head, { autoAlpha: 0, y: 20 });
-
-    var tl = pinTl(el, PRESETS.len.house);
-    tl.to(head, { autoAlpha: 1, y: 0, duration: 0.4 }, 0);
-    var t = 0.5, STEP = 1.0;
-    for (var i = 0; i < rooms.length - 1; i++) {
-      // current room flies past the camera...
-      tl.to(rooms[i], { scale: 1.7, autoAlpha: 0, filter: 'blur(8px)', duration: STEP }, t);
-      // ...next room arrives from depth
-      tl.to(rooms[i + 1], { scale: 1, autoAlpha: 1, filter: 'blur(0px)', duration: STEP }, t + STEP * 0.35);
-      t += STEP;
-    }
-    return tl;
-  });
-
-  /* =================================================
-     scene 04 — website camera zoom-through
-     flies INTO a website mockup: full page → hero →
+     'web' — website camera zoom-through (reusable).
+     Flies INTO a website mockup: full page → hero →
      services → portfolio → contact → CTA. Camera maths
-     are computed from live layout, so it stays correct
-     on resize (invalidateOnRefresh).
+     come from live layout, so it survives resizes.
+     Add its section markup to any page to activate.
      ================================================= */
   CINE.register('web', function (el) {
     var view = el.querySelector('.wz-viewport');
@@ -217,12 +150,10 @@
     gsap.set(view, { autoAlpha: 0, y: 40, scale: 0.94 });
     gsap.set(head, { autoAlpha: 0, y: 20 });
 
-    // camera transform to centre a stop element at a given zoom
     function camTo(stop, zoom) {
       return function () {
         var sr = site.getBoundingClientRect();
         var tr = stop.getBoundingClientRect();
-        // element centre in the site's untransformed space
         var curScale = gsap.getProperty(site, 'scaleX') || 1;
         var cx = (tr.left - sr.left) / curScale + tr.width / curScale / 2;
         var cy = (tr.top - sr.top) / curScale + tr.height / curScale / 2;
@@ -235,7 +166,7 @@
     tl.to(head, { autoAlpha: 1, y: 0, duration: 0.4 }, 0)
       .to(view, { autoAlpha: 1, y: 0, scale: 1, duration: 0.8 }, 0);
     var t = 1.0;
-    stops.forEach(function (stop, i) {
+    stops.forEach(function (stop) {
       var zoom = parseFloat(stop.getAttribute('data-wz-zoom')) || 1.8;
       tl.to(site, {
         duration: 1.0,
@@ -243,10 +174,8 @@
         y: function () { return camTo(stop, zoom)().y; },
         scale: zoom
       }, t);
-      tl.to(stop, { '--hl': 1, duration: 0.1 }, t + 0.5);
       t += 1.15;
     });
-    // pull back out to the full page at the end
     tl.to(site, { x: 0, y: 0, scale: 1, duration: 1.0 }, t);
     return tl;
   });
@@ -257,10 +186,10 @@
     if (CINE.scenes[name]) CINE.scenes[name](el);
   });
 
-  /* ---------- premium feature: magnetic buttons ---------- */
+  /* ---------- magnetic CTA buttons ---------- */
   if (matchMedia('(hover:hover) and (pointer:fine)').matches) {
     document.querySelectorAll('[data-magnetic]').forEach(function (btn) {
-      var strength = parseFloat(btn.getAttribute('data-magnetic')) || 0.35;
+      var strength = parseFloat(btn.getAttribute('data-magnetic')) || 0.3;
       btn.addEventListener('mousemove', function (e) {
         var r = btn.getBoundingClientRect();
         var dx = e.clientX - (r.left + r.width / 2);

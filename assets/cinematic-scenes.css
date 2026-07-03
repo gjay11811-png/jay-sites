@@ -1,194 +1,117 @@
 /* ============================================================
-   JG STUDIO — CINEMATIC SCENES (reusable engine styles)
+   JG STUDIO — WEBSITE-FOCUSED SCROLL SCENES
    ------------------------------------------------------------
-   Pairs with assets/cinematic-scenes.js.
+   Pairs with assets/cinematic-scenes.js. Everything here sells
+   one thing: websites. No product/food/property gimmicks.
 
    HOW IT WORKS
-   - Every cinematic section is:  <section class="cine" data-cine="NAME">
+   - A scene is:  <section class="cine" data-cine="NAME"> ... </section>
    - This CSS defines the FINAL, fully-composed look of each scene.
    - The JS sets the *initial* (hidden/offset) states and scrubs
-     between them with GSAP ScrollTrigger (pin:true, scrub:1).
-   - If GSAP/CDN fails or the user prefers reduced motion, the JS
-     never runs its setters, so the scene simply renders as a
-     premium static composition. Nothing breaks.
+     between them with GSAP ScrollTrigger (pin:true, scrub:1) —
+     scrolling up reverses perfectly, automatically.
+   - If GSAP fails to load or the visitor prefers reduced motion,
+     the JS never runs, html.cine-static is added, and the scene
+     renders as a clean static section. Nothing breaks.
 
-   ADDING A NEW SCENE LATER (car / burger / trainer / watch...)
-   1. Add markup:  <section class="cine" data-cine="trainer"> ... </section>
-   2. Style its layers here (copy a block below as a template).
-   3. Register a builder in cinematic-scenes.js:
-        CINE.register('trainer', function(el){ ... });
-   That's it — the engine auto-wires any [data-cine] it finds.
+   ADDING ANOTHER TRANSFORMATION SCENE (barber / gym / restaurant)
+   1. Copy the .cine-tf section markup from index.html.
+   2. Change only the TEXT inside .tf-old and .tf-new
+      (e.g. "TONY'S BARBERS" / dated copy → premium barber copy).
+   3. Keep data-cine="transform" — the animation is content-
+      agnostic, so no JS changes are needed for a re-theme.
+   To run TWO transform scenes on one page, give the second one
+   data-cine="transform" as well — the engine wires every match.
    ============================================================ */
 
 :root{
-  --cy:#5ee1ff;          /* hologram cyan */
+  --cy:#5ee1ff;
   --cy-dim:#5ee1ff55;
-  --cine-bg:#060609;     /* scene background (darker than site bg) */
+  --cine-bg:#060609;
 }
 
 /* ---------- shared scene shell ---------- */
-.cine{position:relative;height:100vh;min-height:620px;overflow:hidden;
+.cine{position:relative;height:100vh;min-height:640px;overflow:hidden;
   background:var(--cine-bg);border-block:1px solid #ffffff0e}
 .cine .cine-stage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
 .cine .cine-head{position:absolute;top:clamp(28px,6vh,64px);left:0;right:0;text-align:center;z-index:6;padding:0 22px}
-.cine .cine-head .kick{color:var(--cy);font-weight:700;letter-spacing:.24em;text-transform:uppercase;font-size:11px}
-.cine .cine-head h2{font-family:Sora;font-size:clamp(22px,3.4vw,36px);margin-top:8px}
-.cine .cine-head p{color:var(--dim);font-size:14px;margin-top:6px;max-width:520px;margin-inline:auto}
-
-/* hologram grid backdrop */
-.cine-grid{position:absolute;inset:0;pointer-events:none;opacity:.5;
+.cine .cine-head .kick{color:var(--a,#d4af37);font-weight:700;letter-spacing:.26em;text-transform:uppercase;font-size:11px}
+.cine .cine-head h2{font-family:Sora;font-size:clamp(22px,3.2vw,34px);margin-top:10px;letter-spacing:-.01em}
+.cine-grid{position:absolute;inset:0;pointer-events:none;opacity:.4;
   background:
-    radial-gradient(ellipse 80% 55% at 50% 62%, #5ee1ff0d, transparent 70%),
-    linear-gradient(#ffffff06 1px, transparent 1px),
-    linear-gradient(90deg, #ffffff06 1px, transparent 1px);
-  background-size:100% 100%, 46px 46px, 46px 46px}
+    radial-gradient(ellipse 80% 55% at 50% 62%, #d4af370a, transparent 70%),
+    linear-gradient(#ffffff05 1px, transparent 1px),
+    linear-gradient(90deg, #ffffff05 1px, transparent 1px);
+  background-size:100% 100%, 52px 52px, 52px 52px}
 .cine-vign{position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(ellipse 120% 90% at 50% 50%, transparent 55%, #000000cc 100%)}
-/* horizon "floor" line */
-.cine-floor{position:absolute;left:8%;right:8%;bottom:16%;height:1px;pointer-events:none;
-  background:linear-gradient(90deg,transparent,var(--cy-dim),transparent)}
+  background:radial-gradient(ellipse 120% 90% at 50% 50%, transparent 55%, #000000c4 100%)}
 
-/* hologram callout (line + label) — reusable in any scene */
-.cine-callout{position:absolute;z-index:5;font-size:12.5px;line-height:1.35;max-width:190px}
-.cine-callout i{display:block;width:70px;height:1px;background:linear-gradient(90deg,var(--cy),transparent);
-  margin-bottom:8px;position:relative}
-.cine-callout i::before{content:"";position:absolute;left:-3px;top:-3px;width:7px;height:7px;border-radius:50%;
-  background:var(--cy);box-shadow:0 0 12px var(--cy)}
-.cine-callout b{display:block;font-family:Sora;font-size:13px;color:var(--cy);letter-spacing:.04em}
-.cine-callout span{color:var(--dim)}
-.cine-callout.flip i{background:linear-gradient(270deg,var(--cy),transparent)}
-.cine-callout.flip i::before{left:auto;right:-3px}
-
-/* glass info panel — reusable */
-.cine-glass{position:absolute;z-index:5;background:#ffffff08;border:1px solid #5ee1ff30;border-radius:14px;
-  padding:14px 18px;font-family:Sora;font-size:13px;color:#e8faff;backdrop-filter:blur(8px);
-  box-shadow:0 18px 40px -18px #000c, inset 0 1px 0 #ffffff14}
-.cine-glass span{display:block;font-family:Inter;font-weight:400;color:var(--dim);font-size:11.5px;margin-top:3px}
-
-/* ============ SCENE 01 — CAR REVEAL ============ */
-/* swap assets/car.png for any product shot with a transparent
-   background (trainer, watch, phone) and re-use this whole block */
-.cine-car .car-rig{position:relative;width:min(78vw,880px);z-index:3}
-.cine-car .car-glow{position:absolute;left:6%;right:6%;bottom:-6%;height:26%;border-radius:50%;
-  background:radial-gradient(ellipse,#5ee1ff2e,transparent 70%);filter:blur(18px)}
-.cine-car .car-img{display:block;width:100%;height:auto;position:relative;z-index:2;
-  filter:drop-shadow(0 40px 60px #000c) drop-shadow(0 0 46px #5ee1ff14)}
-/* "magnetic separation" slices: same image, clipped bands, nudged by JS */
-.cine-car .car-slice{position:absolute;inset:0;z-index:3;pointer-events:none;opacity:.9}
-.cine-car .car-slice img{width:100%;height:auto;display:block}
-.cine-car .car-slice-top{clip-path:inset(0 0 62% 0)}
-.cine-car .car-slice-bot{clip-path:inset(72% 0 0 0)}
-/* scan sweep */
-.cine-car .car-scan{position:absolute;top:-4%;bottom:-4%;width:2px;left:0;z-index:4;pointer-events:none;
-  background:linear-gradient(180deg,transparent,var(--cy),transparent);box-shadow:0 0 22px 4px var(--cy-dim)}
-.cine-car .co-1{top:26%;left:6%}
-.cine-car .co-2{top:44%;right:5%;text-align:right}
-.cine-car .co-3{bottom:20%;left:12%}
-.cine-car .gp-1{bottom:14%;right:8%}
-.cine-car .gp-2{top:24%;right:24%}
+/* ============ WEBSITE TRANSFORMATION (data-cine="transform") ============
+   The dated site rebuilds itself into a premium one as you scroll. */
+.cine-tf .tf-rig{position:relative;width:min(84vw,780px);z-index:3}
+.tf-browser{border-radius:14px;overflow:hidden;border:1px solid #ffffff1e;background:#0e0e14;
+  box-shadow:0 60px 130px -40px #000f, 0 0 0 1px #ffffff08}
+.tf-bar{display:flex;gap:6px;align-items:center;padding:10px 13px;background:#13131a;border-bottom:1px solid #ffffff0d}
+.tf-bar i{width:9px;height:9px;border-radius:50%;display:block}
+.tf-bar i:nth-child(1){background:#ff5f57}.tf-bar i:nth-child(2){background:#febc2e}.tf-bar i:nth-child(3){background:#28c840}
+.tf-url{margin-left:8px;flex:1;background:#000;border-radius:6px;padding:4px 12px;font-size:10.5px;color:#7c7c88}
+.tf-view{position:relative;min-height:min(52vh,400px);background:#0e0e14}
+/* BEFORE — deliberately dated (final state = hidden; JS shows it first) */
+.tf-old{position:absolute;inset:0;background:#e9e7e0;color:#333;padding:30px 34px;
+  font-family:Times,serif;opacity:0;visibility:hidden}
+.tf-old b{display:block;font-size:24px;color:#1a1aa6;letter-spacing:.02em}
+.tf-old u{display:block;font-size:13px;color:#1a1aa6;margin:10px 0 18px}
+.tf-old p{font-size:14.5px;line-height:1.5;max-width:480px;color:#444}
+.tf-old .tf-old-note{margin-top:14px;font-style:italic;color:#666}
+.tf-old .tf-old-btn{display:inline-block;margin-top:16px;border:2px outset #999;background:#ddd;
+  color:#333;font-size:12px;padding:4px 16px;font-family:Verdana,sans-serif}
+/* AFTER — the premium rebuild (final state = visible) */
+.tf-new{position:absolute;inset:0;padding:24px 26px;display:flex;flex-direction:column;gap:14px;
+  background:#0e0e14}
+.tf-hero{padding:22px 24px;border-radius:12px;border:1px solid #ffffff10;
+  background:radial-gradient(ellipse at 18% 0%,#d4af3714,transparent 60%),#14141b}
+.tf-nkick{display:block;font-family:Sora;font-size:9.5px;letter-spacing:.26em;color:#d4af37;margin-bottom:8px}
+.tf-hero b{font-family:Sora;font-size:22px;color:#f5f4f0}
+.tf-hero b em,.tf-pbody b em{font-style:normal;color:#d4af37}
+.tf-line{display:block;width:58%;height:8px;border-radius:4px;background:#ffffff16;margin-top:12px}
+.tf-ncta{display:inline-block;margin-top:14px;background:#d4af37;color:#000;font-family:Sora;font-weight:700;
+  font-size:12px;padding:9px 18px;border-radius:9px;box-shadow:0 10px 26px -10px #d4af3799;align-self:flex-start}
+.tf-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.tf-card{border:1px solid #ffffff10;border-radius:10px;background:#13131a;padding:14px;min-height:64px}
+.tf-card b{display:block;width:62%;height:8px;border-radius:4px;background:#ffffffa8}
+.tf-card i{display:block;width:86%;height:6px;border-radius:3px;background:#ffffff1c;margin-top:9px}
+.tf-trust{display:flex;gap:10px;flex-wrap:wrap}
+.tf-trust span{background:#ffffff08;border:1px solid #ffffff14;border-radius:20px;padding:6px 14px;
+  font-size:11px;color:#cfcfd6;font-family:Sora}
+.tf-trust span:first-child{color:#d4af37}
+/* mobile preview — slides in at the end */
+.tf-phone{position:absolute;right:-4%;bottom:-8%;width:clamp(120px,15vw,160px);z-index:5;
+  border-radius:22px;border:1px solid #ffffff24;background:#0e0e14;overflow:hidden;
+  box-shadow:0 40px 90px -26px #000f, inset 0 1px 0 #ffffff14}
+.tf-phead{height:18px;background:#13131a;border-bottom:1px solid #ffffff0d;position:relative}
+.tf-phead::after{content:"";position:absolute;left:50%;top:6px;transform:translateX(-50%);
+  width:34%;height:5px;border-radius:3px;background:#000}
+.tf-pbody{padding:16px 14px 20px;display:flex;flex-direction:column;align-items:flex-start}
+.tf-pbody b{font-family:Sora;font-size:13px;color:#f5f4f0}
+.tf-pbody .tf-line{width:80%;height:6px;margin-top:9px}
+.tf-pbody .tf-ncta{font-size:10px;padding:7px 12px;margin-top:11px}
+/* before/after status labels */
+.tf-label{position:absolute;top:-34px;font-family:Sora;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.tf-label-old{left:2px;color:#8f8f9c}
+.tf-label-new{right:2px;color:#d4af37}
 @media(max-width:760px){
-  .cine-car .car-rig{width:94vw}
-  .cine-car .co-2,.cine-car .gp-2{display:none}
-  .cine-car .co-1{top:20%;left:5%}
-  .cine-car .co-3{bottom:14%;left:5%}
-  .cine-car .gp-1{bottom:8%;right:5%}
+  .cine-tf .tf-rig{width:94vw}
+  .tf-old{padding:20px}
+  .tf-new{padding:16px}
+  .tf-cards{grid-template-columns:1fr 1fr}
+  .tf-card:nth-child(3){display:none}
+  .tf-phone{right:-2%;bottom:-4%}
 }
 
-/* ============ SCENE 02 — BURGER LAYERS ============ */
-/* pure CSS layers — replace with cut-out PNGs per layer for a
-   client build (e.g. assets/burger-bun-top.png etc.) */
-.cine-burger{background:#0a0705}
-.cine-burger .cine-grid{opacity:.25}
-.cine-burger .bg-rig{position:relative;width:min(46vw,340px);aspect-ratio:1/1.06;z-index:3}
-.cine-burger .bg-layer{position:absolute;left:50%;transform:translateX(-50%);border-radius:50px;
-  box-shadow:0 22px 44px -14px #000d, inset 0 3px 8px #ffffff22}
-.bg-bun-top{top:0;width:100%;height:34%;border-radius:52% 52% 26% 26%/86% 86% 20% 20%;
-  background:radial-gradient(120% 150% at 50% 0%,#e8a655,#b06a2a 70%,#8f5220);z-index:7}
-.bg-bun-top::after{content:"";position:absolute;inset:18% 12% auto;height:20%;
-  background:radial-gradient(4px 5px at 12% 40%,#f7e9c8 40%,transparent 44%),
-             radial-gradient(4px 5px at 36% 70%,#f7e9c8 40%,transparent 44%),
-             radial-gradient(4px 5px at 60% 30%,#f7e9c8 40%,transparent 44%),
-             radial-gradient(4px 5px at 84% 60%,#f7e9c8 40%,transparent 44%)}
-.bg-lettuce{top:30%;width:108%;height:12%;z-index:6;border-radius:40%;
-  background:radial-gradient(140% 190% at 50% -30%,#9ed943,#5c9422 75%,#476f1c);
-  clip-path:polygon(0 45%,6% 80%,14% 40%,24% 85%,34% 45%,44% 88%,54% 42%,64% 84%,74% 44%,84% 86%,93% 46%,100% 78%,100% 0,0 0)}
-.bg-cheese{top:38%;width:100%;height:10%;z-index:5;border-radius:8px;transform:translateX(-50%) rotate(-1.5deg);
-  background:linear-gradient(160deg,#ffce4d,#e8a325);
-  clip-path:polygon(0 0,100% 0,100% 62%,88% 100%,76% 62%,60% 100%,46% 62%,30% 100%,16% 62%,0 100%)}
-.bg-patty{top:47%;width:98%;height:17%;z-index:4;border-radius:26px;
-  background:radial-gradient(130% 200% at 50% -40%,#6e3d24,#452412 70%,#331a0d)}
-.bg-patty::after{content:"";position:absolute;inset:22% 8%;border-radius:20px;opacity:.5;
-  background:repeating-linear-gradient(90deg,transparent 0 14px,#00000055 14px 18px)}
-.bg-bun-bot{top:65%;width:100%;height:20%;z-index:3;border-radius:14% 14% 46% 46%/22% 22% 90% 90%;
-  background:radial-gradient(120% 160% at 50% -20%,#d99a4e,#a15f26 75%,#83491c)}
-.bg-shadow{top:92%;width:86%;height:7%;z-index:1;border-radius:50%;filter:blur(10px);
-  background:radial-gradient(ellipse,#000b,transparent 70%)}
-.cine-burger .co-1{top:24%;left:8%}
-.cine-burger .co-2{top:42%;right:7%;text-align:right}
-.cine-burger .co-3{bottom:24%;left:10%}
-.cine-burger .cine-callout b{color:#ffce4d}
-.cine-burger .cine-callout i,.cine-burger .cine-callout.flip i{background:linear-gradient(90deg,#ffce4d,transparent)}
-.cine-burger .cine-callout.flip i{background:linear-gradient(270deg,#ffce4d,transparent)}
-.cine-burger .cine-callout i::before{background:#ffce4d;box-shadow:0 0 12px #ffce4d}
-@media(max-width:760px){.cine-burger .bg-rig{width:70vw}
-  .cine-burger .co-2{display:none}.cine-burger .co-1{top:18%;left:5%}.cine-burger .co-3{bottom:12%;left:5%}}
-
-/* ============ SCENE 03 — HOUSE WALKTHROUGH ============ */
-/* each .hw-room is a full-frame "depth panel"; the JS flies the
-   camera from one to the next. Swap the CSS-art content for real
-   interior photos (assets/house-hallway.jpg etc.) per client. */
-.cine-house{background:#07080c;perspective:1100px}
-.cine-house .hw-world{position:absolute;inset:0;transform-style:preserve-3d}
-.hw-room{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px}
-.hw-frame{width:min(74vw,760px);height:min(56vh,430px);border-radius:18px;position:relative;overflow:hidden;
-  border:1px solid #ffffff1c;box-shadow:0 40px 90px -30px #000e, inset 0 1px 0 #ffffff12}
-.hw-tag{font-family:Sora;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--cy)}
-.hw-name{font-family:Sora;font-size:clamp(18px,2.6vw,26px)}
-/* architectural line-art per room, all CSS gradients */
-.hw-outside .hw-frame{background:
-  linear-gradient(180deg,#0e1524 0 55%,#0a0f18 55%);}
-.hw-outside .hw-frame::before{content:"";position:absolute;left:18%;right:18%;top:22%;bottom:20%;
-  border:1px solid #5ee1ff44;border-bottom:none;
-  background:linear-gradient(180deg,#101a2c,#0c1422);clip-path:polygon(0 28%,50% 0,100% 28%,100% 100%,0 100%)}
-.hw-outside .hw-frame::after{content:"";position:absolute;left:46%;width:8%;top:52%;bottom:20%;
-  background:#5ee1ff22;border:1px solid #5ee1ff55}
-.hw-door .hw-frame{background:linear-gradient(180deg,#0b0f1a,#0d1220)}
-.hw-door .hw-frame::before{content:"";position:absolute;left:34%;right:34%;top:12%;bottom:0;
-  border:1px solid #5ee1ff55;border-bottom:none;border-radius:8px 8px 0 0;
-  background:linear-gradient(180deg,#101a30,#0b1120)}
-.hw-door .hw-frame::after{content:"";position:absolute;left:57%;top:54%;width:9px;height:9px;border-radius:50%;
-  background:var(--cy);box-shadow:0 0 14px var(--cy)}
-.hw-hall .hw-frame{background:
-  linear-gradient(180deg,#0c101c 0 70%,#090d16 70%)}
-.hw-hall .hw-frame::before{content:"";position:absolute;inset:0;
-  background:
-   linear-gradient(105deg,transparent 24%,#5ee1ff22 24.2%,#5ee1ff22 24.6%,transparent 24.8%),
-   linear-gradient(-105deg,transparent 24%,#5ee1ff22 24.2%,#5ee1ff22 24.6%,transparent 24.8%),
-   linear-gradient(90deg,transparent 38%,#5ee1ff33 38.2%,#5ee1ff33 38.5%,transparent 38.7%,transparent 61.3%,#5ee1ff33 61.5%,#5ee1ff33 61.8%,transparent 62%);}
-.hw-hall .hw-frame::after{content:"";position:absolute;left:38.5%;right:38.5%;top:26%;bottom:30%;
-  background:linear-gradient(180deg,#12203a,#0a1120);border:1px solid #5ee1ff3a}
-.hw-living .hw-frame{background:linear-gradient(180deg,#0d111d 0 68%,#0a0e17 68%)}
-.hw-living .hw-frame::before{content:"";position:absolute;left:12%;bottom:20%;width:34%;height:22%;
-  border-radius:10px 10px 4px 4px;background:#152036;border:1px solid #5ee1ff30;
-  box-shadow:28% 0 0 0 #152036}
-.hw-living .hw-frame::after{content:"";position:absolute;right:16%;top:18%;width:26%;height:34%;
-  border:1px solid #5ee1ff44;background:linear-gradient(140deg,#5ee1ff14,transparent 60%)}
-.hw-kitchen .hw-frame{background:linear-gradient(180deg,#0c121c 0 62%,#090d15 62%)}
-.hw-kitchen .hw-frame::before{content:"";position:absolute;left:10%;right:10%;bottom:24%;height:16%;
-  background:#131c2e;border:1px solid #5ee1ff2e;border-radius:4px}
-.hw-kitchen .hw-frame::after{content:"";position:absolute;left:14%;right:14%;top:16%;height:12%;
-  background:repeating-linear-gradient(90deg,#131c2e 0 18%,transparent 18% 21%);border-radius:3px}
-.hw-bed .hw-frame{background:linear-gradient(180deg,#0c101b 0 70%,#090c14 70%)}
-.hw-bed .hw-frame::before{content:"";position:absolute;left:26%;right:26%;bottom:22%;height:26%;
-  border-radius:10px;background:linear-gradient(180deg,#182642,#0f1728);border:1px solid #5ee1ff30}
-.hw-bed .hw-frame::after{content:"";position:absolute;left:30%;width:12%;bottom:44%;height:8%;
-  border-radius:6px;background:#20304f}
-.hw-cta .hw-frame{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;
-  background:radial-gradient(ellipse at 50% 30%,#101a2e,#080b12)}
-.hw-cta .hw-frame b{font-family:Sora;font-size:clamp(18px,2.4vw,26px);text-align:center;padding:0 20px}
-@media(max-width:760px){.hw-frame{width:92vw;height:48vh}}
-
-/* ============ SCENE 04 — WEBSITE ZOOM-THROUGH ============ */
+/* ============ WEBSITE ZOOM-THROUGH (data-cine="web") ============
+   Reusable pitch scene — the camera flies through a website mockup
+   section by section. Not on the homepage right now; drop its
+   section markup into any page to use it. */
 .cine-web{background:#05070b}
 .cine-web .wz-viewport{position:relative;width:min(80vw,860px);z-index:3}
 .wz-browser{border-radius:14px;overflow:hidden;border:1px solid #ffffff22;
@@ -197,15 +120,13 @@
 .wz-bar i{width:9px;height:9px;border-radius:50%;display:block}
 .wz-bar i:nth-child(1){background:#ff5f57}.wz-bar i:nth-child(2){background:#febc2e}.wz-bar i:nth-child(3){background:#28c840}
 .wz-bar .wz-url{margin-left:8px;flex:1;background:#000;border-radius:6px;padding:3px 12px;font-size:10px;color:#8a8a94}
-/* the mock site the camera flies through */
 .wz-site{background:#0b0d13;padding:26px 28px;display:flex;flex-direction:column;gap:22px;transform-origin:0 0}
 .wz-sec{border:1px solid #ffffff14;border-radius:10px;padding:18px;position:relative}
-.wz-sec.hot{outline:1px solid var(--cy-dim)}
 .wz-hero{min-height:120px;display:flex;flex-direction:column;justify-content:center;gap:8px;
   background:radial-gradient(ellipse at 30% 20%,#d4af3714,transparent 60%)}
 .wz-hero b{font-family:Sora;font-size:20px}
 .wz-hero i{display:block;width:56%;height:8px;border-radius:4px;background:#ffffff18;font-style:normal}
-.wz-hero .wz-btn{width:110px;height:26px;border-radius:8px;background:var(--a);margin-top:6px}
+.wz-hero .wz-btn{width:110px;height:26px;border-radius:8px;background:var(--a,#d4af37);margin-top:6px}
 .wz-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;border:0;padding:0}
 .wz-card{border:1px solid #ffffff14;border-radius:10px;padding:14px;min-height:82px}
 .wz-card b{display:block;width:60%;height:9px;border-radius:4px;background:#ffffffb0}
@@ -214,12 +135,9 @@
 .wz-folio{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;border:0;padding:0}
 .wz-shot{aspect-ratio:4/3;border-radius:8px;border:1px solid #ffffff14;
   background:linear-gradient(140deg,#1a2030,#10141f)}
-.wz-shot:nth-child(2){background:linear-gradient(140deg,#241d10,#141009)}
-.wz-shot:nth-child(3){background:linear-gradient(140deg,#101f1a,#0a1410)}
-.wz-shot:nth-child(4){background:linear-gradient(140deg,#20101d,#140a12)}
 .wz-form{display:flex;flex-direction:column;gap:10px}
 .wz-form i{display:block;height:26px;border-radius:7px;background:#ffffff10;border:1px solid #ffffff14;font-style:normal}
-.wz-form .wz-btn{width:130px;height:28px;border-radius:8px;background:var(--wa)}
+.wz-form .wz-btn{width:130px;height:28px;border-radius:8px;background:var(--wa,#25d366)}
 .wz-cta{display:flex;align-items:center;justify-content:center;min-height:80px;
   background:radial-gradient(ellipse at 50% 0%,#25d36616,transparent 70%)}
 .wz-cta b{font-family:Sora;font-size:15px;color:#eafff2}
@@ -229,47 +147,43 @@
 
 /* ============ PREMIUM FEATURES (reusable) ============ */
 /* section divider — drop <div class="cine-divider"></div> anywhere */
-.cine-divider{height:1px;margin:70px auto 0;max-width:1040px;
-  background:linear-gradient(90deg,transparent,#d4af3766,transparent);position:relative}
+.cine-divider{height:1px;margin:70px auto 0;max-width:1100px;
+  background:linear-gradient(90deg,transparent,#d4af3755,transparent);position:relative}
 .cine-divider::after{content:"◆";position:absolute;left:50%;top:-9px;transform:translateX(-50%);
-  color:var(--a);font-size:10px;background:var(--bg);padding:0 10px}
+  color:#d4af37;font-size:9px;background:var(--bg,#09090c);padding:0 10px}
 
 /* magnetic buttons — add data-magnetic to any element (JS drives it) */
 [data-magnetic]{will-change:transform}
 
-/* before/after showcase — drag the handle */
-.ba-wrap{position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--line);
-  aspect-ratio:16/9;max-width:860px;margin:0 auto;user-select:none;touch-action:pan-y}
-.ba-pane{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;padding:30px}
-.ba-before{background:linear-gradient(160deg,#e8e8e8,#cfcfcf);color:#333}
-.ba-before b{font-family:Times,serif;font-size:clamp(18px,3vw,30px);color:#222;text-decoration:underline}
-.ba-before span{font-family:Times,serif;font-size:13px;color:#555;text-align:center}
+/* before/after comparison — drag the handle.
+   To add another example: copy the .ba-wrap block in index.html and
+   change the copy inside .ba-before / .ba-after. The slider JS wires
+   every .ba-wrap it finds automatically. */
+.ba-wrap{position:relative;border-radius:20px;overflow:hidden;border:1px solid #22222b;
+  aspect-ratio:16/9;max-width:880px;margin:0 auto;user-select:none;touch-action:pan-y;
+  box-shadow:0 40px 90px -40px #000d}
+.ba-pane{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;padding:30px}
+.ba-before{background:linear-gradient(160deg,#e9e7e0,#cfcdc4);color:#333}
+.ba-before b{font-family:Times,serif;font-size:clamp(18px,3vw,30px);color:#1a1aa6;text-decoration:underline}
+.ba-before span{font-family:Times,serif;font-size:13.5px;color:#555;text-align:center;max-width:420px}
 .ba-before .ba-oldbtn{border:2px outset #999;background:#ddd;color:#333;font-size:12px;padding:4px 14px;font-family:Verdana,sans-serif}
-.ba-after{background:radial-gradient(ellipse at 30% 10%,#1c1913,var(--panel));clip-path:inset(0 0 0 var(--ba,50%))}
-.ba-after b{font-family:Sora;font-size:clamp(20px,3.2vw,34px)}
-.ba-after b em{font-style:normal;color:var(--a)}
-.ba-after span{color:var(--dim);font-size:13px;text-align:center}
-.ba-after .ba-newbtn{background:var(--a);color:#000;font-weight:800;font-family:Sora;font-size:13px;
-  padding:10px 24px;border-radius:12px;box-shadow:0 12px 28px -10px var(--a)}
-.ba-handle{position:absolute;top:0;bottom:0;left:var(--ba,50%);width:2px;background:var(--a);z-index:5;cursor:ew-resize}
+.ba-after{background:radial-gradient(ellipse at 30% 10%,#1a1712,#101016);clip-path:inset(0 0 0 var(--ba,50%))}
+.ba-after b{font-family:Sora;font-size:clamp(20px,3.2vw,34px);color:#f5f4f0}
+.ba-after b em{font-style:normal;color:#d4af37}
+.ba-after span{color:#8f8f9c;font-size:13.5px;text-align:center}
+.ba-after .ba-newbtn{background:#d4af37;color:#000;font-weight:700;font-family:Sora;font-size:13px;
+  padding:11px 24px;border-radius:11px;box-shadow:0 14px 30px -12px #d4af3799}
+.ba-handle{position:absolute;top:0;bottom:0;left:var(--ba,50%);width:2px;background:#d4af37;z-index:5;cursor:ew-resize}
 .ba-handle::after{content:"◂ ▸";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  background:var(--a);color:#000;font-size:11px;font-weight:800;padding:8px 10px;border-radius:30px;white-space:nowrap;
+  background:#d4af37;color:#000;font-size:11px;font-weight:800;padding:8px 10px;border-radius:30px;white-space:nowrap;
   box-shadow:0 10px 26px -8px #000c}
 .ba-tags{position:absolute;top:14px;z-index:4;font-family:Sora;font-size:10px;letter-spacing:.16em;
   text-transform:uppercase;padding:5px 12px;border-radius:20px}
-.ba-tag-before{left:14px;background:#00000022;color:#333;border:1px solid #00000033}
-.ba-tag-after{right:14px;background:#000000aa;color:var(--a);border:1px solid #d4af3755;z-index:6}
-
-/* intro band above the cinematic scenes */
-.cine-intro{text-align:center;padding:80px 22px 60px;background:var(--cine-bg);border-top:1px solid #ffffff0e}
-.cine-intro .kick{color:var(--cy)}
-.cine-intro h2{font-family:Sora;font-size:clamp(24px,3.6vw,38px);margin-top:10px}
-.cine-intro p{color:var(--dim);max-width:560px;margin:12px auto 0;font-size:15px}
+.ba-tag-before{left:14px;background:#00000018;color:#444;border:1px solid #00000030}
+.ba-tag-after{right:14px;background:#000000aa;color:#d4af37;border:1px solid #d4af3755;z-index:6}
 
 /* static fallback (reduced motion / no GSAP): scenes become normal
    sections showing their final composed state */
-html.cine-static .cine{height:auto;min-height:0;padding:90px 0}
-html.cine-static .cine .cine-stage{position:relative;inset:auto;padding:120px 0 60px}
-html.cine-static .cine-house .hw-world{position:relative;inset:auto;padding-top:120px}
-html.cine-static .cine-house .hw-room{position:relative;inset:auto;margin-bottom:40px}
-html.cine-static .cine-house{perspective:none}
+html.cine-static .cine{height:auto;min-height:0;padding:100px 0}
+html.cine-static .cine .cine-stage{position:relative;inset:auto;padding:110px 0 60px}
+html.cine-static .tf-view{min-height:340px}
