@@ -66,40 +66,58 @@ h1 em{font-style:normal;background:linear-gradient(100deg,var(--a2),var(--a));-w
 .cta.ghost:hover{border-color:#ffffff55;background:#ffffff08}
 .trust{margin-top:26px;color:#6f6f7c;font-size:13px;display:flex;gap:18px;flex-wrap:wrap}
 .trust span::before{content:"✓";color:var(--a);margin-right:7px;font-weight:700}
-/* hero mockup */
+/* ---------- hero mockup (scroll-built via cinematic-scenes.js) ----------
+   CSS below is the FINAL composed state. On desktop the JS sets the
+   initial hidden states and a pinned scrubbed timeline builds it as
+   you scroll (reverses on scroll up). On mobile / reduced motion the
+   JS never touches it, so this finished composition shows statically. */
 .hm{position:relative;z-index:2}
-.hm .hm-browser{border-radius:16px;overflow:hidden;border:1px solid #ffffff1a;background:#0e0e14;
-  box-shadow:0 60px 120px -40px #000e, 0 0 0 1px #ffffff08, 0 0 80px -30px #d4af3722}
-.hm .hm-bar{display:flex;gap:6px;align-items:center;padding:11px 14px;background:#13131a;border-bottom:1px solid #ffffff0d}
+.hm .hm-glow{position:absolute;inset:-14% -10%;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 60% 55% at 50% 45%,#d4af3714,transparent 68%)}
+.hm .hm-browser{position:relative;z-index:1;border-radius:16px;overflow:hidden;border:1px solid #ffffff17;background:#0d0d12;
+  box-shadow:0 70px 130px -45px #000e, 0 0 0 1px #ffffff06}
+.hm .hm-bar{display:flex;gap:6px;align-items:center;padding:12px 15px;background:#121218;border-bottom:1px solid #ffffff0c}
 .hm .hm-bar i{width:9px;height:9px;border-radius:50%;display:block}
-.hm .hm-bar i:nth-child(1){background:#ff5f57}.hm .hm-bar i:nth-child(2){background:#febc2e}.hm .hm-bar i:nth-child(3){background:#28c840}
-.hm .hm-url{margin-left:8px;flex:1;background:#000;border-radius:6px;padding:4px 12px;font-size:10.5px;color:#7c7c88}
-.hm .hm-site{padding:26px 26px 24px;display:flex;flex-direction:column;gap:16px}
-.hm .hm-hero{padding:22px;border-radius:12px;background:radial-gradient(ellipse at 20% 0%,#d4af3712,transparent 60%),#14141b;border:1px solid #ffffff0f}
-.hm .hm-hero b{font-family:Sora;font-size:17px;display:block}
-.hm .hm-hero .l{height:8px;border-radius:4px;background:#ffffff14;margin-top:10px;width:74%;overflow:hidden;position:relative}
-.hm .hm-hero .l.s{width:52%}
-.hm .l::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,#ffffff14,transparent);transform:translateX(-100%);animation:sheen 3.2s ease-in-out infinite}
-@keyframes sheen{60%,100%{transform:translateX(100%)}}
-.hm .hm-btn{display:inline-block;margin-top:14px;background:var(--a);border-radius:8px;width:118px;height:30px}
+.hm .hm-bar i:nth-child(1){background:#3a3a42}.hm .hm-bar i:nth-child(2){background:#3a3a42}.hm .hm-bar i:nth-child(3){background:#3a3a42}
+.hm .hm-url{margin-left:10px;flex:1;background:#08080b;border:1px solid #ffffff0a;border-radius:7px;padding:4px 14px;font-size:10.5px;color:#6e6e7a;letter-spacing:.02em}
+.hm .hm-url::before{content:"🔒";font-size:8.5px;margin-right:7px;opacity:.7}
+.hm .hm-site{padding:22px 24px 22px;display:flex;flex-direction:column;gap:14px}
+/* mini nav inside the mock site */
+.hm .hm-nav{display:flex;align-items:center;gap:14px;padding:2px 2px 12px;border-bottom:1px solid #ffffff0a}
+.hm .hm-logo{width:20px;height:20px;border-radius:6px;background:linear-gradient(140deg,var(--a),#8a6f1d)}
+.hm .hm-nav i{display:block;width:34px;height:6px;border-radius:3px;background:#ffffff1e}
+.hm .hm-nav .hm-navbtn{margin-left:auto;width:64px;height:20px;border-radius:6px;border:1px solid #d4af3745;background:#d4af3712}
+/* mock hero */
+.hm .hm-hero{padding:24px 24px 22px;border-radius:12px;background:radial-gradient(ellipse at 18% 0%,#d4af370e,transparent 60%),#13131a;border:1px solid #ffffff0d}
+.hm .hm-hero b{font-family:Sora;font-size:18px;display:block;letter-spacing:-.01em}
+.hm .hm-hero .l{display:block;height:7px;border-radius:4px;background:#ffffff12;margin-top:11px;width:72%}
+.hm .hm-hero .l.s{width:48%}
+.hm .hm-btn{display:inline-flex;align-items:center;margin-top:16px;background:linear-gradient(180deg,#e6c14f,#c9a32e);color:#141414;
+  font-family:Sora;font-weight:700;font-size:10.5px;letter-spacing:.02em;padding:8px 16px;border-radius:8px;
+  box-shadow:0 8px 22px -8px #d4af3766, inset 0 1px 0 #ffffff55}
+/* mock service cards */
 .hm .hm-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.hm .hm-card{border:1px solid #ffffff0f;border-radius:10px;background:#13131a;padding:13px;min-height:70px}
-.hm .hm-card b{display:block;width:64%;height:8px;border-radius:4px;background:#ffffffa8}
-.hm .hm-card i{display:block;width:88%;height:6px;border-radius:3px;background:#ffffff1c;margin-top:8px}
-.hm .hm-rev{display:flex;gap:10px;align-items:center;border:1px solid #ffffff0f;border-radius:10px;background:#13131a;padding:12px 14px;font-size:12px;color:#cfcfd6}
-.hm .hm-rev .stars{color:var(--a);letter-spacing:2px;font-size:11px}
-/* floating glass chips */
-.gchip{position:absolute;z-index:3;background:#15151cd9;border:1px solid #ffffff1e;border-radius:13px;
-  padding:11px 16px;font-family:Sora;font-size:12.5px;font-weight:600;color:#f0f0f4;backdrop-filter:blur(10px);
-  box-shadow:0 20px 50px -18px #000d, inset 0 1px 0 #ffffff12;white-space:nowrap;animation:float 7s ease-in-out infinite}
-.gchip small{display:block;font-family:Inter;font-weight:400;color:var(--dim);font-size:11px;margin-top:2px}
-.gchip.g1{top:-22px;left:-26px;animation-delay:0s}
-.gchip.g2{top:26%;right:-30px;animation-delay:-2.2s}
-.gchip.g3{bottom:20%;left:-38px;animation-delay:-4s}
-.gchip.g4{bottom:-20px;right:8%;animation-delay:-5.4s}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
-@media(max-width:980px){.gchip.g1{left:-6px}.gchip.g2{right:-8px}.gchip.g3{left:-8px}}
-@media (prefers-reduced-motion: reduce){.gchip,.hm .l::after{animation:none}}
+.hm .hm-card{border:1px solid #ffffff0d;border-radius:11px;background:#13131a;padding:14px 14px 15px}
+.hm .hm-card .ic{display:block;width:22px;height:22px;border-radius:7px;background:#d4af3714;border:1px solid #d4af372e;margin-bottom:10px;position:relative}
+.hm .hm-card .ic::after{content:"";position:absolute;inset:7px;border-radius:3px;background:#d4af37b0}
+.hm .hm-card b{display:block;width:70%;height:7px;border-radius:4px;background:#ffffff96}
+.hm .hm-card i{display:block;width:90%;height:5.5px;border-radius:3px;background:#ffffff17;margin-top:8px}
+.hm .hm-card i+i{width:64%}
+/* mock review bar */
+.hm .hm-rev{display:flex;gap:12px;align-items:center;border:1px solid #ffffff0d;border-radius:11px;background:#13131a;padding:12px 15px;font-size:11.5px;color:#b9b9c4;line-height:1.45}
+.hm .hm-rev .av{flex:none;width:26px;height:26px;border-radius:50%;background:linear-gradient(140deg,#2c2c36,#1b1b22);border:1px solid #ffffff14}
+.hm .hm-rev .stars{color:var(--a);letter-spacing:1.5px;font-size:10px;display:block;margin-bottom:1px}
+.hm .hm-rev em{font-style:normal;color:#cfcfd6}
+.hm .hm-rev small{color:#6e6e7a;font-size:10.5px}
+/* floating glass chips — positioned by CSS, entrance driven by scroll */
+.gchip{position:absolute;z-index:3;background:#14141bd6;border:1px solid #ffffff1a;border-radius:11px;
+  padding:9px 14px;font-family:Sora;font-size:11.5px;font-weight:600;color:#eeeef2;backdrop-filter:blur(12px);
+  box-shadow:0 18px 44px -16px #000d, inset 0 1px 0 #ffffff10;white-space:nowrap}
+.gchip small{display:block;font-family:Inter;font-weight:400;color:var(--dim);font-size:10.5px;margin-top:1px}
+.gchip.g2{top:14%;right:-26px}
+.gchip.g3{bottom:34%;left:-34px}
+.gchip.g4{bottom:-16px;right:10%}
+@media(max-width:980px){.gchip.g2{right:-6px}.gchip.g3{left:-8px}}
 /* quiet industries strip */
 .strip{border-block:1px solid #ffffff0c;padding:20px 0;overflow:hidden}
 .strip .track{display:inline-block;white-space:nowrap;animation:marq 40s linear infinite;
@@ -234,21 +252,23 @@ footer a{color:#8f8f9c}
       <div class="trust"><span>Free preview first</span><span>You own everything</span><span>Replies within the hour</span></div>
     </div>
 
-    <!-- animated premium mockup + floating glass cards -->
-    <div class="hm" data-parallax="-0.06">
+    <!-- scroll-built premium mockup + floating glass cards
+         (build sequence lives in assets/cinematic-scenes.js → heroBuild) -->
+    <div class="hm" id="heroMock">
+      <div class="hm-glow"></div>
       <div class="hm-browser">
         <div class="hm-bar"><i></i><i></i><i></i><div class="hm-url">yourbusiness.co.uk</div></div>
         <div class="hm-site">
-          <div class="hm-hero"><b>Your Business Name</b><span class="l"></span><span class="l s"></span><span class="hm-btn"></span></div>
+          <div class="hm-nav"><span class="hm-logo"></span><i></i><i></i><i></i><span class="hm-navbtn"></span></div>
+          <div class="hm-hero"><b>Your Business Name</b><span class="l"></span><span class="l s"></span><span class="hm-btn">Get a free quote →</span></div>
           <div class="hm-row">
-            <div class="hm-card"><b></b><i></i></div>
-            <div class="hm-card"><b></b><i></i></div>
-            <div class="hm-card"><b></b><i></i></div>
+            <div class="hm-card"><span class="ic"></span><b></b><i></i><i></i></div>
+            <div class="hm-card"><span class="ic"></span><b></b><i></i><i></i></div>
+            <div class="hm-card"><span class="ic"></span><b></b><i></i><i></i></div>
           </div>
-          <div class="hm-rev"><span class="stars">★★★★★</span> “Best decision we made this year.” — Google review</div>
+          <div class="hm-rev"><span class="av"></span><div><span class="stars">★★★★★</span><em>“Best decision we made this year.”</em> <small>— Sarah M., Google review</small></div></div>
         </div>
       </div>
-      <div class="gchip g1">48-hour build<small>available on request</small></div>
       <div class="gchip g2">Free preview<small>before you pay anything</small></div>
       <div class="gchip g3">From £150<small>founding-client pricing</small></div>
       <div class="gchip g4">Mobile-first<small>perfect on every phone</small></div>

@@ -180,6 +180,64 @@
     return tl;
   });
 
+  /* =================================================
+     heroBuild — the homepage hero mockup assembles as
+     you scroll (pinned + scrubbed; reverses on scroll up).
+     Desktop only: on mobile / reduced motion the CSS final
+     state renders as a clean static composition, because
+     initial states are only ever set inside this
+     matchMedia context.
+     Order: frame → glow → title → content bars → gold CTA
+     → service cards → review bar → glass chips → settle.
+     ================================================= */
+  (function heroBuild() {
+    var hm = document.getElementById('heroMock');
+    var hero = document.querySelector('.hero');
+    if (!hm || !hero) return;
+
+    gsap.matchMedia().add('(min-width: 981px)', function () {
+      var q = function (s) { return hm.querySelector(s); };
+      var browser = q('.hm-browser'), glow = q('.hm-glow');
+      var title = q('.hm-hero b'), lines = hm.querySelectorAll('.hm-hero .l');
+      var nav = q('.hm-nav'), btn = q('.hm-btn');
+      var cards = hm.querySelectorAll('.hm-card'), rev = q('.hm-rev');
+      var chipR = q('.gchip.g2'), chipL = q('.gchip.g3'), chipB = q('.gchip.g4');
+
+      /* initial states — CSS holds the finished composition */
+      gsap.set(browser, { autoAlpha: 0, y: 34, scale: 0.9 });
+      gsap.set(glow, { autoAlpha: 0, scale: 0.55, transformOrigin: '50% 50%' });
+      gsap.set(nav, { autoAlpha: 0, y: -10 });
+      gsap.set(title, { autoAlpha: 0, x: -22 });
+      gsap.set(lines, { scaleX: 0, transformOrigin: '0 50%' });
+      gsap.set(btn, { autoAlpha: 0, scale: 0.55, transformOrigin: '0 50%' });
+      gsap.set(cards, { autoAlpha: 0, y: 24 });
+      gsap.set(rev, { autoAlpha: 0, y: 22 });
+      gsap.set(chipR, { autoAlpha: 0, y: -26, x: 14 });
+      gsap.set(chipL, { autoAlpha: 0, x: -30 });
+      gsap.set(chipB, { autoAlpha: 0, y: 26, x: 10 });
+
+      var tl = gsap.timeline({
+        defaults: { ease: 'power2.out' },
+        scrollTrigger: {
+          trigger: hero, start: 'top top', end: '+=120%',
+          scrub: 1, pin: true, anticipatePin: 1, invalidateOnRefresh: true
+        }
+      });
+      tl.to(browser, { autoAlpha: 1, y: 0, scale: 1, duration: 0.9, ease: 'power2.inOut' }, 0)
+        .to(glow, { autoAlpha: 1, scale: 1, duration: 1.1 }, 0.1)
+        .to(nav, { autoAlpha: 1, y: 0, duration: 0.4 }, 0.7)
+        .to(title, { autoAlpha: 1, x: 0, duration: 0.5 }, 0.9)
+        .to(lines, { scaleX: 1, duration: 0.45, stagger: 0.15 }, 1.1)
+        .to(btn, { autoAlpha: 1, scale: 1, duration: 0.5, ease: 'back.out(1.4)' }, 1.5)
+        .to(cards, { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.18 }, 1.8)
+        .to(rev, { autoAlpha: 1, y: 0, duration: 0.55 }, 2.4)
+        .to(chipR, { autoAlpha: 1, y: 0, x: 0, duration: 0.5 }, 2.8)
+        .to(chipL, { autoAlpha: 1, x: 0, duration: 0.5 }, 3.0)
+        .to(chipB, { autoAlpha: 1, y: 0, x: 0, duration: 0.5 }, 3.2);
+      return function () { /* matchMedia cleanup handled by GSAP */ };
+    });
+  })();
+
   /* ---------- boot: wire every [data-cine] section ---------- */
   document.querySelectorAll('[data-cine]').forEach(function (el) {
     var name = el.getAttribute('data-cine');
