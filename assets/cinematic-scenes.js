@@ -203,9 +203,12 @@
       var cards = hm.querySelectorAll('.hm-card'), rev = q('.hm-rev');
       var chipR = q('.gchip.g2'), chipL = q('.gchip.g3'), chipB = q('.gchip.g4');
 
-      /* initial states — CSS holds the finished composition */
-      gsap.set(browser, { autoAlpha: 0, y: 34, scale: 0.9 });
-      gsap.set(glow, { autoAlpha: 0, scale: 0.55, transformOrigin: '50% 50%' });
+      /* initial states — CSS holds the finished composition.
+         The frame starts as a faint "ghost" (not fully hidden) so the
+         hero's right column never looks empty on first paint; the
+         first scroll beat brings it to life. */
+      gsap.set(browser, { autoAlpha: 0.3, y: 28, scale: 0.92 });
+      gsap.set(glow, { autoAlpha: 0.25, scale: 0.6, transformOrigin: '50% 50%' });
       gsap.set(nav, { autoAlpha: 0, y: -10 });
       gsap.set(title, { autoAlpha: 0, x: -22 });
       gsap.set(lines, { scaleX: 0, transformOrigin: '0 50%' });
@@ -219,21 +222,26 @@
       var tl = gsap.timeline({
         defaults: { ease: 'power2.out' },
         scrollTrigger: {
-          trigger: hero, start: 'top top', end: '+=120%',
+          trigger: hero, start: 'top top', end: '+=135%',
           scrub: 1, pin: true, anticipatePin: 1, invalidateOnRefresh: true
         }
       });
-      tl.to(browser, { autoAlpha: 1, y: 0, scale: 1, duration: 0.9, ease: 'power2.inOut' }, 0)
-        .to(glow, { autoAlpha: 1, scale: 1, duration: 1.1 }, 0.1)
-        .to(nav, { autoAlpha: 1, y: 0, duration: 0.4 }, 0.7)
-        .to(title, { autoAlpha: 1, x: 0, duration: 0.5 }, 0.9)
-        .to(lines, { scaleX: 1, duration: 0.45, stagger: 0.15 }, 1.1)
-        .to(btn, { autoAlpha: 1, scale: 1, duration: 0.5, ease: 'back.out(1.4)' }, 1.5)
-        .to(cards, { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.18 }, 1.8)
-        .to(rev, { autoAlpha: 1, y: 0, duration: 0.55 }, 2.4)
-        .to(chipR, { autoAlpha: 1, y: 0, x: 0, duration: 0.5 }, 2.8)
-        .to(chipL, { autoAlpha: 1, x: 0, duration: 0.5 }, 3.0)
-        .to(chipB, { autoAlpha: 1, y: 0, x: 0, duration: 0.5 }, 3.2);
+      /* 1 frame arrives   2 glow expands      3 nav drops in
+         4 name slides in  5 bars draw across  6 CTA grows
+         7 cards one-by-one 8 review slides up 9 chips one-by-one
+         10 a beat of stillness so the composition settles */
+      tl.to(browser, { autoAlpha: 1, y: 0, scale: 1, duration: 1.0, ease: 'power2.inOut' }, 0)
+        .to(glow, { autoAlpha: 1, scale: 1, duration: 1.2 }, 0.1)
+        .to(nav, { autoAlpha: 1, y: 0, duration: 0.45 }, 0.8)
+        .to(title, { autoAlpha: 1, x: 0, duration: 0.55 }, 1.0)
+        .to(lines, { scaleX: 1, duration: 0.5, stagger: 0.18 }, 1.25)
+        .to(btn, { autoAlpha: 1, scale: 1, duration: 0.55, ease: 'back.out(1.15)' }, 1.7)
+        .to(cards, { autoAlpha: 1, y: 0, duration: 0.55, stagger: 0.22 }, 2.05)
+        .to(rev, { autoAlpha: 1, y: 0, duration: 0.6 }, 2.75)
+        .to(chipR, { autoAlpha: 1, y: 0, x: 0, duration: 0.5 }, 3.15)
+        .to(chipL, { autoAlpha: 1, x: 0, duration: 0.5 }, 3.5)
+        .to(chipB, { autoAlpha: 1, y: 0, x: 0, duration: 0.5 }, 3.85)
+        .to({}, { duration: 0.55 });
       return function () { /* matchMedia cleanup handled by GSAP */ };
     });
   })();

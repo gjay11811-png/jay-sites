@@ -72,16 +72,19 @@ h1 em{font-style:normal;background:linear-gradient(100deg,var(--a2),var(--a));-w
    you scroll (reverses on scroll up). On mobile / reduced motion the
    JS never touches it, so this finished composition shows statically. */
 .hm{position:relative;z-index:2}
-.hm .hm-glow{position:absolute;inset:-14% -10%;pointer-events:none;z-index:0;
-  background:radial-gradient(ellipse 60% 55% at 50% 45%,#d4af3714,transparent 68%)}
-.hm .hm-browser{position:relative;z-index:1;border-radius:16px;overflow:hidden;border:1px solid #ffffff17;background:#0d0d12;
-  box-shadow:0 70px 130px -45px #000e, 0 0 0 1px #ffffff06}
-.hm .hm-bar{display:flex;gap:6px;align-items:center;padding:12px 15px;background:#121218;border-bottom:1px solid #ffffff0c}
-.hm .hm-bar i{width:9px;height:9px;border-radius:50%;display:block}
-.hm .hm-bar i:nth-child(1){background:#3a3a42}.hm .hm-bar i:nth-child(2){background:#3a3a42}.hm .hm-bar i:nth-child(3){background:#3a3a42}
-.hm .hm-url{margin-left:10px;flex:1;background:#08080b;border:1px solid #ffffff0a;border-radius:7px;padding:4px 14px;font-size:10.5px;color:#6e6e7a;letter-spacing:.02em}
-.hm .hm-url::before{content:"🔒";font-size:8.5px;margin-right:7px;opacity:.7}
-.hm .hm-site{padding:22px 24px 22px;display:flex;flex-direction:column;gap:14px}
+.hm .hm-glow{position:absolute;inset:-16% -12%;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 58% 52% at 50% 45%,#d4af3710,transparent 70%)}
+.hm .hm-browser{position:relative;z-index:1;border-radius:16px;overflow:hidden;border:1px solid #ffffff14;background:#0d0d12;
+  box-shadow:0 50px 100px -48px #000c}
+.hm .hm-bar{display:flex;gap:6px;align-items:center;padding:12px 16px;background:#121218;border-bottom:1px solid #ffffff0c}
+.hm .hm-bar>i{width:9px;height:9px;border-radius:50%;display:block}
+.hm .hm-bar>i:nth-child(1){background:#443f3d}.hm .hm-bar>i:nth-child(2){background:#42423a}.hm .hm-bar>i:nth-child(3){background:#3b443d}
+.hm .hm-arrows{margin-left:10px;color:#4a4a55;font-size:13px;letter-spacing:7px;line-height:1;user-select:none}
+.hm .hm-url{margin-left:6px;flex:1;background:#08080b;border:1px solid #ffffff09;border-radius:8px;padding:4px 14px;font-size:10.5px;color:#6e6e7a;letter-spacing:.02em}
+.hm .hm-url::before{content:"🔒";font-size:8.5px;margin-right:7px;opacity:.6}
+.hm .hm-acct{margin-left:10px;width:16px;height:16px;border-radius:50%;flex:none;
+  background:linear-gradient(140deg,#2b2b34,#1b1b22);border:1px solid #ffffff12}
+.hm .hm-site{padding:24px 26px;display:flex;flex-direction:column;gap:15px}
 /* mini nav inside the mock site */
 .hm .hm-nav{display:flex;align-items:center;gap:14px;padding:2px 2px 12px;border-bottom:1px solid #ffffff0a}
 .hm .hm-logo{width:20px;height:20px;border-radius:6px;background:linear-gradient(140deg,var(--a),#8a6f1d)}
@@ -110,14 +113,20 @@ h1 em{font-style:normal;background:linear-gradient(100deg,var(--a2),var(--a));-w
 .hm .hm-rev em{font-style:normal;color:#cfcfd6}
 .hm .hm-rev small{color:#6e6e7a;font-size:10.5px}
 /* floating glass chips — positioned by CSS, entrance driven by scroll */
-.gchip{position:absolute;z-index:3;background:#14141bd6;border:1px solid #ffffff1a;border-radius:11px;
-  padding:9px 14px;font-family:Sora;font-size:11.5px;font-weight:600;color:#eeeef2;backdrop-filter:blur(12px);
-  box-shadow:0 18px 44px -16px #000d, inset 0 1px 0 #ffffff10;white-space:nowrap}
+.gchip{position:absolute;z-index:3;background:#14141bcc;border:1px solid #ffffff14;border-radius:11px;
+  padding:9px 14px;font-family:Sora;font-size:11.5px;font-weight:600;color:#eeeef2;backdrop-filter:blur(14px);
+  box-shadow:0 14px 36px -16px #000b, inset 0 1px 0 #ffffff0e;white-space:nowrap}
 .gchip small{display:block;font-family:Inter;font-weight:400;color:var(--dim);font-size:10.5px;margin-top:1px}
 .gchip.g2{top:14%;right:-26px}
 .gchip.g3{bottom:34%;left:-34px}
 .gchip.g4{bottom:-16px;right:10%}
 @media(max-width:980px){.gchip.g2{right:-6px}.gchip.g3{left:-8px}}
+/* small screens: chips flow in a tidy row under the mockup — no
+   absolute positioning, no overlap, no horizontal overflow */
+@media(max-width:560px){
+  .gchip,.gchip.g2,.gchip.g3,.gchip.g4{position:static;display:inline-block;margin:12px 10px 0 0;
+    top:auto;right:auto;bottom:auto;left:auto}
+}
 /* quiet industries strip */
 .strip{border-block:1px solid #ffffff0c;padding:20px 0;overflow:hidden}
 .strip .track{display:inline-block;white-space:nowrap;animation:marq 40s linear infinite;
@@ -257,7 +266,7 @@ footer a{color:#8f8f9c}
     <div class="hm" id="heroMock">
       <div class="hm-glow"></div>
       <div class="hm-browser">
-        <div class="hm-bar"><i></i><i></i><i></i><div class="hm-url">yourbusiness.co.uk</div></div>
+        <div class="hm-bar"><i></i><i></i><i></i><span class="hm-arrows">‹ ›</span><div class="hm-url">yourbusiness.co.uk</div><span class="hm-acct"></span></div>
         <div class="hm-site">
           <div class="hm-nav"><span class="hm-logo"></span><i></i><i></i><i></i><span class="hm-navbtn"></span></div>
           <div class="hm-hero"><b>Your Business Name</b><span class="l"></span><span class="l s"></span><span class="hm-btn">Get a free quote →</span></div>
