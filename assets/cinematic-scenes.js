@@ -136,8 +136,9 @@
     };
   };
 
-  /* scene 01 — the car (uses the generic product preset) */
-  CINE.register('car', CINE.builders.productReveal({ zoomFrom: 1.22, separate: 16 }));
+  /* productReveal stays as a dormant reusable preset — wire it up when a
+     product scene is needed on some page, e.g.
+     CINE.register('product', CINE.builders.productReveal({ zoomFrom: 1.2 })); */
 
   /* =================================================
      scene 02 — burger layer reveal
