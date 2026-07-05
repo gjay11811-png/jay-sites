@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JG Studio — Premium Animated Websites for Local Businesses | Wirral & Liverpool</title>
-<meta name="description" content="Premium animated websites for Wirral & Liverpool businesses — clean, modern, scroll-animated sites built fast. Free homepage preview, from £150, 48-hour builds available.">
-<meta property="og:title" content="JG Studio — premium animated websites for local businesses">
-<meta property="og:description" content="Clean, modern, animated websites for local businesses from £150. Free homepage preview before you pay a penny. Wirral & Liverpool.">
+<title>Preview First Studio — See Your Website Before You Pay</title>
+<meta name="description" content="I build premium website previews for local businesses first — so you can see exactly how your business could look online before spending anything. From £150.">
+<meta property="og:title" content="Preview First Studio — see your website before you pay">
+<meta property="og:description" content="Premium website previews for local businesses. See exactly how your site could look before spending a penny. From £150.">
 <meta property="og:image" content="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=70">
 <meta property="og:url" content="https://gjay11811-png.github.io/jay-sites/">
 <meta name="twitter:card" content="summary_large_image">
@@ -17,63 +17,74 @@
 :root{--bg:#09090c;--panel:#121218;--panel2:#16161d;--line:#1f1f28;--a:#d4af37;--a2:#f0dfa0;--txt:#f5f4f0;--dim:#8f8f9c;--wa:#25d366}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:Inter,sans-serif;background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden;
-  -webkit-font-smoothing:antialiased}
+body{font-family:Inter,sans-serif;background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 .wrap{max-width:1160px;margin:0 auto;padding:0 26px}
 ::selection{background:#d4af3733}
+
 /* scroll progress */
 .scrollbar{position:fixed;top:0;left:0;right:0;height:2px;z-index:100;background:transparent}
 .scrollbar i{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--a2),var(--a))}
+
 /* grain */
 .grain{position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.03;mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-@media (prefers-reduced-motion: reduce){.grain{display:none}}
+@media(prefers-reduced-motion:reduce){.grain{display:none}}
+
+/* animated background grid */
+.bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.bg-grid::before{content:"";position:absolute;inset:-50%;
+  background:linear-gradient(#ffffff03 1px,transparent 1px),linear-gradient(90deg,#ffffff03 1px,transparent 1px);
+  background-size:72px 72px;
+  -webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 30%,#000 30%,transparent 90%);
+  mask-image:radial-gradient(ellipse 80% 70% at 50% 30%,#000 30%,transparent 90%);
+  animation:gridDrift 20s linear infinite}
+@keyframes gridDrift{0%{transform:translate(0,0)}100%{transform:translate(72px,72px)}}
+@media(prefers-reduced-motion:reduce){.bg-grid::before{animation:none}}
+
 /* nav */
-nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(16px);background:#09090cd9;border-bottom:1px solid #ffffff0d}
+nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(20px);background:#09090ce0;border-bottom:1px solid #ffffff0d}
 nav .in{max-width:1160px;margin:0 auto;padding:18px 26px;display:flex;justify-content:space-between;align-items:center}
-nav b{font-family:Sora;font-size:17px;letter-spacing:.06em;font-weight:700}
+nav b{font-family:Sora;font-size:16px;letter-spacing:.04em;font-weight:700}
 nav b i{color:var(--a);font-style:normal}
-nav .nlinks{display:flex;gap:30px;align-items:center;font-size:13.5px}
+nav b small{display:block;font-family:Inter;font-size:9.5px;font-weight:500;letter-spacing:.18em;color:var(--dim);text-transform:uppercase;margin-top:-1px}
+nav .nlinks{display:flex;gap:28px;align-items:center;font-size:13.5px}
 nav .nlinks a{color:var(--dim);text-decoration:none;transition:color .25s}
 nav .nlinks a:hover{color:var(--txt)}
-nav a.call{background:var(--txt);color:#000;padding:10px 22px;border-radius:10px;text-decoration:none;font-weight:700;font-size:13px;font-family:Sora;transition:.25s}
-nav a.call:hover{background:var(--a)}
+nav a.call{background:linear-gradient(135deg,var(--a2),var(--a));color:#000;padding:10px 22px;border-radius:10px;text-decoration:none;font-weight:700;font-size:13px;font-family:Sora;transition:.25s;box-shadow:0 4px 20px -8px #d4af3755}
+nav a.call:hover{filter:brightness(1.1);transform:translateY(-1px)}
 @media(max-width:760px){nav .nlinks a:not(.call){display:none}}
-/* ---------- hero ---------- */
-.hero{position:relative;padding:100px 0 120px;overflow:hidden}
-.hero::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+
+/* ========== HERO ========== */
+.hero{position:relative;padding:100px 0 130px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;
   background:
-    radial-gradient(ellipse 60% 45% at 75% 30%, #d4af370c, transparent 65%),
-    linear-gradient(#ffffff04 1px,transparent 1px),linear-gradient(90deg,#ffffff04 1px,transparent 1px);
-  background-size:100% 100%,80px 80px,80px 80px;
-  -webkit-mask-image:radial-gradient(ellipse 90% 80% at 50% 40%,#000 40%,transparent 100%);
-  mask-image:radial-gradient(ellipse 90% 80% at 50% 40%,#000 40%,transparent 100%)}
-.hero .in{position:relative;display:grid;grid-template-columns:1.02fr .98fr;gap:64px;align-items:center;max-width:1160px;margin:0 auto;padding:0 26px}
-@media(max-width:980px){.hero .in{grid-template-columns:1fr;gap:70px}.hero{padding:70px 0 90px}}
-.hero .chip{display:inline-flex;gap:9px;align-items:center;background:#ffffff07;border:1px solid #ffffff13;border-radius:30px;padding:7px 16px;font-size:12.5px;font-weight:500;color:#c6c6cf;margin-bottom:30px}
+    radial-gradient(ellipse 55% 50% at 75% 25%,#d4af370f,transparent 65%),
+    radial-gradient(ellipse 40% 35% at 20% 80%,#d4af3706,transparent 60%);
+  z-index:1}
+.hero .in{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;max-width:1160px;margin:0 auto;padding:0 26px}
+@media(max-width:980px){.hero .in{grid-template-columns:1fr;gap:60px}.hero{padding:70px 0 90px}}
+.hero .chip{display:inline-flex;gap:9px;align-items:center;background:#ffffff08;border:1px solid #ffffff14;border-radius:30px;padding:7px 16px;font-size:12.5px;font-weight:500;color:#c6c6cf;margin-bottom:28px;backdrop-filter:blur(8px)}
 .hero .chip .dot{width:7px;height:7px;border-radius:50%;background:var(--wa);animation:blink 2.2s infinite}
 @keyframes blink{50%{opacity:.35}}
-h1{font-family:Sora;font-size:clamp(38px,5vw,62px);font-weight:800;line-height:1.06;letter-spacing:-.015em}
-h1 em{font-style:normal;background:linear-gradient(100deg,var(--a2),var(--a));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.hero .sub{color:var(--dim);font-size:17px;max-width:440px;margin:26px 0 38px;line-height:1.7}
+h1{font-family:Sora;font-size:clamp(36px,5vw,64px);font-weight:800;line-height:1.05;letter-spacing:-.02em}
+h1 em{font-style:normal;background:linear-gradient(110deg,var(--a2),var(--a));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero .sub{color:var(--dim);font-size:17px;max-width:450px;margin:24px 0 36px;line-height:1.72}
 .hero .sub b{color:#d7d7de;font-weight:600}
-.cta{position:relative;display:inline-block;background:var(--txt);color:#000;font-weight:700;font-family:Sora;font-size:14.5px;padding:16px 30px;border-radius:12px;text-decoration:none;transition:background .3s;will-change:transform}
-.cta:hover{background:var(--a)}
-.cta.wa{background:var(--wa);color:#fff;margin-left:12px}
-.cta.wa:hover{background:#2ee674}
-.cta.ghost{background:transparent;color:var(--txt);border:1px solid #ffffff22;margin-left:12px}
-.cta.ghost:hover{border-color:#ffffff4d;background:#ffffff07}
-.trust{margin-top:28px;color:#6f6f7c;font-size:13px;display:flex;gap:18px;flex-wrap:wrap}
+.cta{position:relative;display:inline-block;background:linear-gradient(135deg,var(--a2),var(--a));color:#000;font-weight:700;font-family:Sora;font-size:14.5px;padding:16px 30px;border-radius:12px;text-decoration:none;transition:filter .25s,transform .25s;will-change:transform;box-shadow:0 8px 30px -12px #d4af3766}
+.cta:hover{filter:brightness(1.1);transform:translateY(-2px)}
+.cta.ghost{background:transparent;color:var(--txt);border:1px solid #ffffff22;margin-left:12px;box-shadow:none}
+.cta.ghost:hover{border-color:#ffffff44;background:#ffffff07;filter:none;transform:translateY(-1px)}
+.cta.wa{background:var(--wa);color:#fff;box-shadow:0 8px 28px -12px #25d36655}
+.cta.wa:hover{filter:brightness(1.08);transform:translateY(-2px)}
+.trust{margin-top:26px;color:#6f6f7c;font-size:13px;display:flex;gap:16px;flex-wrap:wrap}
 .trust span::before{content:"✓";color:var(--a);margin-right:7px;font-weight:700}
-/* ---------- hero mockup — a real premium site preview ----------
-   Fictional client: FADE DISTRICT (barbershop). CSS = final state;
-   the pinned scrubbed build lives in cinematic-scenes.js (desktop).
-   Mobile / reduced-motion render this finished composition. */
+
+/* hero mockup */
 .hm{position:relative;z-index:2}
-.hm .hm-glow{position:absolute;inset:-16% -12%;pointer-events:none;z-index:0;
-  background:radial-gradient(ellipse 58% 52% at 50% 45%,#d4af3710,transparent 70%)}
-.hm .hm-browser{position:relative;z-index:1;border-radius:16px;overflow:hidden;border:1px solid #ffffff14;background:#0d0d12;
-  box-shadow:0 50px 100px -48px #000c}
+.hm .hm-glow{position:absolute;inset:-20% -15%;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 60% 55% at 50% 45%,#d4af3714,transparent 70%)}
+.hm .hm-browser{position:relative;z-index:1;border-radius:18px;overflow:hidden;border:1px solid #ffffff16;background:#0d0d12;
+  box-shadow:0 60px 120px -50px #000d, 0 0 0 1px #ffffff06}
 .hm .hm-bar{display:flex;gap:6px;align-items:center;padding:12px 16px;background:#121218;border-bottom:1px solid #ffffff0c}
 .hm .hm-bar>i{width:9px;height:9px;border-radius:50%;display:block}
 .hm .hm-bar>i:nth-child(1){background:#443f3d}.hm .hm-bar>i:nth-child(2){background:#42423a}.hm .hm-bar>i:nth-child(3){background:#3b443d}
@@ -83,61 +94,111 @@ h1 em{font-style:normal;background:linear-gradient(100deg,var(--a2),var(--a));-w
 .hm .hm-acct{margin-left:10px;width:16px;height:16px;border-radius:50%;flex:none;
   background:linear-gradient(140deg,#2b2b34,#1b1b22);border:1px solid #ffffff12}
 .hm .hm-site{padding:24px 26px;display:flex;flex-direction:column;gap:15px}
-/* mock nav */
 .hm .hm-nav{display:flex;align-items:center;gap:14px;padding:2px 2px 13px;border-bottom:1px solid #ffffff0a}
 .hm .hm-nav b{font-family:Sora;font-size:11px;letter-spacing:.18em;color:#f5f4f0;margin-right:auto}
 .hm .hm-nav span{font-size:10.5px;color:#83838f}
 .hm .hm-nav em{font-style:normal;font-family:Sora;font-size:9.5px;font-weight:700;color:#141414;
   background:linear-gradient(180deg,#e6c14f,#c9a32e);padding:5px 13px;border-radius:7px}
-/* mock hero */
-.hm .hm-hero{padding:26px 26px 24px;border-radius:12px;background:radial-gradient(ellipse at 18% 0%,#d4af370c,transparent 60%),#13131a;border:1px solid #ffffff0c}
+.hm .hm-hero{padding:26px 26px 24px;border-radius:12px;background:radial-gradient(ellipse at 18% 0%,#d4af370d,transparent 60%),#13131a;border:1px solid #ffffff0c}
 .hm .hm-hero small{display:block;font-family:Sora;font-size:8.5px;letter-spacing:.26em;color:var(--a);margin-bottom:10px}
 .hm .hm-hero b{display:block;font-family:Sora;font-size:19px;line-height:1.28;letter-spacing:-.01em}
 .hm .hm-hero p{font-size:11.5px;color:#8f8f9c;margin-top:9px;line-height:1.55;max-width:260px}
 .hm .hm-btn{display:inline-flex;align-items:center;margin-top:15px;background:linear-gradient(180deg,#e6c14f,#c9a32e);color:#141414;
   font-family:Sora;font-weight:700;font-size:10.5px;padding:8px 16px;border-radius:8px;
-  box-shadow:0 8px 22px -8px #d4af3755, inset 0 1px 0 #ffffff55}
-/* mock service cards — real content, no skeletons */
+  box-shadow:0 8px 22px -8px #d4af3755,inset 0 1px 0 #ffffff55}
 .hm .hm-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .hm .hm-card{border:1px solid #ffffff0c;border-radius:11px;background:#13131a;padding:13px 14px}
 .hm .hm-card .r{display:flex;justify-content:space-between;align-items:baseline;gap:6px}
 .hm .hm-card .r b{font-family:Sora;font-size:11px;font-weight:600;color:#eeeef2}
 .hm .hm-card .r em{font-style:normal;font-family:Sora;font-size:10.5px;color:var(--a)}
 .hm .hm-card i{display:block;font-style:normal;font-size:10px;color:#6e6e7a;margin-top:6px;line-height:1.4}
-/* mock review bar */
 .hm .hm-rev{display:flex;gap:12px;align-items:center;border:1px solid #ffffff0c;border-radius:11px;background:#13131a;padding:12px 15px;font-size:11.5px;color:#b9b9c4;line-height:1.45}
 .hm .hm-rev .av{flex:none;width:26px;height:26px;border-radius:50%;background:linear-gradient(140deg,#2c2c36,#1b1b22);border:1px solid #ffffff12}
 .hm .hm-rev .stars{color:var(--a);letter-spacing:1.5px;font-size:10px;display:block;margin-bottom:1px}
 .hm .hm-rev em{font-style:normal;color:#cfcfd6}
 .hm .hm-rev small{color:#6e6e7a;font-size:10.5px}
-/* floating glass tags — small, sharp, entrance driven by scroll */
-.gchip{position:absolute;z-index:3;background:#14141bc9;border:1px solid #ffffff13;border-radius:9px;
-  padding:7px 13px;font-family:Sora;font-size:11px;font-weight:600;color:#eeeef2;backdrop-filter:blur(14px);
-  box-shadow:0 12px 30px -14px #000b, inset 0 1px 0 #ffffff0c;white-space:nowrap;letter-spacing:.02em}
+
+/* floating glass chips */
+.gchip{position:absolute;z-index:3;background:#14141bc9;border:1px solid #ffffff15;border-radius:10px;
+  padding:7px 14px;font-family:Sora;font-size:11px;font-weight:600;color:#eeeef2;backdrop-filter:blur(14px);
+  box-shadow:0 12px 30px -14px #000b,inset 0 1px 0 #ffffff0c;white-space:nowrap;letter-spacing:.02em}
 .gchip.g2{top:15%;right:-22px}
 .gchip.g3{bottom:36%;left:-28px}
 .gchip.g4{bottom:-14px;right:11%}
+.gchip .gdot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--wa);margin-right:6px;animation:blink 2.2s infinite}
 @media(max-width:980px){.gchip.g2{right:-6px}.gchip.g3{left:-8px}}
 @media(max-width:560px){
   .gchip,.gchip.g2,.gchip.g3,.gchip.g4{position:static;display:inline-block;margin:12px 10px 0 0;
     top:auto;right:auto;bottom:auto;left:auto}
 }
-/* quiet industries row — static, no marquee */
-.strip{border-block:1px solid #ffffff0b;padding:22px 0}
+
+/* industry strip */
+.strip{border-block:1px solid #ffffff0b;padding:22px 0;position:relative;z-index:2}
 .strip .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;max-width:1160px;margin:0 auto;padding:0 26px}
-.strip span{background:#ffffff05;border:1px solid #ffffff0e;border-radius:30px;padding:7px 17px;
-  font-size:12px;color:#83838f}
-/* ---------- sections ---------- */
+.strip span{background:#ffffff05;border:1px solid #ffffff0e;border-radius:30px;padding:7px 17px;font-size:12px;color:#83838f;transition:border-color .25s,color .25s;cursor:default}
+.strip span:hover{border-color:#d4af3740;color:var(--a2)}
+
+/* sections */
 section{padding:130px 0 20px}
 .kick{color:var(--a);font-weight:700;letter-spacing:.26em;text-transform:uppercase;font-size:11.5px}
 h2{font-family:Sora;font-size:clamp(28px,3.6vw,44px);margin:14px 0 16px;letter-spacing:-.01em;line-height:1.12}
 .lead{color:var(--dim);max-width:520px;margin-bottom:48px;font-size:16px;line-height:1.7}
-/* ---------- work: 6 featured, pinned stack (desktop) ---------- */
+
+/* ========== PREVIEW LAB ========== */
+#preview-lab{padding:130px 0 80px}
+.lab-wrap{display:grid;grid-template-columns:1fr 1.35fr;gap:48px;align-items:start;margin-top:52px}
+@media(max-width:980px){.lab-wrap{grid-template-columns:1fr;gap:36px}}
+
+.lab-btns{display:flex;flex-direction:column;gap:10px}
+@media(max-width:980px){.lab-btns{flex-direction:row;flex-wrap:wrap}}
+.lab-btn{display:flex;align-items:center;gap:14px;background:#121218;border:1px solid #1f1f28;border-radius:12px;padding:14px 18px;cursor:pointer;transition:border-color .25s,background .25s;text-align:left;font-family:inherit;color:var(--txt)}
+.lab-btn:hover{border-color:#d4af3738;background:#16161d}
+.lab-btn.active{border-color:var(--a);background:linear-gradient(135deg,#1a160a,#121218)}
+.lab-btn .lb-icon{width:36px;height:36px;border-radius:9px;background:#1c1c24;border:1px solid #ffffff0c;display:grid;place-items:center;font-size:17px;flex:none;transition:background .25s}
+.lab-btn.active .lb-icon{background:linear-gradient(135deg,#2a2010,#1e1a0e);border-color:#d4af3740}
+.lab-btn .lb-text b{display:block;font-family:Sora;font-size:14px;font-weight:700}
+.lab-btn .lb-text span{display:block;font-size:12px;color:var(--dim);margin-top:2px}
+.lab-btn .lb-arrow{margin-left:auto;color:var(--dim);font-size:14px;transition:transform .25s,color .25s;flex:none}
+.lab-btn.active .lb-arrow{transform:translateX(4px);color:var(--a)}
+@media(max-width:980px){.lab-btn{min-width:140px;flex-direction:column;align-items:flex-start;gap:10px}.lab-btn .lb-arrow{display:none}}
+
+/* lab panel — glass dashboard */
+.lab-panel{background:linear-gradient(160deg,#14141c,#0f0f15);border:1px solid #1f1f28;border-radius:20px;overflow:hidden;
+  box-shadow:0 40px 80px -30px #000c}
+.lab-panel-head{padding:20px 24px;border-bottom:1px solid #1f1f28;display:flex;align-items:center;gap:16px}
+.lab-panel-head .ph-dots{display:flex;gap:6px}
+.lab-panel-head .ph-dots i{width:9px;height:9px;border-radius:50%;display:block}
+.lab-panel-head .ph-dots i:nth-child(1){background:#3a3535}
+.lab-panel-head .ph-dots i:nth-child(2){background:#3a3a32}
+.lab-panel-head .ph-dots i:nth-child(3){background:#32393a}
+.lab-panel-head .ph-url{flex:1;background:#08080c;border:1px solid #ffffff09;border-radius:8px;padding:6px 14px;font-size:11px;color:#6e6e7a;font-family:Inter;display:flex;align-items:center;gap:6px}
+.lab-panel-head .ph-url::before{content:"🔒";font-size:9px;opacity:.5}
+.lab-panel-head .ph-open{font-size:11px;font-family:Sora;font-weight:700;color:var(--a);text-decoration:none;padding:6px 14px;border:1px solid #d4af3738;border-radius:8px;white-space:nowrap;transition:background .2s,border-color .2s}
+.lab-panel-head .ph-open:hover{background:#d4af3712;border-color:#d4af3760}
+
+/* iframe preview */
+.lab-iframe-wrap{height:400px;overflow:hidden;position:relative;background:#fff}
+@media(max-width:640px){.lab-iframe-wrap{height:280px}}
+.lab-iframe-wrap iframe{width:200%;height:200%;border:0;transform:scale(.5);transform-origin:0 0;pointer-events:none;display:block}
+.lab-iframe-wrap::after{content:"";position:absolute;inset:0;pointer-events:none}
+
+/* lab info bar */
+.lab-info{padding:20px 24px;background:#0e0e14;border-top:1px solid #1f1f28;display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.lab-info-text{flex:1;min-width:200px}
+.lab-info-text b{display:block;font-family:Sora;font-size:15px;font-weight:700;margin-bottom:4px}
+.lab-info-text p{font-size:13px;color:var(--dim);line-height:1.55}
+.lab-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.lab-tag{background:#ffffff07;border:1px solid #ffffff12;color:#b0b0bc;font-size:10.5px;font-weight:600;padding:4px 11px;border-radius:20px;font-family:Sora}
+.lab-cta-mini{flex:none}
+.lab-cta-mini a{display:inline-block;background:linear-gradient(135deg,var(--a2),var(--a));color:#000;font-family:Sora;font-weight:700;font-size:12.5px;padding:10px 20px;border-radius:10px;text-decoration:none;transition:filter .2s,transform .2s;box-shadow:0 6px 20px -8px #d4af3755;white-space:nowrap}
+.lab-cta-mini a:hover{filter:brightness(1.1);transform:translateY(-1px)}
+
+/* ========== WORK ========== */
 #work{padding:0}
 .work-stage{padding:130px 0 40px}
 .work-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:38px}
 .work-head h2{margin-bottom:0}
-.work-head .worknote{color:var(--dim);font-size:14px;max-width:250px;text-align:right;line-height:1.6}
+.work-head .worknote{color:var(--dim);font-size:14px;max-width:260px;text-align:right;line-height:1.6}
 @media(max-width:760px){.work-head{flex-direction:column;align-items:flex-start}.work-head .worknote{text-align:left}}
 .works-feat{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;perspective:1400px}
 @media(max-width:980px){.works-feat{grid-template-columns:1fr 1fr}}
@@ -151,7 +212,7 @@ h2{font-family:Sora;font-size:clamp(28px,3.6vw,44px);margin:14px 0 16px;letter-s
 .work{position:relative;display:block;background:linear-gradient(180deg,#14141b,#101017);border:1px solid var(--line);border-radius:18px;overflow:hidden;text-decoration:none;color:var(--txt);
   transition:transform .15s ease-out,border-color .35s,box-shadow .35s;transform-style:preserve-3d;will-change:transform}
 .work::after{content:"";position:absolute;inset:0;border-radius:18px;pointer-events:none;opacity:0;transition:opacity .4s;
-  box-shadow:inset 0 0 0 1px #d4af3733, 0 26px 60px -28px #000d}
+  box-shadow:inset 0 0 0 1px #d4af3733,0 26px 60px -28px #000d}
 .work:hover::after{opacity:1}
 .work .body{padding:19px 22px 21px}
 .work h3{font-family:Sora;font-size:16px;font-weight:700}
@@ -166,26 +227,31 @@ h2{font-family:Sora;font-size:clamp(28px,3.6vw,44px);margin:14px 0 16px;letter-s
 .work .thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,#101017,transparent 55%);pointer-events:none}
 .work .live-badge{position:absolute;top:14px;right:14px;z-index:3;background:#0f3d24e0;border:1px solid #2a6b4a;color:#8ee6b5;font-size:10px;font-weight:700;padding:4px 11px;border-radius:20px;display:flex;align-items:center;gap:5px}
 .work .live-badge i{width:6px;height:6px;border-radius:50%;background:#4ee08a;animation:blink 2.2s infinite}
+.work .concept-badge{position:absolute;top:14px;right:14px;z-index:3;background:#1a1620e0;border:1px solid #4a3f6b;color:#c4b0e8;font-size:10px;font-weight:700;padding:4px 11px;border-radius:20px;display:flex;align-items:center;gap:5px}
+.work .concept-badge i{width:6px;height:6px;border-radius:50%;background:#9b84d6;animation:blink 3s infinite}
 .browser{height:200px;position:relative;overflow:hidden;background:#1a1a21}
 .browser .bar{display:flex;align-items:center;gap:6px;padding:9px 11px;background:#15151b;position:relative;z-index:2;border-bottom:1px solid #ffffff0a}
 .browser .bar i{width:8px;height:8px;border-radius:50%;display:block;background:#33333c}
 .browser .bar .url{margin-left:6px;background:#000;border-radius:6px;padding:3px 10px;font-size:9.5px;color:#7e7e8a;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .browser .fw{height:calc(100% - 33px);overflow:hidden;position:relative}
 .browser .fw iframe{width:400%;height:400%;border:0;transform:scale(.25);transform-origin:0 0;pointer-events:none;background:#fff}
-/* ---------- process ---------- */
+
+/* process */
 .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px}
 .step{background:linear-gradient(180deg,#13131a,#101016);border:1px solid var(--line);border-radius:18px;padding:30px;transition:border-color .35s,transform .35s}
 .step:hover{border-color:#d4af3738;transform:translateY(-4px)}
 .step b{display:block;font-family:Sora;color:var(--a);font-size:12.5px;letter-spacing:.22em;margin-bottom:14px}
 .step h3{font-family:Sora;font-size:17px;margin-bottom:7px;font-weight:700}
 .step p{color:var(--dim);font-size:14px;line-height:1.65}
-/* ---------- includes ---------- */
+
+/* includes */
 .inc{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
 .incitem{background:linear-gradient(180deg,#13131a,#101016);border:1px solid var(--line);border-radius:16px;padding:24px 26px;font-size:15px;transition:border-color .35s}
 .incitem:hover{border-color:#ffffff22}
 .incitem b{display:block;margin:0 0 5px;font-family:Sora;font-size:15px}
 .incitem span{color:var(--dim);font-size:13.5px;line-height:1.6}
-/* ---------- pricing — agency proposal, not discount cards ---------- */
+
+/* pricing */
 .plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
 .plan{background:linear-gradient(180deg,#13131a,#101016);border:1px solid var(--line);border-radius:20px;padding:36px 32px;transition:transform .35s,border-color .35s}
 .plan:hover{transform:translateY(-5px);border-color:#ffffff26}
@@ -198,11 +264,14 @@ h2{font-family:Sora;font-size:clamp(28px,3.6vw,44px);margin:14px 0 16px;letter-s
 .plan li{padding:6px 0;color:var(--dim)}
 .plan li::before{content:"✓ ";color:var(--a);font-weight:700}
 .hotlbl{position:absolute;top:-12px;left:30px;background:var(--bg);color:var(--a);font-size:10px;font-weight:700;letter-spacing:.16em;padding:5px 14px;border-radius:20px;text-transform:uppercase;font-family:Sora;border:1px solid #d4af3750}
+
 /* guarantee */
-.guar{background:linear-gradient(150deg,#171410,#101016);border:1px solid #d4af372e;border-radius:22px;padding:54px 44px;text-align:center;max-width:760px;margin:0 auto}
+.guar{background:linear-gradient(150deg,#171410,#101016);border:1px solid #d4af372e;border-radius:22px;padding:54px 44px;text-align:center;max-width:760px;margin:0 auto;
+  box-shadow:0 0 60px -20px #d4af3715}
 .guar h3{font-family:Sora;font-size:24px;margin-bottom:10px}
 .guar h3 span{color:var(--a)}
 .guar p{color:var(--dim);max-width:520px;margin:0 auto}
+
 /* faq */
 details{border:1px solid var(--line);border-radius:14px;margin-bottom:10px;background:#111117;transition:border-color .3s}
 details[open]{border-color:#ffffff22}
@@ -210,39 +279,50 @@ summary{padding:18px 22px;cursor:pointer;font-weight:600;font-family:Sora;font-s
 summary::after{content:"+";position:absolute;right:22px;color:var(--a);font-size:18px;transition:transform .3s}
 details[open] summary::after{transform:rotate(45deg)}
 details p{padding:0 22px 18px;color:var(--dim);font-size:14px;line-height:1.7}
-/* ---------- final cta ---------- */
+
+/* final cta */
 .final{padding:140px 0 130px}
 .fcard{max-width:720px;margin:0 auto;text-align:center;background:#12121ad0;border:1px solid #ffffff13;border-radius:26px;
   padding:66px 44px;backdrop-filter:blur(10px);position:relative;overflow:hidden;
-  box-shadow:0 50px 110px -44px #000d, inset 0 1px 0 #ffffff0e}
+  box-shadow:0 50px 110px -44px #000d,inset 0 1px 0 #ffffff0e}
 .fcard::before{content:"";position:absolute;inset:-1px;pointer-events:none;
-  background:radial-gradient(ellipse 70% 60% at 50% -10%,#d4af3712,transparent 65%)}
+  background:radial-gradient(ellipse 70% 60% at 50% -10%,#d4af3714,transparent 65%)}
 .fcard h2{margin-bottom:14px}
 .fcard>p{color:var(--dim);margin-bottom:38px;max-width:440px;margin-inline:auto}
 .fclose{margin-top:32px;color:#6f6f7c;font-size:13.5px}
+
 footer{border-top:1px solid #ffffff0c;padding:36px 0;text-align:center;color:#6d6d79;font-size:13px}
 footer a{color:#8f8f9c}
-/* reveal (upgraded by scroll.js) */
+
+/* reveal */
 .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s ease,transform .9s cubic-bezier(.16,.8,.26,1)}
 .reveal.on{opacity:1;transform:none}
+
+/* sticky mobile CTA */
 .stickywa{display:none}
-@media(max-width:700px){.stickywa{display:flex;position:fixed;bottom:14px;left:14px;right:14px;z-index:60;background:var(--wa);color:#fff;font-family:Sora;font-weight:800;border-radius:14px;padding:16px;justify-content:center;text-decoration:none;box-shadow:0 14px 34px -6px #000c}}
-@media(max-width:700px){.cta{display:block;text-align:center;margin:0 0 12px}.cta.wa,.cta.ghost{margin-left:0}}
-@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+@media(max-width:700px){
+  .stickywa{display:flex;position:fixed;bottom:14px;left:14px;right:14px;z-index:60;gap:10px}
+  .stickywa a{flex:1;background:var(--a);color:#000;font-family:Sora;font-weight:800;border-radius:14px;padding:15px 10px;display:flex;justify-content:center;align-items:center;text-decoration:none;font-size:13px;box-shadow:0 14px 34px -6px #000c;text-align:center}
+  .stickywa a.wa-btn{background:var(--wa);color:#fff;flex:.85}
+  .cta{display:block;text-align:center;margin:0 0 12px}
+  .cta.ghost{margin-left:0}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
 <body>
 
 <div class="scrollbar"><i id="scrollFill"></i></div>
 <div class="grain"></div>
+<div class="bg-grid"></div>
 
 <nav><div class="in">
-  <b>JG <i>·</i> STUDIO</b>
+  <b>Preview First <i>·</i> Studio<small>See it before you pay</small></b>
   <div class="nlinks">
+    <a href="#preview-lab">Preview Lab</a>
     <a href="#work">Work</a>
-    <a href="#process">Process</a>
     <a href="#pricing">Pricing</a>
-    <a class="call" href="https://wa.me/447956756675?text=Alright%20Jay%20—%20interested%20in%20a%20website">WhatsApp Jay</a>
+    <a class="call" href="https://wa.me/447956756675?text=Hi%20—%20I'd%20like%20a%20free%20website%20preview%20for%20my%20business">Get Free Preview</a>
   </div>
 </div></nav>
 
@@ -250,17 +330,21 @@ footer a{color:#8f8f9c}
 <header class="hero">
   <div class="in">
     <div class="hero-copy">
-      <div class="chip"><span class="dot"></span> Now booking — five founding-client places</div>
-      <h1>Premium <em>animated websites</em> for local businesses.</h1>
-      <p class="sub">Modern, scroll-animated sites for Wirral &amp; Liverpool businesses. <b>See a free preview of your homepage before you pay anything</b> — from £150, live in days.</p>
+      <div class="chip"><span class="dot"></span> Now building free previews — no obligation</div>
+      <h1>See your website<br><em>before you pay.</em></h1>
+      <p class="sub">I build premium website previews for local businesses first — so you can see exactly <b>how your business could look online</b> before spending anything.</p>
       <div class="hero-ctas">
-        <a class="cta wa" data-magnetic style="margin-left:0" href="https://wa.me/447956756675?text=Alright%20Jay%20—%20interested%20in%20a%20website">WhatsApp Jay</a>
-        <a class="cta ghost" data-magnetic href="#work">See the work</a>
+        <a class="cta" data-magnetic style="margin-left:0" href="https://wa.me/447956756675?text=Hi%20—%20I'd%20like%20a%20free%20website%20preview%20for%20my%20business">Get My Free Preview</a>
+        <a class="cta ghost" data-magnetic href="#preview-lab">Try The Preview Lab</a>
       </div>
-      <div class="trust"><span>Free preview first</span><span>You own everything</span><span>Replies within the hour</span></div>
+      <div class="trust">
+        <span>Free preview first</span>
+        <span>Only pay if you love it</span>
+        <span>You own everything</span>
+        <span>Mobile-first</span>
+      </div>
     </div>
 
-    <!-- scroll-built premium mockup (build sequence: cinematic-scenes.js → heroBuild) -->
     <div class="hm" id="heroMock">
       <div class="hm-glow"></div>
       <div class="hm-browser">
@@ -278,10 +362,10 @@ footer a{color:#8f8f9c}
             <div class="hm-card"><span class="r"><b>Beard sculpt</b><em>£12</em></span><i>Line-up · cologne</i></div>
             <div class="hm-card"><span class="r"><b>The full works</b><em>£25</em></span><i>Cut · beard · wash</i></div>
           </div>
-          <div class="hm-rev"><span class="av"></span><div><span class="stars">★★★★★</span><em>“Best barbers on the Wirral, hands down.”</em> <small>Google · 212 reviews</small></div></div>
+          <div class="hm-rev"><span class="av"></span><div><span class="stars">★★★★★</span><em>"Best barbers on the Wirral, hands down."</em> <small>Google · 212 reviews</small></div></div>
         </div>
       </div>
-      <div class="gchip g2">Free preview</div>
+      <div class="gchip g2"><span class="gdot"></span>Free preview</div>
       <div class="gchip g3">From £150</div>
       <div class="gchip g4">Mobile-first</div>
     </div>
@@ -289,64 +373,187 @@ footer a{color:#8f8f9c}
 </header>
 
 <div class="strip"><div class="row">
-  <span>Barbers</span><span>Gyms</span><span>Restaurants</span><span>Salons</span><span>Garages</span><span>Trades</span>
+  <span>Barbers</span><span>Beauty Salons</span><span>Restaurants</span><span>Trades</span><span>Car Detailing</span><span>Takeaways</span><span>Clothing Brands</span><span>Cafés</span>
 </div></div>
 
 <div class="wrap">
 
-  <!-- ================= WORK — 6 featured, pinned stack ================= -->
-  <section id="work" aria-label="Selected work">
-    <div class="work-stage">
-      <div class="work-head">
-        <div>
-          <div class="kick">Selected work</div>
-          <h2>Six builds. All live.</h2>
-        </div>
-        <p class="worknote">Open them, scroll them — every one is a real build.</p>
-      </div>
-      <div class="works-feat">
-        <a class="work" href="work/fade-district.html" target="_blank">
-          <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">jgstudio.co.uk/fade-district</div></div>
-            <div class="fw"><iframe src="work/fade-district.html" loading="lazy" tabindex="-1"></iframe></div></div>
-          <div class="body"><h3>Fade District <span class="tag">Barber</span></h3><p>Bold split-screen editorial with walk-in energy.</p><span class="view">View demo</span></div>
-        </a>
-        <a class="work" href="work/noir-dining.html" target="_blank">
-          <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">jgstudio.co.uk/noir</div></div>
-            <div class="fw"><iframe src="work/noir-dining.html" loading="lazy" tabindex="-1"></iframe></div></div>
-          <div class="body"><h3>NOIR <span class="tag">Restaurant</span></h3><p>Elegant dining site with menus and reservations.</p><span class="view">View demo</span></div>
-        </a>
-        <a class="work" href="work/the-glow-room.html" target="_blank">
-          <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">jgstudio.co.uk/glow-room</div></div>
-            <div class="fw"><iframe src="work/the-glow-room.html" loading="lazy" tabindex="-1"></iframe></div></div>
-          <div class="body"><h3>The Glow Room <span class="tag">Salon</span></h3><p>Soft, airy beauty studio with treatment menu.</p><span class="view">View demo</span></div>
-        </a>
-        <a class="work" href="work/reps-gym.html" target="_blank">
-          <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">jgstudio.co.uk/reps</div></div>
-            <div class="fw"><iframe src="work/reps-gym.html" loading="lazy" tabindex="-1"></iframe></div></div>
-          <div class="body"><h3>REPS Gym <span class="tag">Gym</span></h3><p>Huge typography, programs and memberships.</p><span class="view">View demo</span></div>
-        </a>
-        <a class="work" href="work/mersey-motors.html" target="_blank">
-          <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">jgstudio.co.uk/mersey-motors</div></div>
-            <div class="fw"><iframe src="work/mersey-motors.html" loading="lazy" tabindex="-1"></iframe></div></div>
-          <div class="body"><h3>Mersey Motors <span class="tag">Garage</span></h3><p>Trust-first garage site — MOT, servicing, Maps.</p><span class="view">View demo</span></div>
-        </a>
-        <a class="work" href="https://firstclassfits.co" target="_blank">
-          <div class="thumb"><span class="live-badge"><i></i>LIVE STORE</span><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=60" alt="" loading="lazy"></div>
-          <div class="body"><h3>First Class Fits <span class="tag">Online store</span></h3><p>Full store — products, Stripe payments, the lot.</p><span class="view">View live store</span></div>
-        </a>
-      </div>
-      <div class="work-more"><a class="cta ghost" href="work/index.html">View all 21 demos →</a></div>
+<!-- ================= PREVIEW LAB ================= -->
+<section id="preview-lab" aria-label="Interactive Preview Lab">
+  <div class="kick">Interactive</div>
+  <h2>Try the Preview Lab</h2>
+  <p class="lead">Choose your business type and see how your website could look. These are real concept builds — not mockups.</p>
+
+  <div class="lab-wrap">
+    <!-- buttons -->
+    <div class="lab-btns" role="list">
+      <button class="lab-btn active" data-src="work/fade-district.html" data-url="fadedistrict.co.uk"
+        data-name="Fade District" data-desc="Bold barbershop site with online booking, service menu and walk-in energy."
+        data-tags="Booking ready,Service menu,WhatsApp button,Google Maps"
+        data-cta="Get a barber preview →"
+        onclick="switchPreview(this)">
+        <span class="lb-icon">✂️</span>
+        <span class="lb-text"><b>Barber</b><span>Skin fades &amp; bookings</span></span>
+        <span class="lb-arrow">›</span>
+      </button>
+      <button class="lab-btn" data-src="work/the-glow-room.html" data-url="theglowroom.co.uk"
+        data-name="The Glow Room" data-desc="Soft, luxe beauty studio with treatment menu, pricing and booking flow."
+        data-tags="Treatment menu,Pricing cards,Booking form,Mobile-first"
+        data-cta="Get a salon preview →"
+        onclick="switchPreview(this)">
+        <span class="lb-icon">💅</span>
+        <span class="lb-text"><b>Beauty Salon</b><span>Treatments &amp; lashes</span></span>
+        <span class="lb-arrow">›</span>
+      </button>
+      <button class="lab-btn" data-src="work/summit-roofing.html" data-url="summitroofing.co.uk"
+        data-name="Summit Roofing" data-desc="Trust-first trades site with quote form, services, Google reviews and call-to-action."
+        data-tags="Quote form,Google reviews,Services list,One-tap call"
+        data-cta="Get a trades preview →"
+        onclick="switchPreview(this)">
+        <span class="lb-icon">🔧</span>
+        <span class="lb-text"><b>Trades</b><span>Roofers, builders &amp; more</span></span>
+        <span class="lb-arrow">›</span>
+      </button>
+      <button class="lab-btn" data-src="work/aquashine-valeting.html" data-url="aquashinevaleting.co.uk"
+        data-name="Aquashine Valeting" data-desc="Premium car detailing site with package tiers, before/after gallery and instant booking."
+        data-tags="Package tiers,Before/after gallery,Booking form,WhatsApp"
+        data-cta="Get a detailing preview →"
+        onclick="switchPreview(this)">
+        <span class="lb-icon">🚗</span>
+        <span class="lb-text"><b>Car Detailing</b><span>Packages &amp; valeting</span></span>
+        <span class="lb-arrow">›</span>
+      </button>
+      <button class="lab-btn" data-src="work/big-mo-s-grill.html" data-url="bigmosgrill.co.uk"
+        data-name="Big Mo's Grill" data-desc="Vibrant takeaway site with full menu, photos, opening hours and order button."
+        data-tags="Full menu,Opening hours,Order button,Photo gallery"
+        data-cta="Get a takeaway preview →"
+        onclick="switchPreview(this)">
+        <span class="lb-icon">🍔</span>
+        <span class="lb-text"><b>Takeaway</b><span>Menu &amp; orders</span></span>
+        <span class="lb-arrow">›</span>
+      </button>
+      <button class="lab-btn" data-src="work/fade-district.html" data-url="yourclothingbrand.co.uk"
+        data-name="Clothing Brand" data-desc="Premium fashion-forward store page with product showcase, brand story and shop link."
+        data-tags="Product showcase,Brand story,Shop link,Mobile-first"
+        data-cta="Get a brand preview →"
+        onclick="switchPreview(this)">
+        <span class="lb-icon">👕</span>
+        <span class="lb-text"><b>Clothing Brand</b><span>Fashion &amp; streetwear</span></span>
+        <span class="lb-arrow">›</span>
+      </button>
+      <button class="lab-btn" data-src="work/brew-co.html" data-url="brewcocafe.co.uk"
+        data-name="Brew Co. Café" data-desc="Warm café site with menu, opening times, loyalty section and Instagram-ready photography."
+        data-tags="Menu display,Opening times,Location map,Loyalty offer"
+        data-cta="Get a café preview →"
+        onclick="switchPreview(this)">
+        <span class="lb-icon">☕</span>
+        <span class="lb-text"><b>Café</b><span>Coffee &amp; menus</span></span>
+        <span class="lb-arrow">›</span>
+      </button>
     </div>
-  </section>
+
+    <!-- panel -->
+    <div class="lab-panel">
+      <div class="lab-panel-head">
+        <div class="ph-dots"><i></i><i></i><i></i></div>
+        <div class="ph-url" id="labUrl">fadedistrict.co.uk</div>
+        <a class="ph-open" id="labOpen" href="work/fade-district.html" target="_blank">Open full ↗</a>
+      </div>
+      <div class="lab-iframe-wrap">
+        <iframe id="labIframe" src="work/fade-district.html" title="Website preview" loading="lazy"></iframe>
+      </div>
+      <div class="lab-info">
+        <div class="lab-info-text">
+          <b id="labName">Fade District</b>
+          <p id="labDesc">Bold barbershop site with online booking, service menu and walk-in energy.</p>
+          <div class="lab-tags" id="labTags">
+            <span class="lab-tag">Booking ready</span>
+            <span class="lab-tag">Service menu</span>
+            <span class="lab-tag">WhatsApp button</span>
+            <span class="lab-tag">Google Maps</span>
+          </div>
+        </div>
+        <div class="lab-cta-mini">
+          <a id="labCtaLink" href="https://wa.me/447956756675?text=Hi%20—%20I'd%20like%20a%20barber%20preview%20for%20my%20business" target="_blank">Get a barber preview →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WORK ================= -->
+<section id="work" aria-label="Concept builds ready to preview">
+  <div class="work-stage">
+    <div class="work-head">
+      <div>
+        <div class="kick">Concept builds</div>
+        <h2>Website concepts ready to preview.</h2>
+      </div>
+      <p class="worknote">These are real, fully-built concept sites — not templates. Open them, scroll them.</p>
+    </div>
+    <div class="works-feat">
+      <a class="work" href="work/fade-district.html" target="_blank">
+        <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">previewfirst.studio/fade-district</div></div>
+          <div class="fw"><iframe src="work/fade-district.html" loading="lazy" tabindex="-1"></iframe></div></div>
+        <div class="body">
+          <div class="concept-badge"><i></i>Concept build</div>
+          <h3>Fade District <span class="tag">Barber</span></h3>
+          <p>Bold split-screen editorial with walk-in energy and online booking.</p>
+          <span class="view">View concept</span>
+        </div>
+      </a>
+      <a class="work" href="work/noir-dining.html" target="_blank">
+        <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">previewfirst.studio/noir</div></div>
+          <div class="fw"><iframe src="work/noir-dining.html" loading="lazy" tabindex="-1"></iframe></div></div>
+        <div class="body">
+          <div class="concept-badge"><i></i>Concept build</div>
+          <h3>NOIR <span class="tag">Restaurant</span></h3>
+          <p>Elegant dining site with menus and reservations.</p>
+          <span class="view">View concept</span>
+        </div>
+      </a>
+      <a class="work" href="work/the-glow-room.html" target="_blank">
+        <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">previewfirst.studio/glow-room</div></div>
+          <div class="fw"><iframe src="work/the-glow-room.html" loading="lazy" tabindex="-1"></iframe></div></div>
+        <div class="body">
+          <div class="concept-badge"><i></i>Concept build</div>
+          <h3>The Glow Room <span class="tag">Salon</span></h3>
+          <p>Soft, airy beauty studio with treatment menu and pricing.</p>
+          <span class="view">View concept</span>
+        </div>
+      </a>
+      <a class="work" href="work/aquashine-valeting.html" target="_blank">
+        <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">previewfirst.studio/aquashine</div></div>
+          <div class="fw"><iframe src="work/aquashine-valeting.html" loading="lazy" tabindex="-1"></iframe></div></div>
+        <div class="body">
+          <div class="concept-badge"><i></i>Concept build</div>
+          <h3>Aquashine Valeting <span class="tag">Car Detailing</span></h3>
+          <p>Premium detailing packages with gallery and booking.</p>
+          <span class="view">View concept</span>
+        </div>
+      </a>
+      <a class="work" href="work/summit-roofing.html" target="_blank">
+        <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">previewfirst.studio/summit-roofing</div></div>
+          <div class="fw"><iframe src="work/summit-roofing.html" loading="lazy" tabindex="-1"></iframe></div></div>
+        <div class="body">
+          <div class="concept-badge"><i></i>Concept build</div>
+          <h3>Summit Roofing <span class="tag">Trades</span></h3>
+          <p>Trust-first trades site — quotes, services, Google reviews.</p>
+          <span class="view">View concept</span>
+        </div>
+      </a>
+      <a class="work" href="https://firstclassfits.co" target="_blank">
+        <div class="thumb"><span class="live-badge"><i></i>LIVE STORE</span><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=60" alt="First Class Fits online store" loading="lazy"></div>
+        <div class="body"><h3>First Class Fits <span class="tag">Online Store</span></h3><p>Full live store — products, Stripe payments, guest checkout.</p><span class="view">View live store</span></div>
+      </a>
+    </div>
+    <div class="work-more"><a class="cta ghost" href="work/index.html">Browse all concept builds →</a></div>
+  </div>
+</section>
 
 </div>
 
-<!-- ============ WEBSITE TRANSFORMATION — the main scroll scene ============
-     Pinned + scrubbed (GSAP ScrollTrigger). Scroll down: a dated local-business
-     site rebuilds itself into a premium one; scroll up reverses it.
-     Engine: assets/cinematic-scenes.js → CINE.register('transform', ...).
-     Re-theme for a barber/gym/restaurant by editing only the text inside
-     .tf-old and .tf-new — the animation is content-agnostic. -->
+<!-- ============ TRANSFORMATION SCENE ============ -->
 <section class="cine cine-tf" data-cine="transform" aria-label="Website transformation">
   <div class="cine-grid"></div>
   <div class="cine-head">
@@ -400,121 +607,160 @@ footer a{color:#8f8f9c}
 
 <div class="wrap">
 
-  <!-- ================= PROCESS ================= -->
-  <section id="process" class="reveal">
-    <div class="kick">How it works</div>
-    <h2>Zero risk. Zero jargon.</h2>
-    <div class="steps" style="margin-top:44px">
-      <div class="step reveal"><b>01</b><h3>Send your name</h3><p>Message me your business name or Instagram — that's all I need.</p></div>
-      <div class="step reveal"><b>02</b><h3>Free preview</h3><p>A real homepage preview comes back within 24 hours. Free.</p></div>
-      <div class="step reveal"><b>03</b><h3>You check it</h3><p>On your phone, with your staff. No pressure either way.</p></div>
-      <div class="step reveal"><b>04</b><h3>I refine it</h3><p>Colours, photos, wording — changes come back same day.</p></div>
-      <div class="step reveal"><b>05</b><h3>It goes live</h3><p>On your own domain, set up for you. Pay the rest only when happy.</p></div>
-      <div class="step reveal"><b>06</b><h3>You look the part</h3><p>More trust, more calls — and you own every bit of it.</p></div>
-    </div>
-  </section>
+<!-- PROCESS -->
+<section id="process" class="reveal">
+  <div class="kick">How it works</div>
+  <h2>Zero risk. Zero jargon.</h2>
+  <div class="steps" style="margin-top:44px">
+    <div class="step reveal"><b>01</b><h3>Send your business name</h3><p>WhatsApp your name or Instagram — that's all I need to get started.</p></div>
+    <div class="step reveal"><b>02</b><h3>Free preview built</h3><p>A real homepage preview comes back within 24 hours. No charge, no commitment.</p></div>
+    <div class="step reveal"><b>03</b><h3>You see it first</h3><p>On your phone, with your team. No pressure either way — it's your call.</p></div>
+    <div class="step reveal"><b>04</b><h3>Refinements, same day</h3><p>Colours, photos, copy — changes come back same day if you want to proceed.</p></div>
+    <div class="step reveal"><b>05</b><h3>Goes live on your domain</h3><p>Set up on your own domain, for you. Pay the rest only when you're happy.</p></div>
+    <div class="step reveal"><b>06</b><h3>You own everything</h3><p>Your domain, your site, your content. No lock-ins, no ongoing agency fees.</p></div>
+  </div>
+</section>
 
-  <!-- ================= BEFORE / AFTER ================= -->
-  <section class="reveal">
-    <div class="kick">Before / after</div>
-    <h2>The difference is the business you win.</h2>
-    <p class="lead">Drag the handle.</p>
-    <div class="ba-wrap">
-      <div class="ba-pane ba-before">
-        <b>Smith &amp; Sons Ltd</b>
-        <span>Welcome to our website!! We are a family business established 1987. Please call us on the phone number for prices.</span>
-        <button class="ba-oldbtn" type="button" tabindex="-1">Click Here</button>
-      </div>
-      <div class="ba-pane ba-after">
-        <b>Smith &amp; <em>Sons</em></b>
-        <span>Wirral's most trusted family firm — fixed quotes in 24 hours.</span>
-        <span class="ba-newbtn">Get a free quote →</span>
-      </div>
-      <span class="ba-tags ba-tag-before">Before</span>
-      <span class="ba-tags ba-tag-after">After</span>
-      <div class="ba-handle" role="slider" aria-label="Compare before and after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0"></div>
+<!-- BEFORE / AFTER -->
+<section class="reveal">
+  <div class="kick">Before / after</div>
+  <h2>The difference is the business you win.</h2>
+  <p class="lead">Drag the handle.</p>
+  <div class="ba-wrap">
+    <div class="ba-pane ba-before">
+      <b>Smith &amp; Sons Ltd</b>
+      <span>Welcome to our website!! We are a family business established 1987. Please call us on the phone number for prices.</span>
+      <button class="ba-oldbtn" type="button" tabindex="-1">Click Here</button>
     </div>
-  </section>
-
-  <!-- ================= INCLUDES ================= -->
-  <section class="reveal">
-    <div class="kick">The standard</div>
-    <h2>Every build includes</h2>
-    <div class="inc" style="margin-top:44px">
-      <div class="incitem"><b>Mobile-first design</b><span>Designed on the phone screen first — where your customers are.</span></div>
-      <div class="incitem"><b>One-tap call &amp; WhatsApp</b><span>Customers reach you in a single tap, from every page.</span></div>
-      <div class="incitem"><b>Google-ready SEO</b><span>Titles, descriptions and structure done properly from day one.</span></div>
-      <div class="incitem"><b>Fast hosting, sorted</b><span>Set up for you — loads in under a second.</span></div>
-      <div class="incitem"><b>30 days of free tweaks</b><span>Anything you want changed in the first month, free.</span></div>
-      <div class="incitem"><b>100% ownership</b><span>Your domain, your site, your content. No lock-ins, ever.</span></div>
+    <div class="ba-pane ba-after">
+      <b>Smith &amp; <em>Sons</em></b>
+      <span>Wirral's most trusted family firm — fixed quotes in 24 hours.</span>
+      <span class="ba-newbtn">Get a free quote →</span>
     </div>
-  </section>
+    <span class="ba-tags ba-tag-before">Before</span>
+    <span class="ba-tags ba-tag-after">After</span>
+    <div class="ba-handle" role="slider" aria-label="Compare before and after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0"></div>
+  </div>
+</section>
 
-  <!-- ================= PRICING ================= -->
-  <section id="pricing" class="reveal">
-    <div class="kick">Pricing</div>
-    <h2>Fixed prices. You own everything.</h2>
-    <p class="lead">Founding-client rates while the first five places last.</p>
-    <div class="plans">
-      <div class="plan"><div class="name">Starter Site</div>
-        <div class="price">£150</div><div class="per">one-off · live in 48h</div>
-        <ul><li>1-page professional site</li><li>Perfect on phones</li><li>WhatsApp &amp; call buttons</li><li>Google-ready</li></ul></div>
-      <div class="plan hot"><span class="hotlbl">Most popular</span><div class="name" style="margin-top:6px">Business Site</div>
-        <div class="price">£250</div><div class="per">one-off · 3–4 days</div>
-        <ul><li>Up to 5 pages</li><li>Booking &amp; enquiry forms</li><li>Google Maps &amp; reviews</li><li>Photo galleries</li></ul></div>
-      <div class="plan"><div class="name">Online Store</div>
-        <div class="price">£400</div><div class="per">one-off · ~1 week</div>
-        <ul><li>Full shop, card payments</li><li>Products loaded for you</li><li>Order notifications</li><li>Delivery options</li></ul></div>
-      <div class="plan"><div class="name">Care Plan</div>
-        <div class="price">£25<span style="font-size:16px">/mo</span></div><div class="per">optional · cancel anytime</div>
-        <ul><li>Hosting sorted</li><li>Any change within 48h</li><li>Kept secure &amp; online</li><li>Priority support</li></ul></div>
+<!-- INCLUDES -->
+<section class="reveal">
+  <div class="kick">The standard</div>
+  <h2>Every build includes</h2>
+  <div class="inc" style="margin-top:44px">
+    <div class="incitem"><b>Free preview first</b><span>See your finished homepage concept before spending a single penny.</span></div>
+    <div class="incitem"><b>Mobile-first design</b><span>Designed on the phone screen first — where your customers are.</span></div>
+    <div class="incitem"><b>One-tap call &amp; WhatsApp</b><span>Customers reach you in a single tap, from every page.</span></div>
+    <div class="incitem"><b>Google-ready SEO</b><span>Titles, descriptions and structure done properly from day one.</span></div>
+    <div class="incitem"><b>30 days of free tweaks</b><span>Anything you want changed in the first month, completely free.</span></div>
+    <div class="incitem"><b>100% ownership</b><span>Your domain, your site, your content. No lock-ins, ever.</span></div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="reveal">
+  <div class="kick">Pricing</div>
+  <h2>Fixed prices. You own everything.</h2>
+  <p class="lead">Only pay if you want the preview finished and taken live.</p>
+  <div class="plans">
+    <div class="plan">
+      <div class="name">Starter Website</div>
+      <div class="price">£150<span style="font-size:16px">+</span></div>
+      <div class="per">one-off · live in 48h</div>
+      <ul>
+        <li>1-page professional site</li>
+        <li>Perfect on phones</li>
+        <li>WhatsApp &amp; call buttons</li>
+        <li>Google-ready from day one</li>
+      </ul>
     </div>
-  </section>
-
-  <section class="reveal">
-    <div class="guar">
-      <h3>The <span>no-risk</span> guarantee</h3>
-      <p>Free preview first. The second half is only due when you're happy with the finished site. If you don't love it, you don't pay it.</p>
+    <div class="plan hot">
+      <span class="hotlbl">Most popular</span>
+      <div class="name" style="margin-top:6px">Standard Website</div>
+      <div class="price">£250<span style="font-size:16px">+</span></div>
+      <div class="per">one-off · 3–4 days</div>
+      <ul>
+        <li>Up to 5 pages</li>
+        <li>Booking &amp; enquiry forms</li>
+        <li>Google Maps &amp; reviews</li>
+        <li>Photo galleries</li>
+      </ul>
     </div>
-  </section>
-
-  <!-- ================= FAQ ================= -->
-  <section class="reveal">
-    <div class="kick">Questions</div>
-    <h2>Asked all the time</h2>
-    <details><summary>Why so much cheaper than agencies?</summary><p>No office, no account managers, no six-week timelines. You get agency-quality work without agency overheads — and founding-client rates in exchange for a review.</p></details>
-    <details><summary>What do you need from me?</summary><p>Your business name, phone number and a few photos. I write the words and handle everything technical.</p></details>
-    <details><summary>Do I really own it?</summary><p>Yes — site, domain and content are 100% yours. If you ever leave, you take everything with you.</p></details>
-    <details><summary>What about hosting and the domain?</summary><p>I set both up for you. Hosting is included on the Care Plan, or I'll show you how to run it yourself for about £10 a year.</p></details>
-    <details><summary>Can you do online shops?</summary><p>Yes — full stores with card payments and order notifications. First Class Fits in the work section is live now.</p></details>
-  </section>
-
-  <!-- ================= FINAL CTA ================= -->
-  <div class="final reveal">
-    <div class="fcard">
-      <div class="kick">The first step</div>
-      <h2>Send your business name.<br>The first preview is free.</h2>
-      <p>WhatsApp your business name or Instagram page — a real homepage preview comes back within 24 hours.</p>
-      <a class="cta wa" data-magnetic style="margin-left:0" href="https://wa.me/447956756675?text=Alright%20Jay%20—%20can%20I%20get%20a%20free%20homepage%20preview%3F%20My%20business%20is%3A%20">WhatsApp Jay — 07956 756 675</a>
-      <p class="fclose">No card. No catch. You only pay if you love it.</p>
+    <div class="plan">
+      <div class="name">Premium Website</div>
+      <div class="price">£400<span style="font-size:16px">+</span></div>
+      <div class="per">one-off · ~1 week</div>
+      <ul>
+        <li>Full shop or booking system</li>
+        <li>Card payments via Stripe</li>
+        <li>Cinematic scroll animations</li>
+        <li>Priority turnaround</li>
+      </ul>
     </div>
+    <div class="plan">
+      <div class="name">Monthly Updates</div>
+      <div class="price">£25<span style="font-size:16px">/mo</span></div>
+      <div class="per">optional · cancel anytime</div>
+      <ul>
+        <li>Hosting included</li>
+        <li>Any change within 48h</li>
+        <li>Kept secure &amp; online</li>
+        <li>Priority support</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="guar">
+    <h3>The <span>no-risk</span> guarantee</h3>
+    <p>Free preview first. The second half is only due when you're happy with the finished site. If you don't love it, you don't pay — and you keep the preview.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="reveal">
+  <div class="kick">Questions</div>
+  <h2>Asked all the time</h2>
+  <details><summary>Is the preview really free?</summary><p>Yes — completely. I build a real homepage concept for your business at no charge. You only pay if you decide you want it finished and taken live. No card required to get a preview.</p></details>
+  <details><summary>What are the concept builds in the Preview Lab?</summary><p>They're real, fully-built websites I created to show what different business types could look like. They're not paid client sites — they're concept builds. Your preview would be built specifically for your own business, with your name, photos and details.</p></details>
+  <details><summary>Why so much cheaper than agencies?</summary><p>No office, no account managers, no six-week timelines. You get quality work without agency overheads — direct with the person building it.</p></details>
+  <details><summary>What do you need from me?</summary><p>Your business name, phone number and a few photos. I write the copy and handle everything technical.</p></details>
+  <details><summary>Do I really own it?</summary><p>Yes — site, domain and content are 100% yours. If you ever leave, you take everything with you. No lock-ins.</p></details>
+  <details><summary>Can you build online shops?</summary><p>Yes — full stores with card payments and order notifications. First Class Fits in the work section is a live example built this year.</p></details>
+</section>
+
+<!-- FINAL CTA -->
+<div class="final reveal">
+  <div class="fcard">
+    <div class="kick">The first step</div>
+    <h2>Send your business name.<br>The preview is free.</h2>
+    <p>WhatsApp your business name or Instagram — a real homepage concept comes back within 24 hours. No card. No catch.</p>
+    <a class="cta wa" data-magnetic style="margin-left:0" href="https://wa.me/447956756675?text=Hi%20—%20I'd%20like%20a%20free%20website%20preview.%20My%20business%20is%3A%20">WhatsApp — 07956 756 675</a>
+    <p class="fclose">Free preview first. Only pay if you want it finished.</p>
   </div>
 </div>
 
+</div><!-- /wrap -->
+
 <footer>
-  JG Studio · Jay Green · Web design &amp; AI automation · Wallasey, Wirral · 07956 756 675<br>
+  Preview First Studio · Jay Green · Web design &amp; AI automation · Wallasey, Wirral · 07956 756 675<br>
   <span style="font-size:12px">Replies within the hour, 7 days a week &nbsp;·&nbsp;
   <a href="terms.html">Terms</a> &nbsp;·&nbsp;
   <a href="privacy.html">Privacy</a></span>
 </footer>
-<a class="stickywa" href="https://wa.me/447956756675?text=Alright%20Jay%20—%20interested%20in%20a%20website">💬 WhatsApp Jay</a>
+
+<div class="stickywa">
+  <a href="https://wa.me/447956756675?text=Hi%20—%20I'd%20like%20a%20free%20website%20preview.%20My%20business%20is%3A%20" class="wa-btn">💬 WhatsApp Jay</a>
+  <a href="#preview-lab">Try Preview Lab</a>
+</div>
 
 <script>
-// scroll reveals (upgraded to GSAP by assets/scroll.js when available)
+// scroll reveals
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-// scroll progress bar
+// scroll progress
 const fill=document.getElementById('scrollFill');
 function onScroll(){
   const h=document.documentElement;
@@ -524,7 +770,7 @@ function onScroll(){
 document.addEventListener('scroll',onScroll,{passive:true});
 onScroll();
 
-// 3D tilt on work cards (desktop only)
+// 3D tilt on work cards
 if(matchMedia('(hover:hover) and (pointer:fine)').matches){
   document.querySelectorAll('.work').forEach(card=>{
     card.addEventListener('mousemove',e=>{
@@ -535,7 +781,50 @@ if(matchMedia('(hover:hover) and (pointer:fine)').matches){
     card.addEventListener('mouseleave',()=>{card.style.transform='';});
   });
 }
+
+// ---- Preview Lab ----
+function switchPreview(btn) {
+  // deactivate all
+  document.querySelectorAll('.lab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+
+  var src  = btn.getAttribute('data-src');
+  var url  = btn.getAttribute('data-url');
+  var name = btn.getAttribute('data-name');
+  var desc = btn.getAttribute('data-desc');
+  var tags = btn.getAttribute('data-tags').split(',');
+  var cta  = btn.getAttribute('data-cta');
+  var type = btn.querySelector('.lb-text b').textContent.toLowerCase().replace(/\s+/g,'-');
+
+  // iframe — swap src
+  var iframe = document.getElementById('labIframe');
+  iframe.src = src;
+
+  // url bar
+  document.getElementById('labUrl').textContent = url;
+
+  // open link
+  var openLink = document.getElementById('labOpen');
+  openLink.href = src;
+
+  // info
+  document.getElementById('labName').textContent = name;
+  document.getElementById('labDesc').textContent = desc;
+
+  // tags
+  var tagsEl = document.getElementById('labTags');
+  tagsEl.innerHTML = tags.map(function(t){
+    return '<span class="lab-tag">'+t.trim()+'</span>';
+  }).join('');
+
+  // cta
+  var ctaLink = document.getElementById('labCtaLink');
+  var msg = encodeURIComponent("Hi — I'd like a "+type+" preview for my business");
+  ctaLink.href = 'https://wa.me/447956756675?text='+msg;
+  ctaLink.textContent = cta;
+}
 </script>
+
 <script src="https://unpkg.com/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://unpkg.com/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
